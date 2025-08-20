@@ -93,13 +93,13 @@ export default function ContactSection() {
                   </div>
                   <div className="group">
                     <input
-                      type="email"
+                        type="email"
                       placeholder="Your Email"
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
                     />
                   </div>
-                </div>
-                
+                  </div>
+                  
                 <div className="group">
                   <input
                     type="text"
@@ -118,21 +118,21 @@ export default function ContactSection() {
                 
                 {/* Enhanced Submit Button */}
                 <button
-                  type="submit"
+                      type="submit"
                   className="w-full px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 transform-gpu flex items-center justify-center gap-3 group"
                 >
                   <span>Send Message</span>
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
-              </form>
+                </form>
 
               {/* Enhanced Hover Effect */}
               <div className="absolute inset-0 bg-gradient-to-t from-cyber-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl" />
             </div>
-          </div>
+            </div>
 
           {/* Enhanced Contact Information */}
-          <div className="space-y-6">
+            <div className="space-y-6">
             {contactInfo.map((info, index) => (
               <div key={index} className="group">
                 <div className="relative p-6 rounded-3xl bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 transform-gpu">
@@ -155,25 +155,25 @@ export default function ContactSection() {
                         {/* Floating Particles */}
                         <div className={`absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-${info.color}/60 rounded-full animate-pulse-fast`} />
                       </div>
-                    </div>
+                  </div>
 
                     {/* Content */}
                     <div className="flex-1">
                       <h4 className={`text-lg font-bold text-${info.color} mb-1 group-hover:scale-105 transition-transform duration-500`}>
                         {info.title}
-                      </h4>
+                    </h4>
                       <p className="text-white/70 group-hover:text-white/90 transition-colors duration-500">
                         {info.details}
-                      </p>
-                    </div>
+                    </p>
+                  </div>
                   </div>
 
                   {/* Enhanced Hover Effect */}
                   <div className={`absolute inset-0 bg-gradient-to-t from-${info.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl`} />
                 </div>
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
         </div>
       </div>
     </section>

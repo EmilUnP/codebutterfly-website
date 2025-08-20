@@ -135,7 +135,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker text-white relative overflow-hidden">
       {/* Navbar */}
-      <Navbar />
+      <Navbar currentPageName="Projects" />
       
       {/* Minimalist 3D Butterfly Animation */}
       <ButterflyAnimation />
