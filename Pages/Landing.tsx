@@ -1,42 +1,46 @@
 "use client";
 
 import React from 'react';
-import { motion, useScroll, useTransform } from "framer-motion";
-
-import HeroSection from "../components/landing/HeroSection";
-import ServicesSection from "../components/landing/ServicesSection";
-import ContactSection from "../components/landing/ContactSection";
-import FloatingParticles from "../components/landing/FloatingParticles";
-import ButterflyAnimation from "../components/landing/ButterflyAnimation";
-import AboutSection from "../components/landing/AboutSection";
-import PortfolioSection from "../components/landing/PortfolioSection";
+import HeroSection3D from '@/components/landing/HeroSection3D';
+import ServicesSection from '@/components/landing/ServicesSection';
+import AboutSection from '@/components/landing/AboutSection';
+import PortfolioSection from '@/components/landing/PortfolioSection';
+import ContactSection from '@/components/landing/ContactSection';
+import ButterflyAnimation from '@/components/landing/ButterflyAnimation';
 
 export default function Landing() {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  
   return (
-    <div className="overflow-hidden relative">
-      {/* Background Elements */}
-      <FloatingParticles />
+    <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker text-white relative overflow-hidden">
+      {/* Minimalist 3D Butterfly Animation */}
       <ButterflyAnimation />
       
-      {/* Main Content */}
-      <div id="home">
-        <HeroSection />
-      </div>
-      <div id="about" className="-mt-8">
-        <AboutSection />
-      </div>
-      <div id="services" className="-mt-8">
-        <ServicesSection />
-      </div>
-      <div id="portfolio" className="-mt-8">
-        <PortfolioSection />
-      </div>
-      <div id="contact" className="-mt-8">
-        <ContactSection />
-      </div>
+      {/* Main Content with Enhanced Layout */}
+      <main className="relative z-10">
+        {/* Hero Section - Full Height */}
+        <section className="min-h-screen flex items-center justify-center">
+          <HeroSection3D />
+        </section>
+        
+        {/* Services Section - Enhanced Spacing */}
+        <section className="py-16">
+          <ServicesSection />
+        </section>
+        
+        {/* About Section - Enhanced Spacing */}
+        <section className="py-16 bg-cyber-dark/30">
+          <AboutSection />
+        </section>
+        
+        {/* Portfolio Section - Enhanced Spacing */}
+        <section className="py-16">
+          <PortfolioSection />
+        </section>
+        
+        {/* Contact Section - Enhanced Spacing */}
+        <section className="py-16 bg-cyber-dark/30">
+          <ContactSection />
+        </section>
+      </main>
     </div>
   );
 }

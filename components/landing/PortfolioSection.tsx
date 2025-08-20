@@ -1,246 +1,217 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Sparkles } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { createPageUrl } from "@/utils";
+import { ExternalLink, Github, Eye } from 'lucide-react';
+import Link from 'next/link';
 
-const portfolioItems = [
+const projects = [
   {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "Modern shopping experience with seamless checkout and inventory management.",
-    category: "Web Development",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    color: "from-blue-500 to-cyan-500"
+    title: 'E-Commerce Platform',
+    description: 'Full-stack e-commerce solution with advanced features and modern UI/UX.',
+    image: '/api/placeholder/400/300',
+    category: 'Web App',
+    tech: ['React', 'Node.js', 'MongoDB'],
+    link: '#',
+    github: '#',
+    color: 'cyber-blue'
   },
   {
-    id: 2,
-    title: "Brand Identity Design",
-    description: "Complete brand refresh for a sustainable fashion startup.",
-    category: "Branding",
-    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=400&fit=crop",
-    technologies: ["Illustrator", "Figma", "After Effects"],
-    color: "from-purple-500 to-pink-500"
+    title: 'Mobile Banking App',
+    description: 'Secure and intuitive mobile banking application with biometric authentication.',
+    image: '/api/placeholder/400/300',
+    category: 'Mobile',
+    tech: ['React Native', 'Firebase', 'Stripe'],
+    link: '#',
+    github: '#',
+    color: 'cyber-green'
   },
   {
-    id: 3,
-    title: "Social Media Campaign",
-    description: "Instagram campaign that increased engagement by 300% in 3 months.",
-    category: "Social Media",
-    image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&h=400&fit=crop",
-    technologies: ["Adobe Suite", "Analytics", "Content Strategy"],
-    color: "from-pink-500 to-rose-500"
+    title: 'AI Dashboard',
+    description: 'Intelligent analytics dashboard powered by machine learning algorithms.',
+    image: '/api/placeholder/400/300',
+    category: 'AI/ML',
+    tech: ['Python', 'TensorFlow', 'React'],
+    link: '#',
+    github: '#',
+    color: 'cyber-purple'
   },
   {
-    id: 4,
-    title: "Mobile App UI/UX",
-    description: "Intuitive fitness app design focused on user motivation and progress tracking.",
-    category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
-    technologies: ["Figma", "Principle", "React Native"],
-    color: "from-green-500 to-emerald-500"
+    title: 'Social Media Platform',
+    description: 'Modern social networking platform with real-time features and content sharing.',
+    image: '/api/placeholder/400/300',
+    category: 'Social',
+    tech: ['Vue.js', 'Socket.io', 'PostgreSQL'],
+    link: '#',
+    github: '#',
+    color: 'cyber-pink'
   },
   {
-    id: 5,
-    title: "SEO Optimization",
-    description: "Complete SEO overhaul resulting in 250% increase in organic traffic.",
-    category: "SEO",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-    technologies: ["Google Analytics", "SEMrush", "Technical SEO"],
-    color: "from-amber-500 to-orange-500"
+    title: 'IoT Control System',
+    description: 'Smart home automation system with mobile app and cloud integration.',
+    image: '/api/placeholder/400/300',
+    category: 'IoT',
+    tech: ['Flutter', 'AWS', 'MQTT'],
+    link: '#',
+    github: '#',
+    color: 'cyber-amber'
   },
   {
-    id: 6,
-    title: "Corporate Website",
-    description: "Professional website for a consulting firm with integrated CRM system.",
-    category: "Web Development",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-    technologies: ["Next.js", "TypeScript", "Tailwind", "CMS"],
-    color: "from-indigo-500 to-purple-500"
+    title: 'Blockchain Wallet',
+    description: 'Secure cryptocurrency wallet with multi-chain support and DeFi integration.',
+    image: '/api/placeholder/400/300',
+    category: 'Blockchain',
+    tech: ['Solidity', 'Web3.js', 'React'],
+    link: '#',
+    github: '#',
+    color: 'cyber-orange'
   }
 ];
 
-const categories = ["All", "Web Development", "UI/UX Design", "Branding", "Social Media", "SEO"];
+const categories = ['All', 'Web App', 'Mobile', 'AI/ML', 'Social', 'IoT', 'Blockchain'];
 
 export default function PortfolioSection() {
-  const router = useRouter();
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
-  const filteredItems = activeCategory === "All" 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeCategory);
-
-  const handleProjectClick = (projectId: number) => {
-    router.push(`/projects/${projectId}`);
-  };
-
-  const handleViewAllProjects = () => {
-    router.push("/projects");
-  };
+  const filteredProjects = activeCategory === 'All' 
+    ? projects 
+    : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section className="py-16 px-6 relative">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center glass-morphism rounded-full px-6 py-3 mb-8 material-card"
-          >
-            <Sparkles className="w-4 h-4 text-purple-600 mr-2" />
-            <span className="text-sm font-medium text-gray-700">Our Portfolio</span>
-          </motion.div>
+    <section className="relative py-16 overflow-hidden">
+      {/* Enhanced Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker" />
+      <div className="absolute inset-0 grid-pattern opacity-3" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyber-purple/5 via-transparent to-cyber-pink/5 opacity-2" />
+      
+      {/* Subtle Floating Elements */}
+      <div className="absolute top-24 left-24 w-2 h-2 bg-cyber-purple/30 rounded-full animate-float opacity-20" />
+      <div className="absolute bottom-24 right-24 w-1.5 h-1.5 bg-cyber-pink/30 rounded-full animate-float opacity-20" style={{ animationDelay: '2s' }} />
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="playfair text-5xl md:text-6xl font-bold mb-6"
-          >
-            <span className="text-gray-800">Recent</span>
-            <br />
-            <span className="gradient-text">Creative Works</span>
-          </motion.h2>
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Enhanced Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-purple to-white bg-clip-text text-transparent">
+            Our Portfolio
+          </h2>
+          <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
+            Explore our diverse portfolio of innovative projects that showcase our expertise and creativity.
+          </p>
+        </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-          >
-            Explore our latest projects and see how we've helped businesses transform their digital presence.
-          </motion.p>
-        </motion.div>
-
-        {/* Category Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
+        {/* Enhanced Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((category) => (
-            <motion.button
+            <button
               key={category}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 material-card ${
+              className={`px-6 py-3 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 ${
                 activeCategory === category
-                  ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg'
-                  : 'glass-morphism text-gray-700 hover:text-pink-600'
+                  ? 'bg-cyber-blue text-white shadow-lg shadow-cyber-blue/30'
+                  : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10'
               }`}
             >
               {category}
-            </motion.button>
+            </button>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Portfolio Grid */}
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="wait">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                onHoverStart={() => setHoveredItem(item.id)}
-                onHoverEnd={() => setHoveredItem(null)}
-                className="group cursor-pointer"
-                onClick={() => handleProjectClick(item.id)}
-              >
-                <Card className="material-card glass-morphism overflow-hidden h-full hover:shadow-2xl transition-all duration-500">
-                  <div className="relative overflow-hidden">
-                    <motion.img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-64 object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: hoveredItem === item.id ? 1 : 0 }}
-                      className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center"
-                    >
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: hoveredItem === item.id ? 1 : 0 }}
-                        className="text-white text-center"
-                      >
-                        <ExternalLink className="w-8 h-8 mx-auto mb-2" />
-                        <p className="text-sm font-medium">View Details</p>
-                      </motion.div>
-                    </motion.div>
-                    <div className="absolute top-4 left-4">
-                      <Badge className={`bg-gradient-to-r ${item.color} text-white border-0`}>
-                        {item.category}
-                      </Badge>
-                    </div>
+        {/* Enhanced Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {filteredProjects.map((project, index) => (
+            <div
+              key={index}
+              className="group"
+              onMouseEnter={() => setHoveredProject(index)}
+              onMouseLeave={() => setHoveredProject(null)}
+            >
+              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 transform-gpu">
+                {/* Enhanced Background Pattern */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-30" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)] opacity-40" />
+                
+                {/* Project Image */}
+                <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-white/50 text-sm">Project Image</div>
                   </div>
                   
-                  <CardContent className="p-6">
-                    <h3 className="playfair text-xl font-bold text-gray-800 mb-3 group-hover:text-gray-900 transition-colors duration-300">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                      {item.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {item.technologies.map((tech, techIndex) => (
-                        <Badge
-                          key={techIndex}
-                          variant="outline"
-                          className="text-xs bg-white/50 border-gray-200 text-gray-600"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+                  {/* Enhanced Hover Overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-${project.color}/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                  
+                  {/* Action Buttons */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <button className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-110">
+                      <Eye className="w-5 h-5 text-white" />
+                    </button>
+                    <button className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-110">
+                      <ExternalLink className="w-5 h-5 text-white" />
+                    </button>
+                    <button className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-110">
+                      <Github className="w-5 h-5 text-white" />
+                    </button>
+                  </div>
+                </div>
 
-        {/* View More CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleViewAllProjects}
-            className="ripple material-fab bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300"
-          >
-            View All Projects
-          </motion.button>
-        </motion.div>
+                {/* Project Content */}
+                <div className="p-6">
+                  {/* Category Badge */}
+                  <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium text-${project.color} bg-${project.color}/10 border border-${project.color}/20 mb-3`}>
+                    {project.category}
+                  </div>
+
+                  {/* Project Title */}
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyber-blue transition-colors duration-500">
+                    {project.title}
+                  </h3>
+
+                  {/* Project Description */}
+                  <p className="text-white/70 text-sm leading-relaxed mb-4 group-hover:text-white/90 transition-colors duration-500">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 rounded-lg text-xs font-medium bg-white/5 text-white/60 border border-white/10 group-hover:bg-white/10 group-hover:text-white/80 transition-all duration-500"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* View More Button */}
+                  <div className="flex justify-center">
+                    <Link href="/projects">
+                      <button className={`px-4 py-2 bg-${project.color}/20 text-${project.color} hover:bg-${project.color}/30 rounded-xl font-medium transition-all duration-300 hover:scale-105 border border-${project.color}/30 backdrop-blur-sm`}>
+                        View More
+                      </button>
+                    </Link>
+                  </div>
+
+                  {/* Enhanced Hover Effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-${project.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl`} />
+                </div>
+
+                {/* Enhanced 3D Shadow */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent transform translate-y-2 scale-95 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Enhanced CTA */}
+        <div className="text-center">
+          <Link href="/projects">
+            <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
+              <span>View All Projects</span>
+              <ExternalLink className="w-5 h-5 ml-2" />
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );

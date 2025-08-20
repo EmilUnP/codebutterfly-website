@@ -1,97 +1,142 @@
 import React from 'react';
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Users, Award, Clock, Target, Sparkles } from "lucide-react";
+import { Users, Award, Clock, Target, Zap, Shield } from 'lucide-react';
 
 const stats = [
-  { icon: Users, number: "50+", label: "Happy Clients", color: "from-blue-500 to-cyan-500" },
-  { icon: Award, number: "100+", label: "Projects Completed", color: "from-purple-500 to-pink-500" },
-  { icon: Clock, number: "5+", label: "Years Experience", color: "from-green-500 to-emerald-500" },
-  { icon: Target, number: "98%", label: "Success Rate", color: "from-orange-500 to-red-500" }
+  { number: '150+', label: 'Projects Completed', icon: Target, color: 'cyber-blue' },
+  { number: '50+', label: 'Happy Clients', icon: Users, color: 'cyber-pink' },
+  { number: '5+', label: 'Years Experience', icon: Clock, color: 'cyber-purple' },
+  { number: '99%', label: 'Client Satisfaction', icon: Award, color: 'cyber-green' }
+];
+
+const features = [
+  {
+    icon: Zap,
+    title: 'Innovation First',
+    description: 'We stay ahead of the curve with cutting-edge technologies and creative solutions.',
+    color: 'cyber-amber'
+  },
+  {
+    icon: Shield,
+    title: 'Quality Assured',
+    description: 'Every project undergoes rigorous testing and quality assurance processes.',
+    color: 'cyber-green'
+  },
+  {
+    icon: Target,
+    title: 'Results Driven',
+    description: 'We focus on delivering measurable results that drive business growth.',
+    color: 'cyber-blue'
+  }
 ];
 
 export default function AboutSection() {
   return (
-    <section className="py-16 px-6 relative bg-white/30 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center glass-morphism rounded-full px-6 py-3 mb-8 material-card"
-          >
-            <Sparkles className="w-4 h-4 text-purple-600 mr-2" />
-            <span className="text-sm font-medium text-gray-700">About Us</span>
-          </motion.div>
+    <section className="relative py-16 overflow-hidden">
+      {/* Enhanced Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker" />
+      <div className="absolute inset-0 grid-pattern opacity-3" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyber-green/5 via-transparent to-cyber-blue/5 opacity-2" />
+      
+      {/* Subtle Floating Elements */}
+      <div className="absolute top-32 right-16 w-2 h-2 bg-cyber-green/30 rounded-full animate-float opacity-20" />
+      <div className="absolute bottom-32 left-16 w-1.5 h-1.5 bg-cyber-blue/30 rounded-full animate-float opacity-20" style={{ animationDelay: '3s' }} />
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="playfair text-5xl md:text-6xl font-bold mb-6"
-          >
-            <span className="text-gray-800">Crafting Digital</span>
-            <br />
-            <span className="gradient-text">Excellence Since 2019</span>
-          </motion.h2>
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Enhanced Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-green to-white bg-clip-text text-transparent">
+            About Us
+          </h2>
+          <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
+            We are a passionate team of innovators, designers, and developers dedicated to creating exceptional digital experiences.
+          </p>
+        </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-          >
-            We're a passionate team of designers, developers, and digital strategists who believe in the power of beautiful, functional design to transform businesses and create meaningful connections.
-          </motion.p>
-        </motion.div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        {/* Enhanced Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="text-center"
-            >
-              <Card className="material-card glass-morphism p-6 hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-0">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 material-fab`}
-                  >
-                    <stat.icon className="w-6 h-6 text-white" />
-                  </motion.div>
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1, type: "spring" }}
-                    className="playfair text-3xl font-bold gradient-text mb-2"
-                  >
+            <div key={index} className="group">
+              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 transform-gpu">
+                {/* Enhanced Background Pattern */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-30 rounded-3xl" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1),transparent_50%)] opacity-40 rounded-3xl" />
+                
+                {/* Enhanced Icon */}
+                <div className="relative mb-4">
+                  <div className="w-16 h-16 mx-auto relative">
+                    {/* Icon Background Glow */}
+                    <div className={`absolute inset-0 bg-${stat.color}/20 rounded-2xl blur-xl animate-pulse-glow`} />
+                    
+                    {/* Icon Container */}
+                    <div className={`relative w-full h-full bg-${stat.color}/10 rounded-2xl border border-${stat.color}/30 flex items-center justify-center backdrop-blur-sm`}>
+                      <stat.icon className="w-8 h-8 text-white" />
+                    </div>
+                    
+                    {/* Floating Particles */}
+                    <div className={`absolute -top-1 -right-1 w-2 h-2 bg-${stat.color}/60 rounded-full animate-pulse-fast`} />
+                    <div className={`absolute -bottom-1 -left-1 w-2 h-2 bg-${stat.color}/40 rounded-full animate-pulse-fast`} style={{ animationDelay: '0.5s' }} />
+                  </div>
+                </div>
+
+                {/* Enhanced Stats */}
+                <div className="text-center">
+                  <div className={`text-4xl font-black text-${stat.color} mb-2 group-hover:scale-110 transition-transform duration-500`}>
                     {stat.number}
-                  </motion.div>
-                  <p className="text-gray-600 font-medium text-sm">
+                  </div>
+                  <div className="text-white/70 text-sm font-medium group-hover:text-white/90 transition-colors duration-500">
                     {stat.label}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+                  </div>
+                </div>
+
+                {/* Enhanced Hover Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-${stat.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl`} />
+              </div>
+            </div>
           ))}
         </div>
 
+        {/* Enhanced Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div key={index} className="group">
+              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 transform-gpu h-full">
+                {/* Enhanced Background Pattern */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-30 rounded-3xl" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.1),transparent_50%)] opacity-40 rounded-3xl" />
+                
+                {/* Enhanced Icon */}
+                <div className="relative mb-6">
+                  <div className="w-16 h-16 mx-auto relative">
+                    {/* Icon Background Glow */}
+                    <div className={`absolute inset-0 bg-${feature.color}/20 rounded-2xl blur-xl animate-pulse-glow`} />
+                    
+                    {/* Icon Container */}
+                    <div className={`relative w-full h-full bg-${feature.color}/10 rounded-2xl border border-${feature.color}/30 flex items-center justify-center backdrop-blur-sm`}>
+                      <feature.icon className="w-8 h-8 text-white" />
+                    </div>
+                    
+                    {/* Floating Particles */}
+                    <div className={`absolute -top-1 -right-1 w-2 h-2 bg-${feature.color}/60 rounded-full animate-pulse-fast`} />
+                    <div className={`absolute -bottom-1 -left-1 w-2 h-2 bg-${feature.color}/40 rounded-full animate-pulse-fast`} style={{ animationDelay: '0.5s' }} />
+                  </div>
+                </div>
 
+                {/* Enhanced Content */}
+                <div className="text-center">
+                  <h3 className={`text-2xl font-bold text-${feature.color} mb-4 group-hover:scale-105 transition-transform duration-500`}>
+                    {feature.title}
+                  </h3>
+                  <p className="text-white/70 leading-relaxed group-hover:text-white/90 transition-colors duration-500">
+                    {feature.description}
+                  </p>
+                </div>
+
+                {/* Enhanced Hover Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-${feature.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl`} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

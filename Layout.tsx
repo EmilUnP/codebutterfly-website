@@ -10,7 +10,7 @@ export default function Layout({ children, currentPageName }: { children: React.
   const isLandingPage = currentPageName === "Landing";
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-violet-100 relative">
+    <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker relative">
 
       {/* Navigation */}
       <Navbar currentPageName={currentPageName} />
