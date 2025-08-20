@@ -2,10 +2,14 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, ChevronDown, Sparkles, Zap, Rocket, ExternalLink } from "lucide-react";
 import Link from 'next/link';
-import { useT } from '@/lib/i18n-context';
+import { type Language, useTranslations } from '@/lib/static-i18n';
 
-export default function HeroSection3D() {
-  const t = useT();
+interface HeroSection3DProps {
+  language?: Language;
+}
+
+export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
+  const t = useTranslations(language);
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-24">
       {/* Enhanced 3D Background Layers */}
@@ -36,26 +40,26 @@ export default function HeroSection3D() {
         {/* Enhanced Main Title with Advanced 3D Effects */}
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-16 leading-tight perspective-3d">
           <div className="rotate-3d hover:rotate-3d mb-6 transform-gpu">
-            <span className="gradient-text inline-block scan-line relative">
-              {t.hero.title.split(' ')[0]}
-              {/* Enhanced Glow Effect */}
-              <div className="absolute inset-0 gradient-text blur-2xl opacity-0 hover:opacity-30 transition-opacity duration-500" />
-            </span>
-          </div>
-          <div className="rotate-3d hover:rotate-3d transform-gpu" style={{ animationDelay: '0.5s' }}>
-            <span className="text-white inline-block font-mono tracking-widest relative">
-              {t.hero.title.split(' ').slice(1).join(' ')}
-              {/* Enhanced Glow Effect */}
-              <div className="absolute inset-0 text-white blur-2xl opacity-0 hover:opacity-20 transition-opacity duration-500" />
-            </span>
-          </div>
+                                              <span className="gradient-text inline-block scan-line relative">
+                    {t.hero.title}
+                    {/* Enhanced Glow Effect */}
+                    <div className="absolute inset-0 gradient-text blur-2xl opacity-0 hover:opacity-30 transition-opacity duration-500" />
+                  </span>
+                </div>
+                                <div className="rotate-3d hover:rotate-3d transform-gpu" style={{ animationDelay: '0.5s' }}>
+                  <span className="text-white inline-block font-mono tracking-widest relative">
+                    EVOLUTION
+                    {/* Enhanced Glow Effect */}
+                    <div className="absolute inset-0 text-white blur-2xl opacity-0 hover:opacity-20 transition-opacity duration-500" />
+                  </span>
+                </div>
         </h1>
         
         {/* Enhanced Subtitle with 3D Effects */}
         <div className="relative mb-20">
-          <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-5xl mx-auto leading-relaxed font-light">
-            {t.hero.description}
-          </p>
+                                        <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-5xl mx-auto leading-relaxed font-light">
+                    {t.hero.subtitle}
+                  </p>
           
           {/* Floating Tech Icons */}
           <div className="absolute -top-8 -left-8 w-6 h-6 text-cyber-blue animate-pulse-slow">
@@ -74,7 +78,7 @@ export default function HeroSection3D() {
             
             {/* Content */}
             <div className="relative z-10 flex items-center">
-              <span className="mr-3">{t.hero.cta.primary}</span>
+                                    <span className="mr-3">{t.hero.primaryCTA}</span>
               <ArrowRight className="w-7 h-7 group-hover:translate-x-3 transition-transform duration-300" />
             </div>
             
@@ -91,9 +95,9 @@ export default function HeroSection3D() {
         {/* Enhanced Stats Grid with Advanced 3D Effects */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-20">
           {[
-            { number: "150+", label: t.hero.stats.projects, color: "cyber-blue", icon: Zap },
-            { number: "75+", label: t.hero.stats.clients, color: "cyber-pink", icon: Rocket },
-            { number: "8", label: t.hero.stats.experience, color: "cyber-purple", icon: Sparkles }
+            { number: "150+", label: t.hero.stats.transformations, color: "cyber-blue", icon: Zap },
+            { number: "75+", label: t.hero.stats.partners, color: "cyber-pink", icon: Rocket },
+            { number: "8", label: t.hero.stats.years, color: "cyber-purple", icon: Sparkles }
           ].map((stat, index) => (
             <div key={index} className="group">
               <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">

@@ -1,19 +1,19 @@
 import React from 'react';
 import { Users, Award, Clock, Target, Zap, Shield } from 'lucide-react';
-import { useT } from '@/lib/i18n-context';
+import { type Language, useTranslations } from '@/lib/static-i18n';
 
-// We'll define stats inside the component to access translations
+interface AboutSectionProps {
+  language?: Language;
+}
 
-// We'll define features inside the component to access translations
-
-export default function AboutSection() {
-  const t = useT();
+export default function AboutSection({ language = 'en' }: AboutSectionProps) {
+  const t = useTranslations(language);
 
   const stats = [
-    { number: '150+', label: t.hero.stats.projects, icon: Target, color: 'cyber-blue' },
-    { number: '50+', label: t.hero.stats.clients, icon: Users, color: 'cyber-pink' },
-    { number: '5+', label: t.hero.stats.experience, icon: Clock, color: 'cyber-purple' },
-    { number: '99%', label: t.hero.stats.satisfaction, icon: Award, color: 'cyber-green' }
+    { number: '150+', label: t.about.stats.projects, icon: Target, color: 'cyber-blue' },
+    { number: '50+', label: t.about.stats.clients, icon: Users, color: 'cyber-pink' },
+    { number: '5+', label: t.about.stats.experience, icon: Clock, color: 'cyber-purple' },
+    { number: '99%', label: t.about.stats.satisfaction, icon: Award, color: 'cyber-green' }
   ];
 
   const features = [
@@ -54,7 +54,7 @@ export default function AboutSection() {
             {t.about.title}
           </h2>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            {t.about.description}
+            {t.about.subtitle}
           </p>
         </div>
 

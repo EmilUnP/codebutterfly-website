@@ -3,9 +3,18 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
-import { useT } from '@/lib/i18n-context';
+import { type Language, useTranslations } from '@/lib/static-i18n';
 
-const projects = [
+interface PortfolioSectionProps {
+  language?: Language;
+}
+
+export default function PortfolioSection({ language = 'en' }: PortfolioSectionProps) {
+  const t = useTranslations(language);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+
+  const projects = [
   {
     id: 1,
     title: 'E-Commerce Platform',
@@ -62,22 +71,17 @@ const projects = [
   }
 ];
 
-export default function PortfolioSection() {
-  const t = useT();
-  const [activeCategory, setActiveCategory] = useState(t.portfolio.categories.all);
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-
   const categories = [
     t.portfolio.categories.all,
-    t.portfolio.categories.webDevelopment,
-    t.portfolio.categories.uiUxDesign,
+    t.portfolio.categories.webDev,
+    t.portfolio.categories.uiux,
     t.portfolio.categories.branding,
-    t.portfolio.categories.socialMedia,
+    t.portfolio.categories.social,
     t.portfolio.categories.seo
   ];
 
   const filteredProjects = activeCategory === t.portfolio.categories.all
-    ? projects 
+    ? projects
     : projects.filter(project => project.category === activeCategory);
 
   return (
@@ -98,13 +102,13 @@ export default function PortfolioSection() {
             {/* Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-cyber-purple/20 via-transparent to-cyber-pink/20 blur-3xl opacity-30" />
             
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-purple to-white bg-clip-text text-transparent relative z-10">
-              {t.portfolio.title}
-            </h2>
-            
-            <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed relative z-10">
-              {t.portfolio.description}
-            </p>
+                                                             <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-purple to-white bg-clip-text text-transparent relative z-10">
+                     {t.portfolio.title}
+                   </h2>
+
+                   <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed relative z-10">
+                     {t.portfolio.subtitle}
+                   </p>
             
             {/* Decorative Elements */}
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-cyber-purple rounded-full animate-pulse-slow" />
@@ -226,7 +230,7 @@ export default function PortfolioSection() {
         <div className="text-center">
           <Link href="/projects">
             <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
-              <span>{t.portfolio.cta.viewMore}</span>
+                                    <span>{t.portfolio.viewFull}</span>
               <ExternalLink className="w-5 h-5 ml-2" />
             </button>
           </Link>

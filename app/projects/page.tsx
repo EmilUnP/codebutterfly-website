@@ -7,7 +7,6 @@ import Link from "next/link";
 import ButterflyAnimation from '@/components/landing/ButterflyAnimation';
 import Navbar from '@/components/landing/Navbar';
 import Footer from '@/components/landing/Footer';
-import { useT } from '@/lib/i18n-context';
 
 const portfolioItems = [
   {
@@ -117,23 +116,22 @@ const portfolioItems = [
 ];
 
 export default function Projects() {
-  const t = useT();
-  const [activeCategory, setActiveCategory] = useState(t.projects.filters.all);
+  const [activeCategory, setActiveCategory] = useState("All");
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 6; // Show 6 projects per page (2 rows of 3)
 
   const categories = [
-    t.projects.filters.all,
-    t.projects.filters.webDevelopment,
-    t.projects.filters.uiUxDesign,
-    t.projects.filters.branding,
-    t.projects.filters.socialMedia,
-    t.projects.filters.seo
+    "All",
+    "Web Development",
+    "UI/UX Design",
+    "Branding",
+    "Social Media",
+    "SEO"
   ];
 
-  const filteredItems = activeCategory === t.projects.filters.all
-    ? portfolioItems 
+  const filteredItems = activeCategory === "All"
+    ? portfolioItems
     : portfolioItems.filter(item => item.category === activeCategory);
 
   // Calculate pagination
@@ -179,11 +177,11 @@ export default function Projects() {
             <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-transparent to-cyber-pink/20 blur-3xl opacity-30" />
             
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-white via-cyber-blue to-white bg-clip-text text-transparent relative z-10">
-              {t.projects.title}
+              Our Complete Portfolio
             </h1>
             
             <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed relative z-10">
-              {t.projects.description}
+              Explore our comprehensive collection of innovative projects that showcase our expertise, creativity, and commitment to delivering exceptional results.
             </p>
             
             {/* Decorative Elements */}
@@ -308,7 +306,7 @@ export default function Projects() {
             {/* Page Info */}
             <div className="text-center">
               <p className="text-white/70 text-lg">
-                {t.projects.pagination.showing} {startIndex + 1} {t.projects.pagination.of} {filteredItems.length} {t.projects.pagination.projects}
+                Showing {startIndex + 1} of {filteredItems.length} projects
               </p>
             </div>
             
@@ -320,7 +318,7 @@ export default function Projects() {
                 disabled={currentPage === 1}
                 className="px-6 py-3 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl"
               >
-                {t.projects.pagination.previous}
+                Previous
               </button>
               
               {/* Page Numbers */}
@@ -362,14 +360,14 @@ export default function Projects() {
                 disabled={currentPage === totalPages}
                 className="px-6 py-3 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl"
               >
-                {t.projects.pagination.next}
+                Next
               </button>
             </div>
             
             {/* Jump to Page Input - Show only when there are many pages */}
             {totalPages > 5 && (
               <div className="flex items-center gap-3 mt-4">
-                <span className="text-white/70 text-sm">{t.projects.pagination.jumpToPage}</span>
+                <span className="text-white/70 text-sm">Jump to page:</span>
                 <input
                   type="number"
                   min="1"
@@ -383,7 +381,7 @@ export default function Projects() {
                   }}
                   className="w-20 px-3 py-2 rounded-xl bg-white/5 text-white border border-white/10 backdrop-blur-xl text-center focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-300"
                 />
-                <span className="text-white/50 text-sm">{t.projects.pagination.of} {totalPages}</span>
+                <span className="text-white/50 text-sm">of {totalPages}</span>
               </div>
             )}
           </div>

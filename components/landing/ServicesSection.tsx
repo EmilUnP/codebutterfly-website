@@ -2,70 +2,43 @@ import React from 'react';
 import ServiceCard3D from './ServiceCard3D';
 import { Code, Palette, Globe, Zap, Target, TrendingUp, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
-import { useT } from '@/lib/i18n-context';
+import { type Language, useTranslations } from '@/lib/static-i18n';
 
-const services = [
-  {
-    icon: Code,
-    title: "Custom Development",
-    description: "Tailored software solutions built with cutting-edge technologies to meet your unique business requirements.",
-    features: ["Full-stack development", "API integration", "Database design", "Performance optimization"],
-    gradient: "bg-gradient-to-br from-cyber-blue/20 via-cyber-blue/10 to-cyber-dark/80"
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "Beautiful, intuitive interfaces that enhance user experience and drive engagement across all platforms.",
-    features: ["User research", "Wireframing", "Prototyping", "User testing"],
-    gradient: "bg-gradient-to-br from-cyber-pink/20 via-cyber-pink/10 to-cyber-dark/80"
-  },
-  {
-    icon: Target,
-    title: "Digital Marketing",
-    description: "Strategic marketing campaigns that increase brand visibility and drive measurable business results.",
-    features: ["Social media marketing", "Content strategy", "Brand awareness", "Lead generation"],
-    gradient: "bg-gradient-to-br from-cyber-green/20 via-cyber-green/10 to-cyber-dark/80"
-  },
-  {
-    icon: TrendingUp,
-    title: "SEO & Analytics",
-    description: "Search engine optimization and data-driven insights to improve online presence and performance.",
-    features: ["Technical SEO", "Keyword research", "Performance tracking", "Conversion optimization"],
-    gradient: "bg-gradient-to-br from-cyber-purple/20 via-cyber-purple/10 to-cyber-dark/80"
-  }
-];
+interface ServicesSectionProps {
+  language?: Language;
+}
 
-export default function ServicesSection() {
-  const t = useT();
+export default function ServicesSection({ language = 'en' }: ServicesSectionProps) {
+  const t = useTranslations(language);
 
   const services = [
     {
       icon: Code,
-      title: t.services.items.webDesign.title,
-      description: t.services.items.webDesign.description,
-      features: ["Full-stack development", "API integration", "Database design", "Performance optimization"],
+      title: t.services.webDev.title,
+      description: t.services.webDev.description,
+      features: t.services.webDev.features,
       gradient: "bg-gradient-to-br from-cyber-blue/20 via-cyber-blue/10 to-cyber-dark/80"
     },
     {
       icon: Palette,
-      title: t.services.items.seo.title,
-      description: t.services.items.seo.description,
-      features: ["User research", "Wireframing", "Prototyping", "User testing"],
+      title: t.services.seo.title,
+      description: t.services.seo.description,
+      features: t.services.seo.features,
       gradient: "bg-gradient-to-br from-cyber-pink/20 via-cyber-pink/10 to-cyber-dark/80"
     },
     {
       icon: Target,
-      title: t.services.items.socialMedia.title,
-      description: t.services.items.socialMedia.description,
-      features: ["Social media marketing", "Content strategy", "Brand awareness", "Lead generation"],
+      title: t.services.social.title,
+      description: t.services.social.description,
+      features: t.services.social.features,
       gradient: "bg-gradient-to-br from-cyber-green/20 via-cyber-green/10 to-cyber-dark/80"
     },
     {
       icon: TrendingUp,
-      title: t.services.items.digitalMarketing.title,
-      description: t.services.items.digitalMarketing.description,
-      features: ["Technical SEO", "Keyword research", "Performance tracking", "Conversion optimization"],
-      gradient: "bg-gradient-to-br from-cyber-blue/20 via-cyber-blue/10 to-cyber-dark/80"
+      title: t.services.branding.title,
+      description: t.services.branding.description,
+      features: t.services.branding.features,
+      gradient: "bg-gradient-to-br from-cyber-purple/20 via-cyber-purple/10 to-cyber-dark/80"
     }
   ];
 
@@ -88,7 +61,7 @@ export default function ServicesSection() {
             {t.services.title}
           </h2>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            {t.services.description}
+            {t.services.subtitle}
           </p>
         </div>
 
@@ -109,15 +82,15 @@ export default function ServicesSection() {
 
         {/* View Our Work CTA */}
         <div className="text-center mt-16">
-          <p className="text-white/70 text-lg mb-6">
-            {t.services.cta.title}
-          </p>
-          <Link href="/projects">
-            <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
-              <span>{t.services.cta.button}</span>
-              <ExternalLink className="w-5 h-5 ml-2" />
-            </button>
-          </Link>
+                            <p className="text-white/70 text-lg mb-6">
+                    {t.services.cta}
+                  </p>
+                  <Link href="/projects">
+                    <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
+                      <span>{t.services.viewPortfolio}</span>
+                      <ExternalLink className="w-5 h-5 ml-2" />
+                    </button>
+                  </Link>
         </div>
       </div>
     </section>

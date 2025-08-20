@@ -12,10 +12,14 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { createPageUrl } from "@/utils";
-import { useT } from '@/lib/i18n-context';
+import { type Language, useTranslations } from '@/lib/static-i18n';
 
-export default function Footer() {
-  const t = useT();
+interface FooterProps {
+  language?: Language;
+}
+
+export default function Footer({ language = 'en' }: FooterProps) {
+  const t = useTranslations(language);
 
   return (
     <footer className="relative py-16 overflow-hidden">
@@ -61,23 +65,23 @@ export default function Footer() {
                   </div>
                 </div>
               </div>
-              <p className="text-gray-300 leading-relaxed max-w-md text-lg">
-                {t.footer.description}
-              </p>
+                                <p className="text-gray-300 leading-relaxed max-w-md text-lg">
+                    {t.footer.description}
+                  </p>
             </div>
           </div>
 
           {/* Enhanced Quick Links */}
           <div>
-            <h4 className="font-bold text-white mb-6 text-lg">{t.footer.quickLinks.title}</h4>
-            <div className="space-y-3">
-              {[
-                { name: t.footer.quickLinks.home, link: "/" },
-                { name: t.footer.quickLinks.portfolio, link: "/projects" },
-                { name: t.footer.quickLinks.about, link: "/#about" },
-                { name: t.footer.quickLinks.services, link: "/#services" },
-                { name: t.footer.quickLinks.contact, link: "/#contact" }
-              ].map((item, index) => (
+                              <h4 className="font-bold text-white mb-6 text-lg">{t.footer.quickLinks}</h4>
+                  <div className="space-y-3">
+                    {[
+                      { name: t.navbar.home, link: "/" },
+                      { name: t.navbar.portfolio, link: "/projects" },
+                      { name: t.navbar.about, link: "/#about" },
+                      { name: t.navbar.services, link: "/#services" },
+                      { name: t.navbar.contact, link: "/#contact" }
+                    ].map((item, index) => (
                 <div key={item.name} className="group">
                   <Link
                     href={item.link}
@@ -95,15 +99,15 @@ export default function Footer() {
 
           {/* Enhanced Contact Info */}
           <div>
-            <h4 className="font-bold text-white mb-6 text-lg">{t.footer.contact.title}</h4>
+                              <h4 className="font-bold text-white mb-6 text-lg">{t.footer.contactInfo}</h4>
             <div className="space-y-4">
               <div className="flex items-center space-x-3 group">
                 <div className="w-10 h-10 bg-cyber-blue/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Mail className="w-5 h-5 text-cyber-blue" />
                 </div>
                 <div>
-                  <div className="text-cyber-blue font-mono text-xs tracking-wider mb-1">EMAIL</div>
-                  <div className="text-gray-300 text-sm">{t.footer.contact.email}</div>
+                                    <div className="text-cyber-blue font-mono text-xs tracking-wider mb-1">EMAIL</div>
+                  <div className="text-gray-300 text-sm">{t.contact.contactInfo.email.details}</div>
                 </div>
               </div>
               <div className="flex items-center space-x-3 group">
@@ -111,8 +115,8 @@ export default function Footer() {
                   <Phone className="w-5 h-5 text-cyber-pink" />
                 </div>
                 <div>
-                  <div className="text-cyber-pink font-mono text-xs tracking-wider mb-1">PHONE</div>
-                  <div className="text-gray-300 text-sm">{t.footer.contact.phone}</div>
+                                    <div className="text-cyber-pink font-mono text-xs tracking-wider mb-1">PHONE</div>
+                  <div className="text-gray-300 text-sm">{t.contact.contactInfo.phone.details}</div>
                 </div>
               </div>
               <div className="flex items-center space-x-3 group">
@@ -121,7 +125,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <div className="text-cyber-purple font-mono text-xs tracking-wider mb-1">LOCATION</div>
-                  <div className="text-gray-300 text-sm">San Francisco, CA</div>
+                  <div className="text-gray-300 text-sm">{t.contact.contactInfo.location.details}</div>
                 </div>
               </div>
             </div>
@@ -143,12 +147,12 @@ export default function Footer() {
               ))}
             </div>
                          <div className="text-center md:text-right">
-               <p className="text-gray-400 text-sm mb-2">
-                 {t.footer.copyright}
-               </p>
-               <p className="text-gray-500 text-xs flex items-center justify-center md:justify-end">
-                 Crafted with <Heart className="w-3 h-3 text-cyber-pink mx-1 animate-pulse" /> in San Francisco
-               </p>
+                                                   <p className="text-gray-400 text-sm mb-2">
+                    {t.footer.copyright}
+                  </p>
+                  <p className="text-gray-500 text-xs flex items-center justify-center md:justify-end">
+                    {t.footer.crafted}
+                  </p>
              </div>
           </div>
         </div>

@@ -1,172 +1,275 @@
 import React from 'react';
 import { ArrowLeft, Calendar, User, Target, TrendingUp, Sparkles, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import Link from 'next/link';
 import ButterflyAnimation from '@/components/landing/ButterflyAnimation';
 import Navbar from '@/components/landing/Navbar';
 import Footer from '@/components/landing/Footer';
 import ImageCarousel from '@/components/ui/ImageCarousel';
-import { useT } from '@/lib/i18n-context';
 
 // Project data - this should match the data from the main projects page
 const portfolioItems = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "Modern shopping experience with seamless checkout and inventory management.",
-    fullDescription: "A complete e-commerce solution built for a fashion retailer, featuring advanced product filtering, wishlist functionality, secure payment processing, and comprehensive admin dashboard. The platform handles over 10,000 products with real-time inventory management.",
-    category: "Web Development",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    color: "cyber-blue",
-    duration: "4 months",
-    client: "Fashion Forward Co.",
-    results: ["300% increase in online sales", "50% reduction in cart abandonment", "99.9% uptime achieved"],
-    challenges: ["Complex inventory management system", "High-performance product search", "Secure payment integration"],
-    solutions: ["Built custom inventory tracking with real-time updates", "Implemented Elasticsearch for fast search", "Integrated Stripe with custom fraud detection"],
+    title: 'E-Commerce Platform',
+    description: 'Modern shopping experience with seamless checkout and inventory management.',
+    fullDescription: 'A comprehensive e-commerce solution built with cutting-edge technologies. This platform features advanced product management, secure payment processing, real-time inventory tracking, and an intuitive admin dashboard. The responsive design ensures optimal user experience across all devices.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+    category: 'Web Development',
+    color: 'cyber-blue',
+    duration: '3 months',
+    client: 'TechStart Inc.',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux', 'Express'],
+    results: [
+      'Increased conversion rate by 35%',
+      'Reduced cart abandonment by 28%',
+      'Improved page load speed by 40%',
+      'Enhanced mobile user experience'
+    ],
+    challenges: [
+      'Complex payment integration requirements',
+      'High traffic scalability needs',
+      'Real-time inventory synchronization'
+    ],
+    solutions: [
+      'Implemented Stripe with webhook handling',
+      'Used Redis for caching and session management',
+      'Built real-time updates with Socket.io'
+    ],
     gallery: [
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop"
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop'
     ]
   },
   {
     id: 2,
-    title: "Brand Identity Design",
-    description: "Complete brand refresh for a sustainable fashion startup.",
-    fullDescription: "Comprehensive brand identity redesign for an eco-friendly fashion startup. The project included logo design, brand guidelines, packaging design, and marketing materials that reflect the company's commitment to sustainability.",
-    category: "Branding",
-    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=400&fit=crop",
-    technologies: ["Illustrator", "Figma", "After Effects"],
-    color: "cyber-pink",
-    duration: "2 months",
-    client: "EcoStyle Boutique",
-    results: ["40% increase in brand recognition", "25% boost in customer loyalty", "Featured in design magazines"],
-    challenges: ["Balancing sustainability with modern aesthetics", "Creating versatile brand elements", "Ensuring brand consistency across all touchpoints"],
-    solutions: ["Developed eco-friendly color palette and materials", "Created modular design system", "Established comprehensive brand guidelines"],
+    title: 'Creative Agency Website',
+    description: 'Dynamic portfolio showcase with interactive animations and modern design.',
+    fullDescription: 'A stunning website for a creative agency that showcases their portfolio with interactive animations and modern design principles. Features include smooth scrolling, parallax effects, and a dynamic project gallery that highlights their creative work.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
+    category: 'UI/UX Design',
+    color: 'cyber-pink',
+    duration: '2 months',
+    client: 'Creative Studio',
+    technologies: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'TypeScript'],
+    results: [
+      'Improved user engagement by 45%',
+      'Reduced bounce rate by 30%',
+      'Enhanced visual appeal and brand recognition',
+      'Optimized for all device types'
+    ],
+    challenges: [
+      'Complex animation requirements',
+      'Performance optimization needs',
+      'Cross-browser compatibility'
+    ],
+    solutions: [
+      'Used Framer Motion for smooth animations',
+      'Implemented lazy loading and code splitting',
+      'Extensive testing across browsers'
+    ],
     gallery: [
-      "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop"
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
     ]
   },
   {
     id: 3,
-    title: "Social Media Campaign",
-    description: "Instagram campaign that increased engagement by 300% in 3 months.",
-    fullDescription: "Strategic social media campaign for a fitness brand focusing on community building and user-generated content. Included content strategy, influencer partnerships, and paid advertising campaigns across multiple platforms.",
-    category: "Social Media",
-    image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&h=400&fit=crop",
-    technologies: ["Adobe Suite", "Analytics", "Content Strategy"],
-    color: "cyber-purple",
-    duration: "6 months",
-    client: "FitLife Gym",
-    results: ["300% engagement increase", "150% follower growth", "500% ROI on ad spend"],
-    challenges: ["Building authentic community engagement", "Managing multiple influencer partnerships", "Measuring campaign effectiveness"],
-    solutions: ["Created user-generated content challenges", "Established influencer collaboration framework", "Implemented advanced analytics tracking"],
+    title: 'Brand Identity Package',
+    description: 'Comprehensive branding solution including logo, guidelines, and marketing materials.',
+    fullDescription: 'A complete brand identity package that transformed the client\'s visual presence. This project included logo design, brand guidelines, color palette development, typography selection, and comprehensive marketing materials.',
+    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop',
+    category: 'Branding',
+    color: 'cyber-green',
+    duration: '1.5 months',
+    client: 'StartupXYZ',
+    technologies: ['Adobe Creative Suite', 'Brand Guidelines', 'Print Design'],
+    results: [
+      'Established strong brand recognition',
+      'Created consistent visual identity',
+      'Improved market positioning',
+      'Enhanced customer trust and loyalty'
+    ],
+    challenges: [
+      'Defining unique brand personality',
+      'Creating scalable design system',
+      'Ensuring brand consistency'
+    ],
+    solutions: [
+      'Conducted extensive brand research',
+      'Developed comprehensive style guide',
+      'Created adaptable design templates'
+    ],
     gallery: [
-      "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&h=600&fit=crop"
+      'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop'
     ]
   },
   {
     id: 4,
-    title: "Mobile App UI/UX",
-    description: "Intuitive fitness app design focused on user motivation and progress tracking.",
-    fullDescription: "Complete UX/UI design for a fitness tracking mobile application. Conducted user research, created wireframes, prototypes, and final designs. The app focuses on gamification and social features to keep users motivated.",
-    category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
-    technologies: ["Figma", "Principle", "React Native"],
-    color: "cyber-green",
-    duration: "3 months",
-    client: "HealthTrack Inc.",
-    results: ["4.8/5 app store rating", "90% user retention rate", "Featured app of the day"],
-    challenges: ["Designing for multiple fitness levels", "Creating engaging gamification elements", "Ensuring accessibility compliance"],
-    solutions: ["Developed adaptive UI system", "Implemented reward-based motivation system", "Conducted accessibility audits and improvements"],
+    title: 'Social Media Campaign',
+    description: 'Strategic social media marketing campaign with engaging content and analytics.',
+    fullDescription: 'A comprehensive social media marketing campaign that increased brand awareness and engagement across multiple platforms. The campaign included content creation, community management, influencer partnerships, and detailed performance analytics.',
+    image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=400&fit=crop',
+    category: 'Social Media',
+    color: 'cyber-purple',
+    duration: '4 months',
+    client: 'Fashion Brand',
+    technologies: ['Social Media Platforms', 'Analytics Tools', 'Content Creation'],
+    results: [
+      'Increased followers by 150%',
+      'Improved engagement rate by 65%',
+      'Generated 200+ qualified leads',
+      'Enhanced brand visibility'
+    ],
+    challenges: [
+      'Managing multiple social platforms',
+      'Creating engaging content consistently',
+      'Measuring campaign effectiveness'
+    ],
+    solutions: [
+      'Implemented content calendar system',
+      'Used automation tools for scheduling',
+      'Established KPIs and tracking methods'
+    ],
     gallery: [
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop"
+      'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=600&fit=crop'
     ]
   },
   {
     id: 5,
-    title: "SEO Optimization",
-    description: "Complete SEO overhaul resulting in 250% increase in organic traffic.",
-    fullDescription: "Comprehensive SEO audit and optimization for a B2B software company. Included technical SEO improvements, content optimization, link building strategy, and ongoing performance monitoring.",
-    category: "SEO",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-    technologies: ["Google Analytics", "SEMrush", "Technical SEO"],
-    color: "cyber-amber",
-    duration: "8 months",
-    client: "TechSolutions Pro",
-    results: ["250% organic traffic increase", "First page rankings for 50+ keywords", "Lead generation up 180%"],
-    challenges: ["Technical SEO issues on legacy platform", "Competitive keyword landscape", "Content optimization for B2B audience"],
-    solutions: ["Implemented modern technical SEO framework", "Developed competitive keyword strategy", "Created targeted B2B content strategy"],
+    title: 'SEO Optimization Project',
+    description: 'Comprehensive search engine optimization to improve organic traffic and rankings.',
+    fullDescription: 'A strategic SEO project that significantly improved the client\'s search engine rankings and organic traffic. The project included technical SEO audits, keyword research, content optimization, and ongoing performance monitoring.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
+    category: 'SEO',
+    color: 'cyber-amber',
+    duration: '6 months',
+    client: 'Local Business',
+    technologies: ['SEO Tools', 'Google Analytics', 'Content Strategy'],
+    results: [
+      'Increased organic traffic by 200%',
+      'Improved keyword rankings by 40%',
+      'Enhanced local search visibility',
+      'Reduced bounce rate by 25%'
+    ],
+    challenges: [
+      'Competitive keyword landscape',
+      'Technical website issues',
+      'Content quality improvement'
+    ],
+    solutions: [
+      'Conducted comprehensive competitor analysis',
+      'Fixed technical SEO issues',
+      'Implemented content optimization strategy'
+    ],
     gallery: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
     ]
   },
   {
     id: 6,
-    title: "Corporate Website",
-    description: "Professional website for a consulting firm with integrated CRM system.",
-    fullDescription: "Modern corporate website with custom CRM integration for a management consulting firm. Features include client portal, document management, appointment scheduling, and automated email workflows.",
-    category: "Web Development",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-    technologies: ["Next.js", "TypeScript", "Tailwind", "CMS"],
-    color: "cyber-blue",
-    duration: "5 months",
-    client: "Strategic Advisors Group",
-    results: ["60% faster page load times", "45% increase in lead conversion", "Streamlined client onboarding"],
-    challenges: ["Complex CRM integration requirements", "Ensuring data security compliance", "Creating intuitive client portal"],
-    solutions: ["Built custom CRM API integration", "Implemented enterprise-grade security", "Designed user-centered portal interface"],
+    title: 'Mobile App Development',
+    description: 'Cross-platform mobile application with native performance and modern UI.',
+    fullDescription: 'A feature-rich mobile application built with React Native that delivers native performance across iOS and Android platforms. The app includes user authentication, real-time data synchronization, and offline functionality.',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
+    category: 'Mobile Development',
+    color: 'cyber-red',
+    duration: '5 months',
+    client: 'Tech Startup',
+    technologies: ['React Native', 'Firebase', 'Redux', 'TypeScript'],
+    results: [
+      'Achieved 4.8+ app store rating',
+      'Reduced app crash rate by 90%',
+      'Improved user retention by 60%',
+      'Enhanced app performance'
+    ],
+    challenges: [
+      'Cross-platform compatibility',
+      'Performance optimization',
+      'Offline functionality requirements'
+    ],
+    solutions: [
+      'Used React Native for cross-platform development',
+      'Implemented performance monitoring tools',
+      'Built robust offline data handling'
+    ],
     gallery: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop'
     ]
   },
   {
     id: 7,
-    title: "Restaurant App Design",
-    description: "Food delivery app with intuitive ordering and real-time tracking.",
-    fullDescription: "Complete mobile app design for a local restaurant chain's food delivery service. Features include menu browsing, customization options, real-time order tracking, and loyalty program integration.",
-    category: "UI/UX Design",
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=600&h=400&fit=crop",
-    technologies: ["Sketch", "InVision", "React Native"],
-    color: "cyber-red",
-    duration: "3 months",
-    client: "Bistro Chain",
-    results: ["40% increase in mobile orders", "25% improvement in order accuracy", "5-star user ratings"],
-    challenges: ["Complex menu customization system", "Real-time order tracking", "Loyalty program integration"],
-    solutions: ["Designed intuitive customization interface", "Created real-time tracking system", "Integrated seamless loyalty features"],
+    title: 'Data Analytics Dashboard',
+    description: 'Interactive dashboard for visualizing business metrics and performance data.',
+    fullDescription: 'A powerful data analytics dashboard that provides real-time insights into business performance. The dashboard features interactive charts, customizable reports, and automated data processing capabilities.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+    category: 'Data Analytics',
+    color: 'cyber-indigo',
+    duration: '4 months',
+    client: 'Enterprise Corp',
+    technologies: ['React', 'D3.js', 'Python', 'PostgreSQL'],
+    results: [
+      'Improved decision-making speed by 50%',
+      'Reduced reporting time by 80%',
+      'Enhanced data accuracy and reliability',
+      'Increased user adoption by 70%'
+    ],
+    challenges: [
+      'Large dataset processing',
+      'Real-time data visualization',
+      'User interface complexity'
+    ],
+    solutions: [
+      'Implemented efficient data processing algorithms',
+      'Used WebSocket for real-time updates',
+      'Designed intuitive user interface'
+    ],
     gallery: [
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&h=600&fit=crop"
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop'
     ]
   },
   {
     id: 8,
-    title: "Marketing Campaign",
-    description: "Multi-channel digital marketing campaign for product launch.",
-    fullDescription: "Comprehensive digital marketing campaign for a tech startup's product launch. Included social media advertising, Google Ads, email marketing, content creation, and influencer partnerships.",
-    category: "Social Media",
-    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&h=400&fit=crop",
-    technologies: ["Google Ads", "Facebook Ads", "Mailchimp"],
-    color: "cyber-orange",
-    duration: "4 months",
-    client: "InnovateTech",
-    results: ["500% increase in brand awareness", "200% boost in sign-ups", "150% ROI achieved"],
-    challenges: ["Launching unknown brand in competitive market", "Coordinating multiple marketing channels", "Measuring campaign attribution"],
-    solutions: ["Developed unique brand positioning strategy", "Created integrated marketing framework", "Implemented advanced attribution modeling"],
+    title: 'AI-Powered Chatbot',
+    description: 'Intelligent customer service chatbot with natural language processing.',
+    fullDescription: 'An advanced AI-powered chatbot that provides intelligent customer service and support. The chatbot uses natural language processing to understand user queries and provide accurate, helpful responses.',
+    image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&h=400&fit=crop',
+    category: 'AI/ML',
+    color: 'cyber-teal',
+    duration: '3 months',
+    client: 'E-commerce Platform',
+    technologies: ['Python', 'TensorFlow', 'NLP', 'React'],
+    results: [
+      'Reduced customer service costs by 40%',
+      'Improved response time by 85%',
+      'Enhanced customer satisfaction by 30%',
+      'Handled 1000+ daily conversations'
+    ],
+    challenges: [
+      'Natural language understanding',
+      'Integration with existing systems',
+      'Training data quality'
+    ],
+    solutions: [
+      'Implemented advanced NLP models',
+      'Built robust API integration',
+      'Used high-quality training datasets'
+    ],
     gallery: [
-      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&h=600&fit=crop"
+      'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&h=600&fit=crop'
     ]
   }
 ];
@@ -180,21 +283,35 @@ export async function generateStaticParams() {
 
 // Project detail page component
 export default function ProjectDetail({ params }: { params: { id: string } }) {
-  const t = useT();
   const projectId = parseInt(params.id);
   const project = portfolioItems.find(item => item.id === projectId);
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker text-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">{t.projectDetail.notFound.title}</h1>
+      <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-dark text-white relative overflow-hidden">
+        {/* Navbar */}
+        <Navbar currentPageName="Portfolio" />
+        
+        {/* Minimalist 3D Butterfly Animation */}
+        <ButterflyAnimation />
+
+        {/* Enhanced Background */}
+        <div className="absolute inset-0 grid-pattern opacity-3" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cyber-purple/5 via-transparent to-cyber-pink/5 opacity-2" />
+        
+        {/* Subtle Floating Elements */}
+        <div className="absolute top-24 left-24 w-2 h-2 bg-cyber-purple/30 rounded-full animate-float opacity-20" />
+        <div className="absolute bottom-24 right-24 w-1.5 h-1.5 bg-cyber-pink/30 rounded-full animate-float opacity-20" style={{ animationDelay: '2s' }} />
+
+        {/* Main Content */}
+        <div className="text-center pt-24">
+          <h1 className="text-2xl font-bold mb-4">Project Not Found</h1>
           <Link 
             href="/projects"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-medium bg-cyber-blue/20 text-cyber-blue border border-cyber-blue/30"
           >
             <ArrowLeft className="w-5 h-5" />
-            {t.projectDetail.notFound.button}
+            Back to Portfolio
           </Link>
         </div>
       </div>
@@ -202,7 +319,7 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-dark text-white relative overflow-hidden">
       {/* Navbar */}
       <Navbar currentPageName="Portfolio" />
       
@@ -227,7 +344,7 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl"
             >
               <ArrowLeft className="w-5 h-5" />
-              {t.projectDetail.backToPortfolio}
+              Back to Portfolio
             </Link>
           </div>
 
@@ -279,7 +396,7 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
                 <h2 className="text-2xl font-bold text-white mb-6">
                   <span className="flex items-center gap-3">
                     <Sparkles className="w-6 h-6 text-cyber-blue" />
-                    {t.projectDetail.projectOverview}
+                    Project Overview
                   </span>
                 </h2>
                 <p className="text-white/80 leading-relaxed text-lg">
@@ -292,7 +409,7 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
                 <h2 className="text-2xl font-bold text-white mb-6">
                   <span className="flex items-center gap-3">
                     <Sparkles className="w-6 h-6 text-cyber-pink" />
-                    {t.projectDetail.projectGallery}
+                    Project Gallery
                   </span>
                 </h2>
                 
@@ -305,14 +422,14 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
                 <h2 className="text-2xl font-bold text-white mb-6">
                   <span className="flex items-center gap-3">
                     <Sparkles className="w-6 h-6 text-cyber-green" />
-                    {t.projectDetail.challengesAndSolutions}
+                    Challenges & Solutions
                   </span>
                 </h2>
                 
                 <div className="grid md:grid-cols-2 gap-8">
                   {/* Challenges */}
                   <div>
-                    <h3 className="text-xl font-semibold text-cyber-red mb-4">{t.projectDetail.challenges}</h3>
+                    <h3 className="text-xl font-semibold text-cyber-red mb-4">Challenges</h3>
                     <ul className="space-y-3">
                       {project.challenges?.map((challenge: string, index: number) => (
                         <li key={index} className="flex items-start gap-3">
@@ -327,7 +444,7 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
                   
                   {/* Solutions */}
                   <div>
-                    <h3 className="text-xl font-semibold text-cyber-green mb-4">{t.projectDetail.solutions}</h3>
+                    <h3 className="text-xl font-semibold text-cyber-green mb-4">Solutions</h3>
                     <ul className="space-y-3">
                       {project.solutions?.map((solution: string, index: number) => (
                         <li key={index} className="flex items-start gap-3">
@@ -356,27 +473,27 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
                 
-                <h3 className="text-xl font-bold text-white mb-4">{t.projectDetail.projectDetails.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Project Details</h3>
                 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-white/70">
                     <Calendar className="w-5 h-5" />
-                    <span>{t.projectDetail.projectDetails.duration} {project.duration}</span>
+                    <span>Duration: {project.duration}</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/70">
                     <User className="w-5 h-5" />
-                    <span>{t.projectDetail.projectDetails.client} {project.client}</span>
+                    <span>Client: {project.client}</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/70">
                     <Target className="w-5 h-5" />
-                    <span>{t.projectDetail.projectDetails.category} {project.category}</span>
+                    <span>Category: {project.category}</span>
                   </div>
                 </div>
               </div>
 
               {/* Technologies */}
               <div className="bg-white/5 rounded-3xl p-6 border border-white/10 backdrop-blur-xl">
-                <h3 className="text-xl font-bold text-white mb-4">{t.projectDetail.technologiesUsed}</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Technologies Used</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech: string, index: number) => (
                     <span
@@ -394,7 +511,7 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
                 <h3 className="text-xl font-bold text-white mb-4">
                   <span className="flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-cyber-green" />
-                    {t.projectDetail.results}
+                    Results
                   </span>
                 </h3>
                 <ul className="space-y-3">
@@ -409,15 +526,15 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
 
               {/* CTA */}
               <div className="bg-gradient-to-br from-cyber-blue/20 to-cyber-pink/20 rounded-3xl p-6 border border-cyber-blue/30 backdrop-blur-xl">
-                <h3 className="text-xl font-bold text-white mb-4">{t.projectDetail.readyToStart.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Ready to Start Your Project?</h3>
                 <p className="text-white/80 text-sm mb-6">
-                  {t.projectDetail.readyToStart.description}
+                  Let's discuss how we can bring your vision to life with the same level of excellence and innovation.
                 </p>
                 <Link
                   href="/#contact"
                   className="inline-flex items-center gap-2 w-full justify-center px-6 py-3 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 bg-cyber-gradient text-white shadow-2xl shadow-cyber-blue/30 border border-cyber-blue/50"
                 >
-                  {t.projectDetail.readyToStart.button}
+                  Get Started
                   <ArrowUpRight className="w-5 h-5" />
                 </Link>
               </div>
@@ -426,12 +543,12 @@ export default function ProjectDetail({ params }: { params: { id: string } }) {
 
           {/* Related Projects */}
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-white mb-8">{t.projectDetail.exploreMore.title}</h2>
+            <h2 className="text-3xl font-bold text-white mb-8">Explore More Projects</h2>
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl"
             >
-              {t.projectDetail.exploreMore.button}
+              View All Projects
               <ArrowUpRight className="w-5 h-5" />
             </Link>
           </div>

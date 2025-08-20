@@ -2,30 +2,28 @@
 
 import React from 'react';
 import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
-import { useT } from '@/lib/i18n-context';
-
-// We'll define contactInfo inside the component to access translations
+// import { useT } from '@/lib/i18n-context';
 
 export default function ContactSection() {
-  const t = useT();
+  // const t = useT();
 
   const contactInfo = [
     {
       icon: Mail,
       title: 'Email Us',
-      details: t.contact.info.email,
+      details: 'hello@codebutterfly.com',
       color: 'cyber-blue'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: t.contact.info.phone,
+      details: '+1 (555) 123-4567',
       color: 'cyber-green'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: t.contact.info.address,
+      details: 'San Francisco, CA',
       color: 'cyber-purple'
     },
     {
@@ -51,10 +49,10 @@ export default function ContactSection() {
         {/* Enhanced Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-amber to-white bg-clip-text text-transparent">
-            {t.contact.title}
+            Get In Touch
           </h2>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            {t.contact.description}
+            Ready to start your next project? Let's discuss how we can bring your vision to life.
           </p>
         </div>
 
@@ -92,14 +90,14 @@ export default function ContactSection() {
                   <div className="group">
                     <input
                       type="text"
-                      placeholder={t.contact.form.name.placeholder}
+                      placeholder="Your Name"
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
                     />
                   </div>
                   <div className="group">
                     <input
                         type="email"
-                      placeholder={t.contact.form.email.placeholder}
+                      placeholder="Your Email"
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
                     />
                   </div>
@@ -108,7 +106,7 @@ export default function ContactSection() {
                 <div className="group">
                   <input
                     type="text"
-                    placeholder={t.contact.form.subject.placeholder}
+                    placeholder="Subject"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
                   />
                 </div>
@@ -116,7 +114,7 @@ export default function ContactSection() {
                 <div className="group">
                   <textarea
                     rows={5}
-                    placeholder={t.contact.form.message.placeholder}
+                    placeholder="Your Message"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm resize-none"
                   />
                 </div>
@@ -126,7 +124,7 @@ export default function ContactSection() {
                       type="submit"
                   className="w-full px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 transform-gpu flex items-center justify-center gap-3 group"
                 >
-                  <span>{t.contact.form.submit}</span>
+                  <span>Send Message</span>
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
                 </form>

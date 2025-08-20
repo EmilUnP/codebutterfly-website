@@ -6,21 +6,20 @@ import { useRouter, usePathname } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sparkles, Zap } from "lucide-react";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
-import { useT } from "@/lib/i18n-context";
+import { type Language, useTranslations } from "@/lib/static-i18n";
 
 interface NavbarProps {
   currentPageName: string;
+  language?: Language;
 }
 
-// We'll define navItems inside the component to access translations
-
-export default function Navbar({ currentPageName }: NavbarProps) {
+export default function Navbar({ currentPageName, language = 'en' }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const t = useT();
+  const t = useTranslations(language);
 
   const navItems = [
     { name: t.navbar.home, href: "/", isSection: false },
@@ -249,7 +248,7 @@ export default function Navbar({ currentPageName }: NavbarProps) {
             })}
           </div>
 
-          {/* Language Switcher - Desktop */}
+                          {/* Language Switcher - Desktop */}
           <div className="hidden md:flex">
             <LanguageSwitcher />
           </div>
