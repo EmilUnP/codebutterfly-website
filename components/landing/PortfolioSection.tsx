@@ -7,67 +7,67 @@ import Link from 'next/link';
 const projects = [
   {
     title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with advanced features and modern UI/UX.',
-    image: '/api/placeholder/400/300',
-    category: 'Web App',
-    tech: ['React', 'Node.js', 'MongoDB'],
+    description: 'Modern shopping experience with seamless checkout and inventory management.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
+    category: 'Web Development',
+    tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
     link: '#',
     github: '#',
     color: 'cyber-blue'
   },
   {
-    title: 'Mobile Banking App',
-    description: 'Secure and intuitive mobile banking application with biometric authentication.',
-    image: '/api/placeholder/400/300',
-    category: 'Mobile',
-    tech: ['React Native', 'Firebase', 'Stripe'],
-    link: '#',
-    github: '#',
-    color: 'cyber-green'
-  },
-  {
-    title: 'AI Dashboard',
-    description: 'Intelligent analytics dashboard powered by machine learning algorithms.',
-    image: '/api/placeholder/400/300',
-    category: 'AI/ML',
-    tech: ['Python', 'TensorFlow', 'React'],
-    link: '#',
-    github: '#',
-    color: 'cyber-purple'
-  },
-  {
-    title: 'Social Media Platform',
-    description: 'Modern social networking platform with real-time features and content sharing.',
-    image: '/api/placeholder/400/300',
-    category: 'Social',
-    tech: ['Vue.js', 'Socket.io', 'PostgreSQL'],
+    title: 'Brand Identity Design',
+    description: 'Complete brand refresh for a sustainable fashion startup.',
+    image: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=400&fit=crop',
+    category: 'Branding',
+    tech: ['Illustrator', 'Figma', 'After Effects'],
     link: '#',
     github: '#',
     color: 'cyber-pink'
   },
   {
-    title: 'IoT Control System',
-    description: 'Smart home automation system with mobile app and cloud integration.',
-    image: '/api/placeholder/400/300',
-    category: 'IoT',
-    tech: ['Flutter', 'AWS', 'MQTT'],
+    title: 'Social Media Campaign',
+    description: 'Instagram campaign that increased engagement by 300% in 3 months.',
+    image: 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&h=400&fit=crop',
+    category: 'Social Media',
+    tech: ['Adobe Suite', 'Analytics', 'Content Strategy'],
+    link: '#',
+    github: '#',
+    color: 'cyber-purple'
+  },
+  {
+    title: 'Mobile App UI/UX',
+    description: 'Intuitive fitness app design focused on user motivation and progress tracking.',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
+    category: 'UI/UX Design',
+    tech: ['Figma', 'Principle', 'React Native'],
+    link: '#',
+    github: '#',
+    color: 'cyber-green'
+  },
+  {
+    title: 'SEO Optimization',
+    description: 'Complete SEO overhaul resulting in 250% increase in organic traffic.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
+    category: 'SEO',
+    tech: ['Google Analytics', 'SEMrush', 'Technical SEO'],
     link: '#',
     github: '#',
     color: 'cyber-amber'
   },
   {
-    title: 'Blockchain Wallet',
-    description: 'Secure cryptocurrency wallet with multi-chain support and DeFi integration.',
-    image: '/api/placeholder/400/300',
-    category: 'Blockchain',
-    tech: ['Solidity', 'Web3.js', 'React'],
+    title: 'Corporate Website',
+    description: 'Professional website for a consulting firm with integrated CRM system.',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop',
+    category: 'Web Development',
+    tech: ['Next.js', 'TypeScript', 'Tailwind', 'CMS'],
     link: '#',
     github: '#',
-    color: 'cyber-orange'
+    color: 'cyber-blue'
   }
 ];
 
-const categories = ['All', 'Web App', 'Mobile', 'AI/ML', 'Social', 'IoT', 'Blockchain'];
+const categories = ['All', 'Web Development', 'UI/UX Design', 'Branding', 'Social Media', 'SEO'];
 
 export default function PortfolioSection() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -92,10 +92,10 @@ export default function PortfolioSection() {
         {/* Enhanced Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-purple to-white bg-clip-text text-transparent">
-            Our Portfolio
+            Portfolio Preview
           </h2>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            Explore our diverse portfolio of innovative projects that showcase our expertise and creativity.
+            A preview of our latest projects. These are the same projects you'll find in our complete portfolio - click "View Full Portfolio" to see all details and more projects.
           </p>
         </div>
 
@@ -132,10 +132,11 @@ export default function PortfolioSection() {
                 
                 {/* Project Image */}
                 <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-white/50 text-sm">Project Image</div>
-                  </div>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                   
                   {/* Enhanced Hover Overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-t from-${project.color}/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
@@ -207,7 +208,7 @@ export default function PortfolioSection() {
         <div className="text-center">
           <Link href="/projects">
             <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
-              <span>View All Projects</span>
+              <span>View Full Portfolio</span>
               <ExternalLink className="w-5 h-5 ml-2" />
             </button>
           </Link>

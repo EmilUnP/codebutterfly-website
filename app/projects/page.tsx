@@ -152,29 +152,17 @@ export default function Projects() {
       <div className="relative z-10 pt-24 pb-16 px-6">
         {/* Enhanced Navigation */}
         <div className="max-w-7xl mx-auto mb-12">
-          {/* Breadcrumb Navigation */}
-          <nav className="flex items-center space-x-2 text-sm text-white/60 mb-6">
-            <Link href="/" className="hover:text-cyber-blue transition-colors duration-300">
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-cyber-blue">Portfolio</span>
-          </nav>
-          
-          {/* Enhanced Back to Home Button */}
-          <Link href="/" className="inline-flex items-center px-6 py-3 bg-cyber-blue/20 text-cyber-blue hover:bg-cyber-blue/30 rounded-2xl font-medium transition-all duration-300 hover:scale-105 hover:-translate-y-1 border border-cyber-blue/30 backdrop-blur-xl group">
-            <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
-            Back to Home
-          </Link>
+          {}
         </div>
+
 
         {/* Enhanced Header */}
         <div className="text-center mb-20 max-w-7xl mx-auto">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-white via-cyber-blue to-white bg-clip-text text-transparent">
-            Our Portfolio
+            Our Complete Portfolio
           </h1>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            Explore our diverse collection of innovative projects that showcase our expertise, creativity, and commitment to delivering exceptional results.
+            Explore our comprehensive collection of innovative projects that showcase our expertise, creativity, and commitment to delivering exceptional results.
           </p>
         </div>
 

@@ -94,7 +94,7 @@ export default function HeroSection3D() {
               {/* Content */}
               <div className="relative z-10 flex items-center">
                 <ExternalLink className="w-7 h-7 mr-3 group-hover:scale-110 transition-transform duration-300" />
-                <span>VIEW OUR WORK</span>
+                <span>VIEW PORTFOLIO</span>
               </div>
               
               {/* Enhanced Glow Effect */}
