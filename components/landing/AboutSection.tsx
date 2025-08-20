@@ -1,35 +1,41 @@
 import React from 'react';
 import { Users, Award, Clock, Target, Zap, Shield } from 'lucide-react';
+import { useT } from '@/lib/i18n-context';
 
-const stats = [
-  { number: '150+', label: 'Projects Completed', icon: Target, color: 'cyber-blue' },
-  { number: '50+', label: 'Happy Clients', icon: Users, color: 'cyber-pink' },
-  { number: '5+', label: 'Years Experience', icon: Clock, color: 'cyber-purple' },
-  { number: '99%', label: 'Client Satisfaction', icon: Award, color: 'cyber-green' }
-];
+// We'll define stats inside the component to access translations
 
-const features = [
-  {
-    icon: Zap,
-    title: 'Innovation First',
-    description: 'We stay ahead of the curve with cutting-edge technologies and creative solutions.',
-    color: 'cyber-amber'
-  },
-  {
-    icon: Shield,
-    title: 'Quality Assured',
-    description: 'Every project undergoes rigorous testing and quality assurance processes.',
-    color: 'cyber-green'
-  },
-  {
-    icon: Target,
-    title: 'Results Driven',
-    description: 'We focus on delivering measurable results that drive business growth.',
-    color: 'cyber-blue'
-  }
-];
+// We'll define features inside the component to access translations
 
 export default function AboutSection() {
+  const t = useT();
+
+  const stats = [
+    { number: '150+', label: t.hero.stats.projects, icon: Target, color: 'cyber-blue' },
+    { number: '50+', label: t.hero.stats.clients, icon: Users, color: 'cyber-pink' },
+    { number: '5+', label: t.hero.stats.experience, icon: Clock, color: 'cyber-purple' },
+    { number: '99%', label: t.hero.stats.satisfaction, icon: Award, color: 'cyber-green' }
+  ];
+
+  const features = [
+    {
+      icon: Zap,
+      title: t.about.mission.title,
+      description: t.about.mission.description,
+      color: 'cyber-amber'
+    },
+    {
+      icon: Shield,
+      title: t.about.vision.title,
+      description: t.about.vision.description,
+      color: 'cyber-green'
+    },
+    {
+      icon: Target,
+      title: t.about.values.title,
+      description: t.about.values.description,
+      color: 'cyber-blue'
+    }
+  ];
   return (
     <section className="relative py-16 overflow-hidden">
       {/* Enhanced Background */}
@@ -45,10 +51,10 @@ export default function AboutSection() {
         {/* Enhanced Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-green to-white bg-clip-text text-transparent">
-            About Us
+            {t.about.title}
           </h2>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            We are a passionate team of innovators, designers, and developers dedicated to creating exceptional digital experiences.
+            {t.about.description}
           </p>
         </div>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import ServiceCard3D from './ServiceCard3D';
 import { Code, Palette, Globe, Zap, Target, TrendingUp, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { useT } from '@/lib/i18n-context';
 
 const services = [
   {
@@ -35,6 +36,39 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const t = useT();
+
+  const services = [
+    {
+      icon: Code,
+      title: t.services.items.webDesign.title,
+      description: t.services.items.webDesign.description,
+      features: ["Full-stack development", "API integration", "Database design", "Performance optimization"],
+      gradient: "bg-gradient-to-br from-cyber-blue/20 via-cyber-blue/10 to-cyber-dark/80"
+    },
+    {
+      icon: Palette,
+      title: t.services.items.seo.title,
+      description: t.services.items.seo.description,
+      features: ["User research", "Wireframing", "Prototyping", "User testing"],
+      gradient: "bg-gradient-to-br from-cyber-pink/20 via-cyber-pink/10 to-cyber-dark/80"
+    },
+    {
+      icon: Target,
+      title: t.services.items.socialMedia.title,
+      description: t.services.items.socialMedia.description,
+      features: ["Social media marketing", "Content strategy", "Brand awareness", "Lead generation"],
+      gradient: "bg-gradient-to-br from-cyber-green/20 via-cyber-green/10 to-cyber-dark/80"
+    },
+    {
+      icon: TrendingUp,
+      title: t.services.items.digitalMarketing.title,
+      description: t.services.items.digitalMarketing.description,
+      features: ["Technical SEO", "Keyword research", "Performance tracking", "Conversion optimization"],
+      gradient: "bg-gradient-to-br from-cyber-blue/20 via-cyber-blue/10 to-cyber-dark/80"
+    }
+  ];
+
   return (
     <section className="relative py-16 overflow-hidden">
       {/* Enhanced Background */}
@@ -51,10 +85,10 @@ export default function ServicesSection() {
         {/* Enhanced Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-blue to-white bg-clip-text text-transparent">
-            Our Services
+            {t.services.title}
           </h2>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            We transform ideas into powerful digital solutions with cutting-edge technology and innovative design.
+            {t.services.description}
           </p>
         </div>
 
@@ -76,11 +110,11 @@ export default function ServicesSection() {
         {/* View Our Work CTA */}
         <div className="text-center mt-16">
           <p className="text-white/70 text-lg mb-6">
-            Want to see our work in action?
+            {t.services.cta.title}
           </p>
           <Link href="/projects">
             <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
-              <span>View Our Portfolio</span>
+              <span>{t.services.cta.button}</span>
               <ExternalLink className="w-5 h-5 ml-2" />
             </button>
           </Link>

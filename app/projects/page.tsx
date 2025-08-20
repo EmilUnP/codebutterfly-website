@@ -1,14 +1,13 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github, Sparkles, ArrowLeft, Filter, Target, Users, TrendingUp } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { createPageUrl } from "@/utils";
 import ButterflyAnimation from '@/components/landing/ButterflyAnimation';
 import Navbar from '@/components/landing/Navbar';
 import Footer from '@/components/landing/Footer';
+import { useT } from '@/lib/i18n-context';
 
 const portfolioItems = [
   {
@@ -117,53 +116,80 @@ const portfolioItems = [
   }
 ];
 
-const categories = ["All", "Web Development", "UI/UX Design", "Branding", "Social Media", "SEO"];
-
 export default function Projects() {
-  const router = useRouter();
-  const [activeCategory, setActiveCategory] = useState("All");
+  const t = useT();
+  const [activeCategory, setActiveCategory] = useState(t.projects.filters.all);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6; // Show 6 projects per page (2 rows of 3)
 
-  const filteredItems = activeCategory === "All" 
+  const categories = [
+    t.projects.filters.all,
+    t.projects.filters.webDevelopment,
+    t.projects.filters.uiUxDesign,
+    t.projects.filters.branding,
+    t.projects.filters.socialMedia,
+    t.projects.filters.seo
+  ];
+
+  const filteredItems = activeCategory === t.projects.filters.all
     ? portfolioItems 
     : portfolioItems.filter(item => item.category === activeCategory);
 
-  const handleProjectClick = (projectId: number) => {
-    router.push(createPageUrl(`ProjectDetail?id=${projectId}`));
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredItems.length / projectsPerPage);
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const endIndex = startIndex + projectsPerPage;
+  const currentProjects = filteredItems.slice(startIndex, endIndex);
+
+  // Reset to first page when category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory]);
+
+  // Function to handle page changes
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Scroll to top of projects grid
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker text-white relative overflow-hidden">
       {/* Navbar */}
-      <Navbar currentPageName="Projects" />
+      <Navbar currentPageName="Portfolio" />
       
       {/* Minimalist 3D Butterfly Animation */}
       <ButterflyAnimation />
 
       {/* Enhanced Background */}
       <div className="absolute inset-0 grid-pattern opacity-3" />
-      <div className="absolute inset-0 bg-gradient-to-br from-cyber-blue/5 via-transparent to-cyber-pink/5 opacity-2" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyber-purple/5 via-transparent to-cyber-pink/5 opacity-2" />
       
       {/* Subtle Floating Elements */}
-      <div className="absolute top-20 left-20 w-2 h-2 bg-cyber-blue/30 rounded-full animate-float opacity-20" />
-      <div className="absolute bottom-20 right-20 w-1.5 h-1.5 bg-cyber-pink/30 rounded-full animate-float opacity-20" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-24 left-24 w-2 h-2 bg-cyber-purple/30 rounded-full animate-float opacity-20" />
+      <div className="absolute bottom-24 right-24 w-1.5 h-1.5 bg-cyber-pink/30 rounded-full animate-float opacity-20" style={{ animationDelay: '2s' }} />
 
       {/* Main Content */}
       <div className="relative z-10 pt-24 pb-16 px-6">
-        {/* Enhanced Navigation */}
-        <div className="max-w-7xl mx-auto mb-12">
-          {}
-        </div>
-
-
         {/* Enhanced Header */}
         <div className="text-center mb-20 max-w-7xl mx-auto">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-white via-cyber-blue to-white bg-clip-text text-transparent">
-            Our Complete Portfolio
-          </h1>
-          <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            Explore our comprehensive collection of innovative projects that showcase our expertise, creativity, and commitment to delivering exceptional results.
-          </p>
+          <div className="relative">
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-transparent to-cyber-pink/20 blur-3xl opacity-30" />
+            
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-white via-cyber-blue to-white bg-clip-text text-transparent relative z-10">
+              {t.projects.title}
+            </h1>
+            
+            <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed relative z-10">
+              {t.projects.description}
+            </p>
+            
+            {/* Decorative Elements */}
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-cyber-blue rounded-full animate-pulse-slow" />
+            <div className="absolute -bottom-4 right-1/2 transform translate-x-1/2 w-2 h-2 bg-cyber-pink rounded-full animate-pulse-slow" style={{ animationDelay: '1s' }} />
+          </div>
         </div>
 
         {/* Enhanced Category Filters */}
@@ -172,24 +198,45 @@ export default function Projects() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-8 py-4 rounded-2xl font-bold transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 ${
+              className={`px-6 py-3 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 relative overflow-hidden group ${
                 activeCategory === category
-                  ? 'bg-cyber-gradient text-white shadow-2xl shadow-cyber-blue/30'
-                  : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl'
+                  ? 'bg-cyber-gradient text-white shadow-2xl shadow-cyber-blue/30 border border-cyber-blue/50'
+                  : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl hover:border-white/20'
               }`}
             >
-              {category}
+              {/* Active State Background Glow */}
+              {activeCategory === category && (
+                <div className="absolute inset-0 bg-cyber-gradient rounded-2xl blur-xl opacity-50 animate-pulse-slow" />
+              )}
+              
+              {/* Button Content */}
+              <span className="relative z-10 group-hover:scale-105 transition-transform duration-300">
+                {category}
+              </span>
+              
+              {/* Hover Effect Line */}
+              <div className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-cyber-blue transition-all duration-300 transform -translate-x-1/2 ${
+                activeCategory === category ? 'w-full' : 'group-hover:w-full'
+              }`} />
+              
+              {/* Floating Particles for Active State */}
+              {activeCategory === category && (
+                <>
+                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyber-pink rounded-full animate-pulse-fast" />
+                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-cyber-blue rounded-full animate-pulse-fast" style={{ animationDelay: '0.5s' }} />
+                </>
+              )}
             </button>
           ))}
         </div>
 
         {/* Enhanced Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {filteredItems.map((item, index) => (
-            <div
+          {currentProjects.map((item, index) => (
+            <Link
               key={item.id}
+              href={`/projects/${item.id}`}
               className="group cursor-pointer"
-              onClick={() => handleProjectClick(item.id)}
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
             >
@@ -208,13 +255,6 @@ export default function Projects() {
                   
                   {/* Enhanced Hover Overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-t from-${item.color}/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
-                  
-                  {/* Action Buttons */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-110">
-                      <ExternalLink className="w-5 h-5 text-white" />
-                    </div>
-                  </div>
                   
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
@@ -250,12 +290,6 @@ export default function Projects() {
                       </span>
                     )}
                   </div>
-                  
-                  {/* Project Meta */}
-                  <div className="flex items-center justify-between text-sm text-white/50 group-hover:text-white/70 transition-colors duration-500">
-                    <span>{item.client}</span>
-                    <span>{item.duration}</span>
-                  </div>
 
                   {/* Enhanced Hover Effect */}
                   <div className={`absolute inset-0 bg-gradient-to-t from-${item.color}/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl`} />
@@ -264,10 +298,98 @@ export default function Projects() {
                 {/* Enhanced 3D Shadow */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent transform translate-y-2 scale-95 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex flex-col items-center gap-6 mt-16">
+            {/* Page Info */}
+            <div className="text-center">
+              <p className="text-white/70 text-lg">
+                {t.projects.pagination.showing} {startIndex + 1} {t.projects.pagination.of} {filteredItems.length} {t.projects.pagination.projects}
+              </p>
+            </div>
+            
+            {/* Pagination Navigation */}
+            <div className="flex items-center gap-3">
+              {/* Previous Button */}
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="px-6 py-3 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl"
+              >
+                {t.projects.pagination.previous}
+              </button>
+              
+              {/* Page Numbers */}
+              <div className="flex items-center gap-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`w-12 h-12 rounded-2xl font-bold transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 relative overflow-hidden group ${
+                      currentPage === page
+                        ? 'bg-cyber-gradient text-white shadow-2xl shadow-cyber-blue/30 border border-cyber-blue/50'
+                        : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl'
+                    }`}
+                  >
+                    {/* Active State Background Glow */}
+                    {currentPage === page && (
+                      <div className="absolute inset-0 bg-cyber-gradient rounded-2xl blur-xl opacity-50 animate-pulse-slow" />
+                    )}
+                    
+                    {/* Button Content */}
+                    <span className="relative z-10 group-hover:scale-105 transition-transform duration-300">
+                      {page}
+                    </span>
+                    
+                    {/* Floating Particles for Active State */}
+                    {currentPage === page && (
+                      <>
+                        <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyber-pink rounded-full animate-pulse-fast" />
+                        <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-cyber-blue rounded-full animate-pulse-fast" style={{ animationDelay: '0.5s' }} />
+                      </>
+                    )}
+                  </button>
+                ))}
+              </div>
+              
+              {/* Next Button */}
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="px-6 py-3 rounded-2xl font-medium transition-all duration-500 transform-gpu hover:scale-105 hover:-translate-y-1 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed bg-white/5 text-white/70 hover:bg-white/10 hover:text-white/90 border border-white/10 backdrop-blur-xl"
+              >
+                {t.projects.pagination.next}
+              </button>
+            </div>
+            
+            {/* Jump to Page Input - Show only when there are many pages */}
+            {totalPages > 5 && (
+              <div className="flex items-center gap-3 mt-4">
+                <span className="text-white/70 text-sm">{t.projects.pagination.jumpToPage}</span>
+                <input
+                  type="number"
+                  min="1"
+                  max={totalPages}
+                  value={currentPage}
+                  onChange={(e) => {
+                    const page = parseInt(e.target.value);
+                    if (page >= 1 && page <= totalPages) {
+                      handlePageChange(page);
+                    }
+                  }}
+                  className="w-20 px-3 py-2 rounded-xl bg-white/5 text-white border border-white/10 backdrop-blur-xl text-center focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-300"
+                />
+                <span className="text-white/50 text-sm">{t.projects.pagination.of} {totalPages}</span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
+      
       {/* Footer */}
       <Footer />
     </div>

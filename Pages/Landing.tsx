@@ -22,22 +22,22 @@ export default function Landing() {
         </section>
         
         {/* Services Section - Enhanced Spacing */}
-        <section className="py-16">
+        <section id="services" className="py-16">
           <ServicesSection />
         </section>
         
         {/* About Section - Enhanced Spacing */}
-        <section className="py-16 bg-cyber-dark/30">
+        <section id="about" className="py-16 bg-cyber-dark/30">
           <AboutSection />
         </section>
         
         {/* Portfolio Section - Enhanced Spacing */}
-        <section className="py-16">
+        <section id="portfolio" className="py-16">
           <PortfolioSection />
         </section>
         
         {/* Contact Section - Enhanced Spacing */}
-        <section className="py-16 bg-cyber-dark/30">
+        <section id="contact" className="py-16 bg-cyber-dark/30">
           <ContactSection />
         </section>
       </main>

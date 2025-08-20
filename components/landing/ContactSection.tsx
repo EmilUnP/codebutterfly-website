@@ -2,35 +2,40 @@
 
 import React from 'react';
 import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import { useT } from '@/lib/i18n-context';
 
-const contactInfo = [
-  {
-    icon: Mail,
-    title: 'Email Us',
-    details: 'hello@codebutterfly.com',
-    color: 'cyber-blue'
-  },
-  {
-    icon: Phone,
-    title: 'Call Us',
-    details: '+1 (555) 123-4567',
-    color: 'cyber-green'
-  },
-  {
-    icon: MapPin,
-    title: 'Visit Us',
-    details: '123 Innovation Street, Tech City',
-    color: 'cyber-purple'
-  },
-  {
-    icon: Clock,
-    title: 'Business Hours',
-    details: 'Mon-Fri: 9AM-6PM EST',
-    color: 'cyber-amber'
-  }
-];
+// We'll define contactInfo inside the component to access translations
 
 export default function ContactSection() {
+  const t = useT();
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: 'Email Us',
+      details: t.contact.info.email,
+      color: 'cyber-blue'
+    },
+    {
+      icon: Phone,
+      title: 'Call Us',
+      details: t.contact.info.phone,
+      color: 'cyber-green'
+    },
+    {
+      icon: MapPin,
+      title: 'Visit Us',
+      details: t.contact.info.address,
+      color: 'cyber-purple'
+    },
+    {
+      icon: Clock,
+      title: 'Business Hours',
+      details: 'Mon-Fri: 9AM-6PM EST',
+      color: 'cyber-amber'
+    }
+  ];
+
   return (
     <section className="relative py-16 overflow-hidden">
       {/* Enhanced Background */}
@@ -46,10 +51,10 @@ export default function ContactSection() {
         {/* Enhanced Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-amber to-white bg-clip-text text-transparent">
-            Get In Touch
+            {t.contact.title}
           </h2>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
-            Ready to start your next project? Let's discuss how we can bring your vision to life.
+            {t.contact.description}
           </p>
         </div>
 
@@ -87,14 +92,14 @@ export default function ContactSection() {
                   <div className="group">
                     <input
                       type="text"
-                      placeholder="Your Name"
+                      placeholder={t.contact.form.name.placeholder}
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
                     />
                   </div>
                   <div className="group">
                     <input
                         type="email"
-                      placeholder="Your Email"
+                      placeholder={t.contact.form.email.placeholder}
                       className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
                     />
                   </div>
@@ -103,7 +108,7 @@ export default function ContactSection() {
                 <div className="group">
                   <input
                     type="text"
-                    placeholder="Subject"
+                    placeholder={t.contact.form.subject.placeholder}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
                   />
                 </div>
@@ -111,7 +116,7 @@ export default function ContactSection() {
                 <div className="group">
                   <textarea
                     rows={5}
-                    placeholder="Your Message"
+                    placeholder={t.contact.form.message.placeholder}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm resize-none"
                   />
                 </div>
@@ -121,7 +126,7 @@ export default function ContactSection() {
                       type="submit"
                   className="w-full px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 transform-gpu flex items-center justify-center gap-3 group"
                 >
-                  <span>Send Message</span>
+                  <span>{t.contact.form.submit}</span>
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
                 </form>

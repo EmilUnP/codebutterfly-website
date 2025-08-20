@@ -12,8 +12,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { createPageUrl } from "@/utils";
+import { useT } from '@/lib/i18n-context';
 
 export default function Footer() {
+  const t = useT();
+
   return (
     <footer className="relative py-16 overflow-hidden">
       {/* Enhanced Background */}
@@ -59,21 +62,21 @@ export default function Footer() {
                 </div>
               </div>
               <p className="text-gray-300 leading-relaxed max-w-md text-lg">
-                We transform digital dreams into reality through innovative design, cutting-edge development, and strategic marketing solutions.
+                {t.footer.description}
               </p>
             </div>
           </div>
 
           {/* Enhanced Quick Links */}
           <div>
-            <h4 className="font-bold text-white mb-6 text-lg">Quick Links</h4>
+            <h4 className="font-bold text-white mb-6 text-lg">{t.footer.quickLinks.title}</h4>
             <div className="space-y-3">
               {[
-                { name: "Home", link: "/" },
-                { name: "Projects", link: "/projects" },
-                { name: "About", link: "/#about" },
-                { name: "Services", link: "/#services" },
-                { name: "Contact", link: "/#contact" }
+                { name: t.footer.quickLinks.home, link: "/" },
+                { name: t.footer.quickLinks.portfolio, link: "/projects" },
+                { name: t.footer.quickLinks.about, link: "/#about" },
+                { name: t.footer.quickLinks.services, link: "/#services" },
+                { name: t.footer.quickLinks.contact, link: "/#contact" }
               ].map((item, index) => (
                 <div key={item.name} className="group">
                   <Link
@@ -92,7 +95,7 @@ export default function Footer() {
 
           {/* Enhanced Contact Info */}
           <div>
-            <h4 className="font-bold text-white mb-6 text-lg">Get in Touch</h4>
+            <h4 className="font-bold text-white mb-6 text-lg">{t.footer.contact.title}</h4>
             <div className="space-y-4">
               <div className="flex items-center space-x-3 group">
                 <div className="w-10 h-10 bg-cyber-blue/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -100,7 +103,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <div className="text-cyber-blue font-mono text-xs tracking-wider mb-1">EMAIL</div>
-                  <div className="text-gray-300 text-sm">hello@codebutterfly.art</div>
+                  <div className="text-gray-300 text-sm">{t.footer.contact.email}</div>
                 </div>
               </div>
               <div className="flex items-center space-x-3 group">
@@ -109,7 +112,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <div className="text-cyber-pink font-mono text-xs tracking-wider mb-1">PHONE</div>
-                  <div className="text-gray-300 text-sm">+1 (555) 123-4567</div>
+                  <div className="text-gray-300 text-sm">{t.footer.contact.phone}</div>
                 </div>
               </div>
               <div className="flex items-center space-x-3 group">
@@ -139,14 +142,14 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <div className="text-center md:text-right">
-              <p className="text-gray-400 text-sm mb-2">
-                © 2024 CodeButterfly.art. All rights reserved.
-              </p>
-              <p className="text-gray-500 text-xs flex items-center justify-center md:justify-end">
-                Crafted with <Heart className="w-3 h-3 text-cyber-pink mx-1 animate-pulse" /> in San Francisco
-              </p>
-            </div>
+                         <div className="text-center md:text-right">
+               <p className="text-gray-400 text-sm mb-2">
+                 {t.footer.copyright}
+               </p>
+               <p className="text-gray-500 text-xs flex items-center justify-center md:justify-end">
+                 Crafted with <Heart className="w-3 h-3 text-cyber-pink mx-1 animate-pulse" /> in San Francisco
+               </p>
+             </div>
           </div>
         </div>
       </div>

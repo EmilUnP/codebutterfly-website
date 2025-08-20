@@ -2,8 +2,10 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, ChevronDown, Sparkles, Zap, Rocket, ExternalLink } from "lucide-react";
 import Link from 'next/link';
+import { useT } from '@/lib/i18n-context';
 
 export default function HeroSection3D() {
+  const t = useT();
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-24">
       {/* Enhanced 3D Background Layers */}
@@ -35,14 +37,14 @@ export default function HeroSection3D() {
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-16 leading-tight perspective-3d">
           <div className="rotate-3d hover:rotate-3d mb-6 transform-gpu">
             <span className="gradient-text inline-block scan-line relative">
-              DIGITAL
+              {t.hero.title.split(' ')[0]}
               {/* Enhanced Glow Effect */}
               <div className="absolute inset-0 gradient-text blur-2xl opacity-0 hover:opacity-30 transition-opacity duration-500" />
             </span>
           </div>
           <div className="rotate-3d hover:rotate-3d transform-gpu" style={{ animationDelay: '0.5s' }}>
             <span className="text-white inline-block font-mono tracking-widest relative">
-              EVOLUTION
+              {t.hero.title.split(' ').slice(1).join(' ')}
               {/* Enhanced Glow Effect */}
               <div className="absolute inset-0 text-white blur-2xl opacity-0 hover:opacity-20 transition-opacity duration-500" />
             </span>
@@ -52,8 +54,7 @@ export default function HeroSection3D() {
         {/* Enhanced Subtitle with 3D Effects */}
         <div className="relative mb-20">
           <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-5xl mx-auto leading-relaxed font-light">
-            We craft cutting-edge digital experiences that push the boundaries of innovation, 
-            blending artistry with technology to create tomorrow's solutions today.
+            {t.hero.description}
           </p>
           
           {/* Floating Tech Icons */}
@@ -73,7 +74,7 @@ export default function HeroSection3D() {
             
             {/* Content */}
             <div className="relative z-10 flex items-center">
-              <span className="mr-3">START YOUR JOURNEY</span>
+              <span className="mr-3">{t.hero.cta.primary}</span>
               <ArrowRight className="w-7 h-7 group-hover:translate-x-3 transition-transform duration-300" />
             </div>
             
@@ -85,30 +86,14 @@ export default function HeroSection3D() {
             <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-cyber-blue rounded-full opacity-60 animate-pulse-slow" style={{ animationDelay: '1s' }} />
           </Button>
           
-          {/* View Our Work Button */}
-          <Link href="/projects">
-            <Button variant="outline" className="relative group overflow-hidden border-cyber-blue/40 text-cyber-blue hover:bg-cyber-blue/10 px-12 py-6 rounded-3xl text-xl font-bold transition-all duration-500 hover:scale-110 hover:-translate-y-2 transform-gpu backdrop-blur-xl border-2">
-              {/* Enhanced Background */}
-              <div className="absolute inset-0 bg-cyber-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              {/* Content */}
-              <div className="relative z-10 flex items-center">
-                <ExternalLink className="w-7 h-7 mr-3 group-hover:scale-110 transition-transform duration-300" />
-                <span>VIEW PORTFOLIO</span>
-              </div>
-              
-              {/* Enhanced Glow Effect */}
-              <div className="absolute inset-0 border-cyber-blue/40 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-            </Button>
-          </Link>
         </div>
         
         {/* Enhanced Stats Grid with Advanced 3D Effects */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-20">
           {[
-            { number: "150+", label: "Digital Transformations", color: "cyber-blue", icon: Zap },
-            { number: "75+", label: "Innovation Partners", color: "cyber-pink", icon: Rocket },
-            { number: "8", label: "Years of Future Crafting", color: "cyber-purple", icon: Sparkles }
+            { number: "150+", label: t.hero.stats.projects, color: "cyber-blue", icon: Zap },
+            { number: "75+", label: t.hero.stats.clients, color: "cyber-pink", icon: Rocket },
+            { number: "8", label: t.hero.stats.experience, color: "cyber-purple", icon: Sparkles }
           ].map((stat, index) => (
             <div key={index} className="group">
               <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">
@@ -153,22 +138,7 @@ export default function HeroSection3D() {
             </div>
           ))}
         </div>
-        
-        {/* Enhanced Scroll Indicator with 3D Effects */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2">
-          <div className="relative group">
-            <div className="w-12 h-20 border-2 border-cyber-blue/50 rounded-full flex justify-center backdrop-blur-xl bg-cyber-blue/5 neon-glow animate-float perspective-3d">
-              <ChevronDown className="w-6 h-6 text-cyber-blue mt-4 animate-bounce" />
-            </div>
-            
-            {/* Enhanced Glow Effect */}
-            <div className="absolute inset-0 w-12 h-20 border-2 border-cyber-blue/50 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-            
-            <p className="text-sm text-cyber-blue mt-6 font-medium font-mono tracking-wider">
-              SCROLL TO EXPLORE
-            </p>
-          </div>
-        </div>
+
       </div>
       
       {/* Enhanced Energy Waves with 3D Effects */}
