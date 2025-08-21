@@ -1,9 +1,8 @@
 "use client";
 
 import React from 'react';
-import { motion } from "framer-motion";
-import Navbar from "./components/landing/Navbar";
-import Footer from "./components/landing/Footer";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { type Language } from '@/lib/static-i18n';
 
 interface LayoutProps {
