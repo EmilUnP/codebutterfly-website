@@ -197,7 +197,7 @@ export default function Navbar({ currentPageName, language = 'en' }: NavbarProps
               <Link href="/">
                 <div className="relative group">
                   <h1 className="playfair text-3xl font-black gradient-text cursor-pointer transform group-hover:scale-105 group-hover:translate-x-2 transition-all duration-500">
-                    CodeButterfly.art
+                    {t.brand.name}
                   </h1>
                   
                   {/* Enhanced Glow Effect */}

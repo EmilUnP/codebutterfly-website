@@ -57,11 +57,11 @@ export default function Footer({ language = 'en' }: FooterProps) {
                 </div>
                 <div>
                   <h3 className="playfair text-3xl font-bold gradient-text mb-2">
-                    CodeButterfly.art
+                    {t.brand.name}
                   </h3>
                   <div className="flex items-center space-x-2">
                     <Sparkles className="w-4 h-4 text-cyber-pink" />
-                    <span className="text-cyber-blue font-mono text-sm tracking-wider">DIGITAL INNOVATION STUDIO</span>
+                    <span className="text-cyber-blue font-mono text-sm tracking-wider">{t.brand.tagline}</span>
                   </div>
                 </div>
               </div>

@@ -14,6 +14,10 @@ export const defaultLanguage: Language = 'en';
 // Centralized translations
 export const translations = {
   en: {
+    brand: {
+      name: 'CodeButterfly.art',
+      tagline: 'DIGITAL INNOVATION STUDIO'
+    },
     navbar: {
       home: 'Home',
       portfolio: 'Portfolio',
@@ -131,6 +135,10 @@ export const translations = {
     }
   },
   ru: {
+    brand: {
+      name: 'CodeButterfly.art',
+      tagline: 'СТУДИЯ ЦИФРОВЫХ ИННОВАЦИЙ'
+    },
     navbar: {
       home: 'Главная',
       portfolio: 'Портфолио',
@@ -248,6 +256,10 @@ export const translations = {
     }
   },
   az: {
+    brand: {
+      name: 'CodeButterfly.art',
+      tagline: 'RƏQƏMSAL İNNOVASİYA STUDİYASI'
+    },
     navbar: {
       home: 'Ana Səhifə',
       portfolio: 'Portfolio',
