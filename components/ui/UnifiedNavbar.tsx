@@ -20,12 +20,24 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
   const pathname = usePathname();
   
   // Automatically detect language from pathname
-  const currentLanguage = getLanguageFromPathname(pathname);
+  let currentLanguage = getLanguageFromPathname(pathname);
+  
+  // Fallback language detection if the function fails
+  if (!currentLanguage || currentLanguage === 'en') {
+    if (pathname.startsWith('/ru')) {
+      currentLanguage = 'ru';
+    } else if (pathname.startsWith('/az')) {
+      currentLanguage = 'az';
+    } else {
+      currentLanguage = 'en';
+    }
+  }
+  
   const t = useTranslations(currentLanguage);
   
   // Automatically detect if we're on a landing page
   const isLandingPage = variant === 'landing' || 
-    (variant === 'auto' && (pathname === "/" || pathname === "/ru" || pathname === "/az"));
+    (variant === 'auto' && (pathname === "/" || pathname === "/en" || pathname === "/en/" || pathname === "/ru" || pathname === "/ru/" || pathname === "/az" || pathname === "/az/"));
   
   // Create language-aware navigation items
   const navItems = [
@@ -55,6 +67,8 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
       isSection: true 
     }
   ];
+  
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,7 +83,7 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
   const handleNavItemClick = async (item: any) => {
     if (item.isSection) {
       // For section links (About, Services, Contact)
-      const isHomePage = pathname === "/" || pathname === "/ru" || pathname === "/az";
+      const isHomePage = pathname === "/" || pathname === "/en" || pathname === "/en/" || pathname === "/ru" || pathname === "/ru/" || pathname === "/az" || pathname === "/az/";
       
       if (isHomePage) {
         // If we're on the home page, scroll to the section
@@ -111,7 +125,7 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
 
   // Function to handle smooth scrolling to sections (for direct hash navigation)
   useEffect(() => {
-    const isHomePage = pathname === "/" || pathname === "/ru" || pathname === "/az";
+    const isHomePage = pathname === "/" || pathname === "/en" || pathname === "/en/" || pathname === "/ru" || pathname === "/ru/" || pathname === "/az" || pathname === "/az/";
     if (isHomePage && typeof window !== "undefined") {
       const hash = window.location.hash;
       if (hash) {
@@ -151,16 +165,24 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
       return `fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         isScrolled 
           ? 'bg-cyber-darker/95 backdrop-blur-xl shadow-2xl border-b border-cyber-blue/30' 
-          : 'bg-transparent'
+          : '!bg-transparent'
       }`;
     }
     
     // Default styling for all other cases (page, auto, or non-landing)
     return 'bg-cyber-dark/50 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50';
   };
+  
 
+  
   return (
-    <nav className={`${getNavbarStyle()} ${className}`}>
+    <nav 
+      className={`${getNavbarStyle()} ${className}`}
+      style={{
+        backgroundColor: variant === 'landing' && isLandingPage && !isScrolled ? 'transparent' : undefined
+      }}
+    >
+      
       {/* Global Loading Bar */}
       {isNavigating && (
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyber-blue via-cyber-pink to-cyber-blue">
@@ -216,9 +238,6 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
           {/* Enhanced Desktop Navigation with Clean Effects */}
           <div className="hidden md:flex items-center space-x-10">
             {navItems.map((item, index) => {
-              const isActive = (item.isSection && (pathname === "/" || pathname === "/ru" || pathname === "/az")) || 
-                              (!item.isSection && pathname === item.href);
-              
               return (
                 <div
                   key={item.name}
@@ -226,23 +245,14 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
                   onClick={() => handleNavItemClick(item)}
                 >
                   <div className="relative">
-                    <span className={`font-medium text-lg transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${
-                      isActive 
-                        ? 'text-cyber-blue' 
-                        : 'text-white/90 hover:text-cyber-blue'
-                    } ${isNavigating ? 'opacity-50 cursor-wait' : ''}`}>
+                                         <span className={`font-medium text-lg transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1 text-white/90 hover:text-cyber-blue ${isNavigating ? 'opacity-50 cursor-wait' : ''}`}>
                       {item.name}
                     </span>
                     
-                    {/* Active/Underline Effect */}
-                    <div className={`absolute -bottom-2 left-0 h-0.5 bg-cyber-blue transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`} />
+                                         {/* Hover Underline Effect */}
+                     <div className="absolute -bottom-2 left-0 h-0.5 bg-cyber-blue transition-all duration-300 w-0 group-hover:w-full" />
                     
-                    {/* Active Indicator Dot */}
-                    {isActive && (
-                      <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyber-blue rounded-full animate-pulse-fast" />
-                    )}
+
                     
                     {/* Loading Indicator */}
                     {isNavigating && (
@@ -283,33 +293,21 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
             
             <div className="relative z-10 space-y-6">
               {navItems.map((item, index) => {
-                const isActive = (item.isSection && (pathname === "/" || pathname === "/ru" || pathname === "/az")) || 
-                                (!item.isSection && pathname === item.href);
-                
                 return (
                   <div
                     key={item.name}
                     className="block group cursor-pointer"
                     onClick={() => handleNavItemClick(item)}
                   >
-                    <div className={`relative p-4 rounded-2xl transition-all duration-300 hover:translate-x-3 ${
-                      isActive ? 'bg-cyber-blue/20' : 'hover:bg-cyber-blue/10'
-                    }`}>
-                      <span className={`font-medium text-lg group-hover:scale-105 transition-all duration-300 ${
-                        isActive ? 'text-cyber-blue' : 'text-white/90 hover:text-cyber-blue'
-                      } ${isNavigating ? 'opacity-50' : ''}`}>
+                                         <div className="relative p-4 rounded-2xl transition-all duration-300 hover:translate-x-3 hover:bg-cyber-blue/10">
+                                             <span className={`font-medium text-lg group-hover:scale-105 transition-all duration-300 text-white/90 hover:text-cyber-blue ${isNavigating ? 'opacity-50' : ''}`}>
                         {item.name}
                       </span>
                       
-                      {/* Clean Hover Effect */}
-                      <div className={`absolute left-0 top-1/2 h-0.5 bg-cyber-blue transition-all duration-300 transform -translate-y-1/2 ${
-                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`} />
+                                             {/* Clean Hover Effect */}
+                       <div className="absolute left-0 top-1/2 h-0.5 bg-cyber-blue transition-all duration-300 transform -translate-y-1/2 w-0 group-hover:w-full" />
                       
-                      {/* Active Indicator */}
-                      {isActive && (
-                        <div className="absolute right-4 top-1/2 w-2 h-2 bg-cyber-blue rounded-full transform -translate-y-1/2 animate-pulse-fast" />
-                      )}
+
                       
                       {/* Loading Indicator */}
                       {isNavigating && (
