@@ -11,7 +11,7 @@ import {
   Heart
 } from "lucide-react";
 import Link from "next/link";
-import { createPageUrl } from "@/utils";
+
 import { type Language, useTranslations } from '@/lib/static-i18n';
 
 interface FooterProps {
@@ -76,11 +76,11 @@ export default function Footer({ language = 'en' }: FooterProps) {
                               <h4 className="font-bold text-white mb-6 text-lg">{t.footer.quickLinks}</h4>
                   <div className="space-y-3">
                     {[
-                      { name: t.navbar.home, link: "/" },
-                      { name: t.navbar.portfolio, link: "/projects" },
-                      { name: t.navbar.about, link: "/#about" },
-                      { name: t.navbar.services, link: "/#services" },
-                      { name: t.navbar.contact, link: "/#contact" }
+                      { name: t.navbar.home, link: language === 'en' ? "/" : `/${language}` },
+                      { name: t.navbar.portfolio, link: language === 'en' ? "/en/projects" : `/${language}/projects` },
+                      { name: t.navbar.about, link: language === 'en' ? "/#about" : `/${language}#about` },
+                      { name: t.navbar.services, link: language === 'en' ? "/#services" : `/${language}#services` },
+                      { name: t.navbar.contact, link: language === 'en' ? "/#contact" : `/${language}#contact` }
                     ].map((item, index) => (
                 <div key={item.name} className="group">
                   <Link

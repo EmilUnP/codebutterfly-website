@@ -1,9 +1,10 @@
 "use client";
 
 import React from 'react';
-import Navbar from "./Navbar";
+import UnifiedNavbar from "@/components/ui/UnifiedNavbar";
 import Footer from "./Footer";
 import { type Language } from '@/lib/static-i18n';
+import { LanguageProvider } from '@/lib/contexts/LanguageContext';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,18 +17,20 @@ export default function Layout({ children, currentPageName, language = 'en' }: L
   const isLandingPage = currentPageName === "Landing";
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker relative">
+    <LanguageProvider initialLanguage={language}>
+      <div className="min-h-screen bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker relative">
 
-      {/* Navigation */}
-      <Navbar currentPageName={currentPageName} language={language} />
+        {/* Navigation */}
+        <UnifiedNavbar variant="landing" />
 
-      {/* Main Content */}
-      <main className="relative z-10">
-        {children}
-      </main>
+        {/* Main Content */}
+        <main className="relative z-10">
+          {children}
+        </main>
 
-      {/* Footer */}
-      <Footer language={language} />
-    </div>
+        {/* Footer */}
+        <Footer language={language} />
+      </div>
+    </LanguageProvider>
   );
 }

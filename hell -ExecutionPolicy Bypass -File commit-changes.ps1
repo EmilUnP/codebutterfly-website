@@ -1,5 +1,0 @@
-[33m169da57[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m feat: Fixed Portfolio/Projects relationship and improved navigation - Updated PortfolioSection to show same projects as portfolio page - Fixed TypeScript error in projects page Navbar component - Updated navigation to use consistent Portfolio naming - Enhanced project cards with real images and better styling - Improved section descriptions to show clear preview relationship - Updated navbar to show Portfolio instead of Projects - Added comprehensive navigation between home and portfolio pages
-[33mdc2e45d[m feat: Major UI/UX overhaul with 3D effects and improved navigation
-[33mdcfc8be[m feat: Major UI/UX overhaul with 3D effects and improved navigation
-[33m99341bd[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m Add comprehensive README with project documentation and setup instructions
-[33m52ba8e8[m Initial commit: CodeButterfly Next.js website with landing page, projects, and deployment configuration

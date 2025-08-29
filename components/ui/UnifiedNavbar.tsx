@@ -3,30 +3,57 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { Button } from "@/components/ui/button";
-import { Menu, X, Sparkles, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
-import { type Language, useTranslations } from "@/lib/static-i18n";
+import { useTranslations, getLanguageFromPathname } from "@/lib/static-i18n";
 
-interface NavbarProps {
-  currentPageName: string;
-  language?: Language;
+interface UnifiedNavbarProps {
+  variant?: 'landing' | 'page' | 'auto';
+  className?: string;
 }
 
-export default function Navbar({ currentPageName, language = 'en' }: NavbarProps) {
+export default function UnifiedNavbar({ variant = 'auto', className = '' }: UnifiedNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const t = useTranslations(language);
-
+  
+  // Automatically detect language from pathname
+  const currentLanguage = getLanguageFromPathname(pathname);
+  const t = useTranslations(currentLanguage);
+  
+  // Automatically detect if we're on a landing page
+  const isLandingPage = variant === 'landing' || 
+    (variant === 'auto' && (pathname === "/" || pathname === "/ru" || pathname === "/az"));
+  
+  // Create language-aware navigation items
   const navItems = [
-    { name: t.navbar.home, href: "/", isSection: false },
-    { name: t.navbar.portfolio, href: "/projects", isSection: false },
-    { name: t.navbar.services, href: "/#services", isSection: true },
-    { name: t.navbar.about, href: "/#about", isSection: true },
-    { name: t.navbar.contact, href: "/#contact", isSection: true }
+    { 
+      name: t.navbar.home, 
+      href: currentLanguage === 'en' ? "/" : `/${currentLanguage}`, 
+      isSection: false 
+    },
+    { 
+      name: t.navbar.portfolio, 
+      href: currentLanguage === 'en' ? "/en/projects" : `/${currentLanguage}/projects`, 
+      isSection: false 
+    },
+    { 
+      name: t.navbar.services, 
+      href: currentLanguage === 'en' ? "/#services" : `/${currentLanguage}#services`, 
+      isSection: true 
+    },
+    { 
+      name: t.navbar.about, 
+      href: currentLanguage === 'en' ? "/#about" : `/${currentLanguage}#about`, 
+      isSection: true 
+    },
+    { 
+      name: t.navbar.contact, 
+      href: currentLanguage === 'en' ? "/#contact" : `/${currentLanguage}#contact`, 
+      isSection: true 
+    }
   ];
 
   useEffect(() => {
@@ -40,38 +67,36 @@ export default function Navbar({ currentPageName, language = 'en' }: NavbarProps
 
   // Function to handle navigation item clicks
   const handleNavItemClick = async (item: any) => {
-    console.log("Navigation clicked:", item.name, "isSection:", item.isSection, "current path:", pathname); // Debug log
-    
     if (item.isSection) {
       // For section links (About, Services, Contact)
-      if (pathname === "/") {
+      const isHomePage = pathname === "/" || pathname === "/ru" || pathname === "/az";
+      
+      if (isHomePage) {
         // If we're on the home page, scroll to the section
-        const sectionId = item.href.replace("/#", "");
-        console.log("Scrolling to section on home page:", sectionId); // Debug log
+        const sectionId = item.href.includes("#") ? item.href.split("#")[1] : item.href.replace("/#", "");
         const element = document.getElementById(sectionId);
         if (element) {
-          console.log("Found section element, scrolling"); // Debug log
           element.scrollIntoView({ 
             behavior: 'smooth', 
             block: 'start' 
           });
-        } else {
-          console.log("Section element not found on home page:", sectionId); // Debug log
         }
       } else {
         // If we're on another page, navigate to home page with section hash
-        console.log("Navigating from other page to section:", item.href); // Debug log
+        const homePath = currentLanguage === 'en' ? "/" : `/${currentLanguage}`;
+        const sectionHash = item.href.includes("#") ? item.href.split("#")[1] : item.href.replace("/#", "");
+        const targetUrl = `${homePath}#${sectionHash}`;
+        
         setIsNavigating(true);
         try {
           // Use window.location.href for hash navigation to ensure proper scrolling
-          window.location.href = item.href;
+          window.location.href = targetUrl;
         } finally {
           setIsNavigating(false);
         }
       }
     } else {
       // For page links (Home, Portfolio), use normal navigation
-      console.log("Navigating to page:", item.href); // Debug log
       setIsNavigating(true);
       try {
         await router.push(item.href);
@@ -84,79 +109,58 @@ export default function Navbar({ currentPageName, language = 'en' }: NavbarProps
     setIsOpen(false);
   };
 
-  // Function to find a section element by various methods
-  const findSectionElement = (sectionId: string) => {
-    // Try direct ID match first
-    let element = document.getElementById(sectionId);
-    if (element) return element;
-    
-    // Try alternative selectors
-    element = document.querySelector(`[data-section="${sectionId}"]`) || 
-              document.querySelector(`.${sectionId}-section`) ||
-              document.querySelector(`#${sectionId}-section`) ||
-              document.querySelector(`[class*="${sectionId}"]`);
-    
-    if (element) return element;
-    
-    // Try to find by section content (last resort)
-    const sections = document.querySelectorAll('section');
-    const sectionsArray = Array.from(sections);
-    for (const section of sectionsArray) {
-      const sectionText = section.textContent?.toLowerCase() || '';
-      if (sectionText.includes(sectionId.toLowerCase())) {
-        return section;
-      }
-    }
-    
-    return null;
-  };
-
   // Function to handle smooth scrolling to sections (for direct hash navigation)
   useEffect(() => {
-    if (pathname === "/" && typeof window !== "undefined") {
+    const isHomePage = pathname === "/" || pathname === "/ru" || pathname === "/az";
+    if (isHomePage && typeof window !== "undefined") {
       const hash = window.location.hash;
       if (hash) {
         const sectionId = hash.replace("#", "");
-        console.log("Attempting to scroll to section:", sectionId); // Debug log
         
         // Wait for the page to fully render, then scroll to section
         const timer = setTimeout(() => {
           const element = document.getElementById(sectionId);
           if (element) {
-            console.log("Found section element, scrolling to it"); // Debug log
             element.scrollIntoView({ 
               behavior: 'smooth', 
               block: 'start' 
             });
           } else {
-            console.log("Section element not found:", sectionId); // Debug log
             // Try alternative selectors
             const alternativeElement = document.querySelector(`[data-section="${sectionId}"]`) || 
                                      document.querySelector(`.${sectionId}-section`) ||
                                      document.querySelector(`#${sectionId}-section`);
             if (alternativeElement) {
-              console.log("Found alternative section element, scrolling to it"); // Debug log
               alternativeElement.scrollIntoView({ 
                 behavior: 'smooth', 
                 block: 'start' 
               });
             }
           }
-        }, 800); // Increased delay to ensure page is fully loaded
+        }, 800);
         
         return () => clearTimeout(timer);
       }
     }
   }, [pathname]);
 
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        isScrolled || currentPageName !== "Landing" 
+  // Determine navbar styling based on variant and current page
+  const getNavbarStyle = () => {
+    // Use consistent styling for all variants to avoid style differences
+    if (variant === 'landing' && isLandingPage) {
+      return `fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        isScrolled 
           ? 'bg-cyber-darker/95 backdrop-blur-xl shadow-2xl border-b border-cyber-blue/30' 
           : 'bg-transparent'
-      }`}
-    >
+      }`;
+    }
+    
+    // Default styling for all other cases (page, auto, or non-landing)
+    return 'bg-cyber-dark/50 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50';
+  };
+
+  return (
+    <nav className={`${getNavbarStyle()} ${className}`}>
       {/* Global Loading Bar */}
       {isNavigating && (
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyber-blue via-cyber-pink to-cyber-blue">
@@ -164,14 +168,16 @@ export default function Navbar({ currentPageName, language = 'en' }: NavbarProps
         </div>
       )}
       
-      {/* Enhanced Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/5 via-transparent to-cyber-pink/5 opacity-0 transition-opacity duration-700 hover:opacity-100" />
+      {/* Enhanced Background Glow - only for landing pages */}
+      {isLandingPage && (
+        <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/5 via-transparent to-cyber-pink/5 opacity-0 transition-opacity duration-700 hover:opacity-100" />
+      )}
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex items-center justify-between h-24">
+        <div className={`flex items-center justify-between ${variant === 'landing' && isLandingPage ? 'h-24' : 'py-4'}`}>
           {/* Enhanced Logo with Clean 3D Effects */}
           <div className="flex items-center space-x-4 animate-fade-in-up">
-            <Link href="/">
+            <Link href={currentLanguage === 'en' ? "/" : `/${currentLanguage}`}>
               <div className="relative group">
                 <div className="w-14 h-14 bg-cyber-gradient rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 group-hover:-translate-y-1 transition-all duration-500 perspective-3d">
                   <svg
@@ -194,7 +200,7 @@ export default function Navbar({ currentPageName, language = 'en' }: NavbarProps
             </Link>
             
             <div className="hidden sm:block">
-              <Link href="/">
+              <Link href={currentLanguage === 'en' ? "/" : `/${currentLanguage}`}>
                 <div className="relative group">
                   <h1 className="playfair text-3xl font-black gradient-text cursor-pointer transform group-hover:scale-105 group-hover:translate-x-2 transition-all duration-500">
                     {t.brand.name}
@@ -210,7 +216,7 @@ export default function Navbar({ currentPageName, language = 'en' }: NavbarProps
           {/* Enhanced Desktop Navigation with Clean Effects */}
           <div className="hidden md:flex items-center space-x-10">
             {navItems.map((item, index) => {
-              const isActive = (item.isSection && pathname === "/") || 
+              const isActive = (item.isSection && (pathname === "/" || pathname === "/ru" || pathname === "/az")) || 
                               (!item.isSection && pathname === item.href);
               
               return (
@@ -248,7 +254,7 @@ export default function Navbar({ currentPageName, language = 'en' }: NavbarProps
             })}
           </div>
 
-                          {/* Language Switcher - Desktop */}
+          {/* Language Switcher - Desktop */}
           <div className="hidden md:flex">
             <LanguageSwitcher />
           </div>
@@ -277,7 +283,7 @@ export default function Navbar({ currentPageName, language = 'en' }: NavbarProps
             
             <div className="relative z-10 space-y-6">
               {navItems.map((item, index) => {
-                const isActive = (item.isSection && pathname === "/") || 
+                const isActive = (item.isSection && (pathname === "/" || pathname === "/ru" || pathname === "/az")) || 
                                 (!item.isSection && pathname === item.href);
                 
                 return (

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, ChevronDown, Sparkles, Zap, Rocket, ExternalLink } from "lucide-react";
 import Link from 'next/link';
 import { type Language, useTranslations } from '@/lib/static-i18n';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 interface HeroSection3DProps {
   language?: Language;
@@ -55,11 +56,29 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
                 </div>
         </h1>
         
-        {/* Enhanced Subtitle with 3D Effects */}
+        {/* Enhanced Subtitle with ScrollReveal Effect */}
         <div className="relative mb-20">
-                                        <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-5xl mx-auto leading-relaxed font-light">
-                    {t.hero.subtitle}
-                  </p>
+          <ScrollReveal
+            enableBlur={true}
+            baseOpacity={0.1}
+            baseRotation={2}
+            blurStrength={3}
+            staggerDelay={0.08}
+            threshold={0.3}
+            duration={1.2}
+            springConfig={{
+              damping: 20,
+              stiffness: 80,
+              mass: 0.8
+            }}
+            size="lg"
+            align="center"
+            variant="default"
+            containerClassName="max-w-5xl mx-auto"
+            textClassName="text-gray-300 font-light leading-relaxed"
+          >
+            We craft digital experiences that push boundaries and create lasting impact. From concept to execution, we transform ideas into innovative solutions that drive growth and engagement.
+          </ScrollReveal>
           
           {/* Floating Tech Icons */}
           <div className="absolute -top-8 -left-8 w-6 h-6 text-cyber-blue animate-pulse-slow">

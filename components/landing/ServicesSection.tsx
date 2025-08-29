@@ -4,6 +4,7 @@ import { Code, Palette, Globe, Zap, Target, TrendingUp, ExternalLink } from 'luc
 import Link from 'next/link';
 import { type Language, useTranslations } from '@/lib/static-i18n';
 
+
 interface ServicesSectionProps {
   language?: Language;
 }
@@ -65,32 +66,40 @@ export default function ServicesSection({ language = 'en' }: ServicesSectionProp
           </p>
         </div>
 
-        {/* Enhanced Services Grid - 4 Cards in One Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-          {services.map((service, index) => (
-            <div key={index} className="group">
-              <ServiceCard3D
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                features={service.features}
-                gradient={service.gradient}
-              />
-            </div>
-          ))}
+        {/* Enhanced Services Grid with Subtle Glowing Effect */}
+        <div className="relative">
+          {/* Glow Overlay */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="w-full h-full bg-gradient-to-br from-cyber-blue/5 via-transparent to-cyber-pink/5 opacity-30" />
+          </div>
+          
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative z-10">
+            {services.map((service, index) => (
+              <div key={index} className="group">
+                <ServiceCard3D
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  features={service.features}
+                  gradient={service.gradient}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* View Our Work CTA */}
         <div className="text-center mt-16">
-                            <p className="text-white/70 text-lg mb-6">
-                    {t.services.cta}
-                  </p>
-                  <Link href="/projects">
-                    <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
-                      <span>{t.services.viewPortfolio}</span>
-                      <ExternalLink className="w-5 h-5 ml-2" />
-                    </button>
-                  </Link>
+          <p className="text-white/70 text-lg mb-6">
+            {t.services.cta}
+          </p>
+          <Link href="/projects">
+            <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
+              <span>{t.services.viewPortfolio}</span>
+              <ExternalLink className="w-5 h-5 ml-2" />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

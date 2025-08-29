@@ -4,7 +4,7 @@ import React from 'react';
 import HeroSection3D from '@/components/landing/HeroSection3D';
 import ServicesSection from '@/components/landing/ServicesSection';
 import AboutSection from '@/components/landing/AboutSection';
-import PortfolioSection from '@/components/landing/PortfolioSection';
+import PortfolioCarousel3D from '@/components/landing/PortfolioCarousel3D';
 import ContactSection from '@/components/landing/ContactSection';
 import ButterflyAnimation from '@/components/landing/ButterflyAnimation';
 
@@ -37,9 +37,9 @@ export default function Landing({ language = 'en' }: LandingProps) {
           <AboutSection language={language} />
         </section>
         
-        {/* Portfolio Section - Enhanced Spacing */}
-        <section id="portfolio" className="py-16">
-          <PortfolioSection language={language} />
+        {/* Portfolio Section - 3D Carousel */}
+        <section id="portfolio">
+          <PortfolioCarousel3D language={language} />
         </section>
         
         {/* Contact Section - Enhanced Spacing */}
