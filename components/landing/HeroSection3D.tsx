@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, ChevronDown, Sparkles, Zap, Rocket, ExternalLink } from "lucide-react";
+import { Sparkles, Zap, Rocket } from "lucide-react";
 import Link from 'next/link';
 import { type Language, useTranslations } from '@/lib/static-i18n';
 import ScrollReveal from '@/components/ui/ScrollReveal';
@@ -48,11 +47,49 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
                   </span>
                 </div>
                                 <div className="rotate-3d hover:rotate-3d transform-gpu" style={{ animationDelay: '0.5s' }}>
-                  <span className="text-white inline-block font-mono tracking-widest relative">
-                    EVOLUTION
-                    {/* Enhanced Glow Effect */}
-                    <div className="absolute inset-0 text-white blur-2xl opacity-0 hover:opacity-20 transition-opacity duration-500" />
-                  </span>
+                  <div className="evolution-container relative inline-block">
+                    {/* Enhanced EVOLUTION Text with Letter-by-Letter Animation */}
+                                         <span className="text-white inline-block font-mono tracking-widest relative evolution-text">
+                       {t.hero.evolution.split('').map((letter, index) => (
+                         <span
+                           key={index}
+                           className="evolution-letter inline-block transform-gpu"
+                           style={{
+                             animationDelay: `${0.8 + index * 0.1}s`,
+                             animation: 'evolution-letter-reveal 0.8s ease-out forwards'
+                           }}
+                         >
+                           {letter}
+                         </span>
+                       ))}
+                     </span>
+                    
+                    {/* Enhanced 3D Glow Effects */}
+                    <div className="absolute inset-0 text-white blur-2xl opacity-0 hover:opacity-30 transition-opacity duration-700 evolution-glow" />
+                    <div className="absolute inset-0 text-cyber-blue blur-xl opacity-0 hover:opacity-20 transition-opacity duration-500 evolution-glow-blue" />
+                    <div className="absolute inset-0 text-cyber-pink blur-xl opacity-0 hover:opacity-20 transition-opacity duration-500 evolution-glow-pink" />
+                    
+                    {/* Floating Particle Effects */}
+                    <div className="absolute -top-4 -left-4 w-3 h-3 bg-cyber-blue rounded-full opacity-60 animate-pulse-slow evolution-particle-1" />
+                    <div className="absolute -top-2 -right-2 w-2 h-2 bg-cyber-pink rounded-full opacity-60 animate-pulse-slow evolution-particle-2" style={{ animationDelay: '0.5s' }} />
+                    <div className="absolute -bottom-3 left-1/2 w-2.5 h-2.5 bg-cyber-purple rounded-full opacity-60 animate-pulse-slow evolution-particle-3" style={{ animationDelay: '1s' }} />
+                    
+                    {/* Morphing Geometric Shapes */}
+                    <div className="absolute -top-6 -right-6 w-4 h-4 evolution-shape-1">
+                      <div className="w-full h-full geometric-shape bg-gradient-to-br from-cyber-blue/30 to-cyber-pink/30 floating-3d perspective-3d" />
+                    </div>
+                    <div className="absolute -bottom-6 -left-6 w-5 h-5 evolution-shape-2">
+                      <div className="w-full h-full geometric-shape-alt bg-gradient-to-br from-cyber-purple/30 to-cyber-green/30 floating-3d perspective-3d" style={{ animationDelay: '0.8s' }} />
+                    </div>
+                    
+                    {/* Energy Field Around Text */}
+                    <div className="absolute inset-0 -m-8 bg-gradient-radial from-cyber-blue/5 via-transparent to-cyber-pink/5 rounded-full evolution-energy-field" />
+                    
+                    {/* Scan Line Effect */}
+                    <div className="absolute inset-0 evolution-scan-line">
+                      <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-cyber-blue to-transparent opacity-60" />
+                    </div>
+                  </div>
                 </div>
         </h1>
         
@@ -75,9 +112,9 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
             align="center"
             variant="default"
             containerClassName="max-w-5xl mx-auto"
-            textClassName="text-gray-300 font-light leading-relaxed"
+            textClassName="text-gray-300 font-normal leading-relaxed text-lg md:text-xl max-w-4xl mx-auto"
           >
-            We craft digital experiences that push boundaries and create lasting impact. From concept to execution, we transform ideas into innovative solutions that drive growth and engagement.
+            {t.hero.subtitle}
           </ScrollReveal>
           
           {/* Floating Tech Icons */}
@@ -89,78 +126,139 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
           </div>
         </div>
         
-        {/* Enhanced CTA Buttons with Advanced 3D Effects */}
-        <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-24">
-          <Button className="relative group overflow-hidden bg-cyber-gradient hover:shadow-cyber-blue/50 text-white px-12 py-6 rounded-3xl text-xl font-bold shadow-2xl transition-all duration-500 hover:scale-110 hover:-translate-y-2 transform-gpu">
-            {/* Enhanced 3D Background */}
-            <div className="absolute inset-0 bg-cyber-gradient opacity-100 group-hover:opacity-80 transition-opacity duration-300" />
-            
-            {/* Content */}
-            <div className="relative z-10 flex items-center">
-                                    <span className="mr-3">{t.hero.primaryCTA}</span>
-              <ArrowRight className="w-7 h-7 group-hover:translate-x-3 transition-transform duration-300" />
-            </div>
-            
-            {/* Enhanced 3D Glow Effect */}
-            <div className="absolute inset-0 bg-cyber-gradient rounded-3xl blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
-            
-            {/* Floating Particles */}
-            <div className="absolute -top-2 -right-2 w-3 h-3 bg-cyber-pink rounded-full opacity-60 animate-pulse-slow" />
-            <div className="absolute -bottom-2 -left-2 w-2 h-2 bg-cyber-blue rounded-full opacity-60 animate-pulse-slow" style={{ animationDelay: '1s' }} />
-          </Button>
-          
-        </div>
+
         
-        {/* Enhanced Stats Grid with Advanced 3D Effects */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-20">
-          {[
-            { number: "150+", label: t.hero.stats.transformations, color: "cyber-blue", icon: Zap },
-            { number: "75+", label: t.hero.stats.partners, color: "cyber-pink", icon: Rocket },
-            { number: "8", label: t.hero.stats.years, color: "cyber-purple", icon: Sparkles }
-          ].map((stat, index) => (
-            <div key={index} className="group">
-              <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">
-                {/* Enhanced Icon Container */}
-                <div className="relative mb-6">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-${stat.color} to-${stat.color}/50 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
-                    <stat.icon className="w-10 h-10 text-white" />
-                  </div>
-                  
-                  {/* Enhanced 3D Glow Effect */}
-                  <div className={`absolute inset-0 w-20 h-20 bg-gradient-to-br from-${stat.color} to-${stat.color}/50 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
-                </div>
-                
-                {/* Enhanced Stats */}
-                <div className={`text-6xl font-black text-${stat.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  {stat.number}
-                </div>
-                
-                <div className="text-gray-300 text-center leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
-                  {stat.label}
-                </div>
-                
-                {/* Enhanced 3D Progress Bar */}
-                <div className="mt-8">
-                  <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden">
-                    <div 
-                      className={`h-3 bg-gradient-to-r from-${stat.color} to-${stat.color}/50 rounded-full transition-all duration-1000 ease-out`}
-                      style={{ 
-                        width: '0%',
-                        animationDelay: `${index * 0.3}s`,
-                        animation: 'progress-fill 1s ease-out forwards'
-                      }}
-                    />
-                  </div>
-                </div>
-                
-                {/* Floating Elements */}
-                <div className="absolute -top-2 -right-2 w-4 h-4 opacity-40">
-                  <div className={`w-full h-full geometric-shape bg-gradient-to-br from-${stat.color} to-${stat.color}/50 floating-3d`} style={{ animationDelay: `${index * 0.3}s` }} />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                 {/* Enhanced Stats Grid with Advanced 3D Effects */}
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-20">
+           {/* First Card - Digital Transformations (Blue) */}
+           <div className="group">
+             <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">
+               {/* Enhanced Icon Container */}
+               <div className="relative mb-6">
+                 <div className="w-20 h-20 bg-gradient-to-br from-cyber-blue to-cyber-blue/50 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                   <Zap className="w-10 h-10 text-white" />
+                 </div>
+                 
+                 {/* Enhanced 3D Glow Effect */}
+                 <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-cyber-blue to-cyber-blue/50 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+               </div>
+               
+               {/* Enhanced Stats */}
+               <div className="text-6xl font-black text-cyber-blue mb-4 group-hover:scale-110 transition-transform duration-300">
+                 150+
+               </div>
+               
+               <div className="text-gray-300 text-center leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
+                 {t.hero.stats.transformations}
+               </div>
+               
+               {/* Enhanced 3D Progress Bar */}
+               <div className="mt-8">
+                 <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden">
+                   <div 
+                     className="h-3 bg-gradient-to-r from-cyber-blue to-cyber-blue/50 rounded-full transition-all duration-1000 ease-out"
+                     style={{ 
+                       width: '0%',
+                       animationDelay: '0s',
+                       animation: 'progress-fill 1s ease-out forwards'
+                     }}
+                   />
+                 </div>
+               </div>
+               
+               {/* Floating Elements */}
+               <div className="absolute -top-2 -right-2 w-4 h-4 opacity-40">
+                 <div className="w-full h-full geometric-shape bg-gradient-to-br from-cyber-blue to-cyber-blue/50 floating-3d" style={{ animationDelay: '0s' }} />
+               </div>
+             </div>
+           </div>
+
+           {/* Second Card - Happy Partners (Pink) */}
+           <div className="group">
+             <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">
+               {/* Enhanced Icon Container */}
+               <div className="relative mb-6">
+                 <div className="w-20 h-20 bg-gradient-to-br from-cyber-pink to-cyber-pink/50 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                   <Rocket className="w-10 h-10 text-white" />
+                 </div>
+                 
+                 {/* Enhanced 3D Glow Effect */}
+                 <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-cyber-pink to-cyber-pink/50 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+               </div>
+               
+               {/* Enhanced Stats */}
+               <div className="text-6xl font-black text-cyber-pink mb-4 group-hover:scale-110 transition-transform duration-300">
+                 75+
+               </div>
+               
+               <div className="text-gray-300 text-center leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
+                 {t.hero.stats.partners}
+               </div>
+               
+               {/* Enhanced 3D Progress Bar */}
+               <div className="mt-8">
+                 <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden">
+                   <div 
+                     className="h-3 bg-gradient-to-r from-cyber-pink to-cyber-pink/50 rounded-full transition-all duration-1000 ease-out"
+                     style={{ 
+                       width: '0%',
+                       animationDelay: '0.3s',
+                       animation: 'progress-fill 1s ease-out forwards'
+                     }}
+                   />
+                 </div>
+               </div>
+               
+               {/* Floating Elements */}
+               <div className="absolute -top-2 -right-2 w-4 h-4 opacity-40">
+                 <div className="w-full h-full geometric-shape bg-gradient-to-br from-cyber-pink to-cyber-pink/50 floating-3d" style={{ animationDelay: '0.3s' }} />
+               </div>
+             </div>
+           </div>
+
+           {/* Third Card - Years of Excellence (Purple) */}
+           <div className="group">
+             <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">
+               {/* Enhanced Icon Container */}
+               <div className="relative mb-6">
+                 <div className="w-20 h-20 bg-gradient-to-br from-cyber-purple to-cyber-purple/50 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                   <Sparkles className="w-10 h-10 text-white" />
+                 </div>
+                 
+                 {/* Enhanced 3D Glow Effect */}
+                 <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-cyber-purple to-cyber-purple/50 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+               </div>
+               
+               {/* Enhanced Stats */}
+               <div className="text-6xl font-black text-cyber-purple mb-4 group-hover:scale-110 transition-transform duration-300">
+                 8
+               </div>
+               
+               <div className="text-gray-300 text-center leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
+                 {t.hero.stats.years}
+               </div>
+               
+               {/* Enhanced 3D Progress Bar */}
+               <div className="mt-8">
+                 <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden">
+                   <div 
+                     className="h-3 bg-gradient-to-r from-cyber-purple to-cyber-purple/50 rounded-full transition-all duration-1000 ease-out"
+                     style={{ 
+                       width: '0%',
+                       animationDelay: '0.6s',
+                       animation: 'progress-fill 1s ease-out forwards'
+                     }}
+                   />
+                 </div>
+               </div>
+               
+               {/* Floating Elements */}
+               <div className="absolute -top-2 -right-2 w-4 h-4 opacity-40">
+                 <div className="w-full h-full geometric-shape bg-gradient-to-br from-cyber-purple to-cyber-purple/50 floating-3d" style={{ animationDelay: '0.6s' }} />
+               </div>
+             </div>
+           </div>
+         </div>
 
       </div>
       

@@ -37,32 +37,16 @@ export default function Footer({ language = 'en' }: FooterProps) {
           {/* Enhanced Brand */}
           <div className="md:col-span-2">
             <div className="mb-8 animate-fade-in-up">
-              <div className="flex items-center space-x-4 mb-6">
+              <div className="flex items-center justify-start mb-6">
                 <div className="relative group">
-                  <div className="w-16 h-16 bg-cyber-gradient rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 100 100"
-                      className="animate-pulse-slow"
-                    >
-                      <path d="M50 30 Q30 10 20 25 Q25 40 50 35" fill="white" fillOpacity="0.9" />
-                      <path d="M50 30 Q70 10 80 25 Q75 40 50 35" fill="white" fillOpacity="0.7" />
-                      <path d="M50 35 Q30 45 25 60 Q35 70 50 65" fill="white" fillOpacity="0.8" />
-                      <path d="M50 35 Q70 45 75 60 Q65 70 50 65" fill="white" fillOpacity="0.6" />
-                      <line x1="50" y1="25" x2="50" y2="75" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  <div className="absolute inset-0 w-16 h-16 bg-cyber-gradient rounded-2xl -z-10 animate-pulse-slow blur-xl opacity-50" />
-                </div>
-                <div>
-                  <h3 className="playfair text-3xl font-bold gradient-text mb-2">
-                    {t.brand.name}
-                  </h3>
-                  <div className="flex items-center space-x-2">
-                    <Sparkles className="w-4 h-4 text-cyber-pink" />
-                    <span className="text-cyber-blue font-mono text-sm tracking-wider">{t.brand.tagline}</span>
-                  </div>
+                                     <img
+                     src="/main logo.png"
+                     alt="CodeButterfly Logo"
+                     className="w-45 h-45 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                   />
+                   
+                   {/* Subtle Background Glow */}
+                   <div className="absolute inset-0 w-45 h-45 bg-cyber-blue/10 rounded-full -z-10 animate-pulse-slow blur-xl opacity-30" />
                 </div>
               </div>
                                 <p className="text-gray-300 leading-relaxed max-w-md text-lg">

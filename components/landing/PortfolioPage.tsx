@@ -7,28 +7,25 @@ import ButterflyAnimation from '@/components/landing/ButterflyAnimation';
 import UnifiedNavbar from '@/components/ui/UnifiedNavbar';
 import Footer from '@/components/landing/Footer';
 import { useTranslations, type Language } from '@/lib/static-i18n';
+import { PortfolioService, type PortfolioItem } from '@/lib/portfolio-service';
 
 interface PortfolioPageProps {
   language: Language;
-  portfolioData: any[];
 }
 
-export default function PortfolioPage({ language, portfolioData }: PortfolioPageProps) {
+export default function PortfolioPage({ language }: PortfolioPageProps) {
   const [currentLanguage, setCurrentLanguage] = useState<Language>(language);
-  const [portfolioItems, setPortfolioItems] = useState<any[]>([]);
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
   const t = useTranslations(currentLanguage);
 
   useEffect(() => {
-    setPortfolioItems(portfolioData);
+    setPortfolioItems(PortfolioService.getPortfolioItems(language));
     setCurrentLanguage(language);
-  }, [portfolioData, language]);
+  }, [language]);
 
   // Function to create proper language-aware navigation links
   const createProjectLink = (projectId: number) => {
-    if (currentLanguage === 'en') {
-      return `/en/projects/${projectId}`;
-    }
-    return `/${currentLanguage}/projects/${projectId}`;
+    return PortfolioService.createProjectLink(currentLanguage, projectId);
   };
 
   const [activeCategory, setActiveCategory] = useState(t.portfolio.categories.all);

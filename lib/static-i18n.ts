@@ -18,12 +18,18 @@ export const portfolioData = {
       description: "Modern shopping experience with seamless checkout and inventory management.",
       fullDescription: "A complete e-commerce solution built for a fashion retailer, featuring advanced product filtering, wishlist functionality, secure payment processing, and comprehensive admin dashboard. The platform handles over 10,000 products with real-time inventory management.",
       category: "Web Development",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      image: "/project1.jpg",
+      images: ["/project1.jpg", "/project1.1.jpg", "/project1.2.jpg"],
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
       color: "cyber-blue",
       duration: "4 months",
       client: "Fashion Forward Co.",
-      results: ["300% increase in online sales", "50% reduction in cart abandonment", "99.9% uptime achieved"]
+      results: ["300% increase in online sales", "50% reduction in cart abandonment", "99.9% uptime achieved"],
+      teamSize: "8 developers",
+      budget: "$150,000",
+      challenges: ["Complex inventory management", "High-security requirements", "Scalability concerns"],
+      solutions: ["Microservices architecture", "Real-time sync system", "Cloud-native deployment"],
+      testimonials: ["The platform transformed our business operations completely", "Our customers love the seamless experience", "The admin dashboard is incredibly intuitive"]
     },
     {
       id: 2,
@@ -31,12 +37,18 @@ export const portfolioData = {
       description: "Intelligent data visualization and predictive analytics platform.",
       fullDescription: "An enterprise-level analytics dashboard that processes millions of data points in real-time, providing AI-driven insights and predictive modeling for business intelligence.",
       category: "AI & Analytics",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      image: "/project2.jpg",
+      images: ["/project2.jpg", "/project2.1.jpg", "/project2.2.jpg"],
       technologies: ["Python", "TensorFlow", "React", "PostgreSQL"],
       color: "cyber-green",
       duration: "6 months",
       client: "DataCorp Inc.",
-      results: ["40% faster decision making", "Real-time data processing", "AI-powered insights"]
+      results: ["40% faster decision making", "Real-time data processing", "AI-powered insights"],
+      teamSize: "12 developers",
+      budget: "$250,000",
+      challenges: ["Big data processing", "Real-time analytics", "AI model accuracy"],
+      solutions: ["Distributed computing", "Stream processing", "Continuous learning models"],
+      testimonials: ["The insights have revolutionized our business strategy", "Real-time data gives us a competitive edge", "The AI predictions are incredibly accurate"]
     },
     {
       id: 3,
@@ -44,12 +56,18 @@ export const portfolioData = {
       description: "Secure and intuitive mobile banking experience for modern users.",
       fullDescription: "A comprehensive mobile banking application with biometric authentication, real-time transaction monitoring, investment portfolio management, and AI-powered fraud detection. Built with React Native for cross-platform compatibility.",
       category: "Mobile Development",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+      image: "/project3.jpg",
+      images: ["/project3.jpg", "/project3.1.jpg", "/project3.2.jpg"],
       technologies: ["React Native", "Node.js", "PostgreSQL", "Redis", "AWS"],
       color: "cyber-purple",
       duration: "8 months",
       client: "DigitalBank Pro",
-      results: ["2M+ active users", "99.99% security rating", "40% faster transactions"]
+      results: ["2M+ active users", "99.99% security rating", "40% faster transactions"],
+      teamSize: "15 developers",
+      budget: "$400,000",
+      challenges: ["Security compliance", "Cross-platform compatibility", "Real-time processing"],
+      solutions: ["Bank-level encryption", "Unified codebase", "Event-driven architecture"],
+      testimonials: ["Our customers love the app's security features", "The cross-platform approach saved us millions", "Real-time updates keep users engaged"]
     },
     {
       id: 4,
@@ -57,12 +75,18 @@ export const portfolioData = {
       description: "Connected home automation system with intelligent device management.",
       fullDescription: "An IoT platform that connects and controls smart home devices through a unified interface. Features include voice control, automated scheduling, energy optimization, and remote monitoring capabilities.",
       category: "IoT & Hardware",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
+      image: "/project4.jpg",
+      images: ["/project4.jpg", "/project4.1.jpg", "/project4.2.jpg"],
       technologies: ["Python", "React", "MQTT", "TensorFlow", "Raspberry Pi"],
       color: "cyber-orange",
       duration: "5 months",
       client: "SmartHome Solutions",
-      results: ["30% energy savings", "5000+ devices connected", "95% user satisfaction"]
+      results: ["30% energy savings", "5000+ devices connected", "95% user satisfaction"],
+      teamSize: "10 developers",
+      budget: "$180,000",
+      challenges: ["Device compatibility", "Network security", "User experience"],
+      solutions: ["Universal protocol support", "End-to-end encryption", "Intuitive mobile app"],
+      testimonials: ["Our smart home system is incredibly reliable", "The energy savings are remarkable", "Setup was surprisingly simple"]
     },
     {
       id: 5,
@@ -70,12 +94,18 @@ export const portfolioData = {
       description: "Transparent and secure supply chain tracking using blockchain technology.",
       fullDescription: "A blockchain-based supply chain management system that provides end-to-end visibility, automated compliance checking, and real-time tracking of goods from manufacturer to consumer.",
       category: "Blockchain",
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
+      image: "/project5.jpg",
+      images: ["/project5.jpg", "/project5.1.jpg", "/project5.2.jpg"],
       technologies: ["Ethereum", "Solidity", "React", "Node.js", "IPFS"],
       color: "cyber-cyan",
       duration: "7 months",
       client: "Global Logistics Corp",
-      results: ["100% transparency achieved", "60% reduction in fraud", "Real-time tracking"]
+      results: ["100% transparency achieved", "60% reduction in fraud", "Real-time tracking"],
+      teamSize: "14 developers",
+      budget: "$320,000",
+      challenges: ["Blockchain scalability", "Regulatory compliance", "Integration complexity"],
+      solutions: ["Layer 2 scaling", "Smart contract automation", "API-first architecture"],
+      testimonials: ["The transparency has transformed our industry", "Fraud detection is now automated", "Our partners trust the system completely"]
     }
   ],
   ru: [
@@ -85,12 +115,18 @@ export const portfolioData = {
       description: "Современный опыт покупок с бесшовным оформлением заказа и управлением запасами.",
       fullDescription: "Полное e-commerce решение для модного ритейлера с расширенной фильтрацией продуктов, функцией списка желаний, безопасной обработкой платежей и комплексной админ-панелью.",
       category: "Веб-разработка",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      image: "/project1.jpg",
+      images: ["/project1.jpg", "/project1.1.jpg", "/project1.2.jpg"],
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
       color: "cyber-blue",
       duration: "4 месяца",
       client: "Fashion Forward Co.",
-      results: ["300% увеличение онлайн-продаж", "50% снижение отказов от корзины", "99.9% время безотказной работы"]
+      results: ["300% увеличение онлайн-продаж", "50% снижение отказов от корзины", "99.9% время безотказной работы"],
+      teamSize: "8 разработчиков",
+      budget: "$150,000",
+      challenges: ["Сложное управление запасами", "Высокие требования безопасности", "Проблемы масштабируемости"],
+      solutions: ["Микросервисная архитектура", "Система синхронизации в реальном времени", "Облачное развертывание"],
+      testimonials: ["Платформа полностью изменила наши бизнес-процессы", "Нашим клиентам нравится бесшовный опыт", "Админ-панель невероятно интуитивна"]
     },
     {
       id: 2,
@@ -98,12 +134,18 @@ export const portfolioData = {
       description: "Интеллектуальная визуализация данных и платформа прогнозной аналитики.",
       fullDescription: "Корпоративная аналитическая панель, обрабатывающая миллионы точек данных в реальном времени.",
       category: "AI и Аналитика",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      image: "/project2.jpg",
+      images: ["/project2.jpg", "/project2.1.jpg", "/project2.2.jpg"],
       technologies: ["Python", "TensorFlow", "React", "PostgreSQL"],
       color: "cyber-green",
       duration: "6 месяцев",
       client: "DataCorp Inc.",
-      results: ["40% быстрее принятие решений", "Обработка данных в реальном времени", "AI-инсайты"]
+      results: ["40% быстрее принятие решений", "Обработка данных в реальном времени", "AI-инсайты"],
+      teamSize: "12 разработчиков",
+      budget: "$250,000",
+      challenges: ["Обработка больших данных", "Аналитика в реальном времени", "Точность AI-моделей"],
+      solutions: ["Распределенные вычисления", "Потоковая обработка", "Модели непрерывного обучения"],
+      testimonials: ["Инсайты революционизировали нашу бизнес-стратегию", "Данные в реальном времени дают нам конкурентное преимущество", "AI-прогнозы невероятно точны"]
     },
     {
       id: 3,
@@ -111,12 +153,18 @@ export const portfolioData = {
       description: "Безопасный и интуитивный мобильный банкинг для современных пользователей.",
       fullDescription: "Комплексное мобильное банковское приложение с биометрической аутентификацией, мониторингом транзакций в реальном времени, управлением инвестиционным портфелем и AI-обнаружением мошенничества.",
       category: "Мобильная Разработка",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+      image: "/project3.jpg",
+      images: ["/project3.jpg", "/project3.1.jpg", "/project3.2.jpg"],
       technologies: ["React Native", "Node.js", "PostgreSQL", "Redis", "AWS"],
       color: "cyber-purple",
       duration: "8 месяцев",
       client: "DigitalBank Pro",
-      results: ["2M+ активных пользователей", "99.99% рейтинг безопасности", "40% быстрее транзакции"]
+      results: ["2M+ активных пользователей", "99.99% рейтинг безопасности", "40% быстрее транзакции"],
+      teamSize: "15 разработчиков",
+      budget: "$400,000",
+      challenges: ["Соответствие требованиям безопасности", "Кросс-платформенная совместимость", "Обработка в реальном времени"],
+      solutions: ["Шифрование банковского уровня", "Единая кодовая база", "Событийно-ориентированная архитектура"],
+      testimonials: ["Нашим клиентам нравятся функции безопасности приложения", "Кросс-платформенный подход сэкономил нам миллионы", "Обновления в реальном времени удерживают пользователей"]
     },
     {
       id: 4,
@@ -124,12 +172,18 @@ export const portfolioData = {
       description: "Подключенная система автоматизации дома с интеллектуальным управлением устройствами.",
       fullDescription: "IoT платформа для подключения и управления умными домашними устройствами через единый интерфейс. Включает голосовое управление, автоматическое планирование, оптимизацию энергии.",
       category: "IoT и Оборудование",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
+      image: "/project4.jpg",
+      images: ["/project4.jpg", "/project4.1.jpg", "/project4.2.jpg"],
       technologies: ["Python", "React", "MQTT", "TensorFlow", "Raspberry Pi"],
       color: "cyber-orange",
       duration: "5 месяцев",
       client: "SmartHome Solutions",
-      results: ["30% экономия энергии", "5000+ подключенных устройств", "95% удовлетворенность пользователей"]
+      results: ["30% экономия энергии", "5000+ подключенных устройств", "95% удовлетворенность пользователей"],
+      teamSize: "10 разработчиков",
+      budget: "$180,000",
+      challenges: ["Совместимость устройств", "Безопасность сети", "Пользовательский опыт"],
+      solutions: ["Поддержка универсальных протоколов", "Сквозное шифрование", "Интуитивное мобильное приложение"],
+      testimonials: ["Наша система умного дома невероятно надежна", "Экономия энергии замечательная", "Настройка была удивительно простой"]
     },
     {
       id: 5,
@@ -137,12 +191,18 @@ export const portfolioData = {
       description: "Прозрачное и безопасное отслеживание цепочки поставок с использованием блокчейн-технологии.",
       fullDescription: "Система управления цепочкой поставок на основе блокчейна, обеспечивающая полную прозрачность, автоматическую проверку соответствия и отслеживание товаров в реальном времени.",
       category: "Блокчейн",
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
+      image: "/project5.jpg",
+      images: ["/project5.jpg", "/project5.1.jpg", "/project5.2.jpg"],
       technologies: ["Ethereum", "Solidity", "React", "Node.js", "IPFS"],
       color: "cyber-cyan",
       duration: "7 месяцев",
       client: "Global Logistics Corp",
-      results: ["100% прозрачность достигнута", "60% снижение мошенничества", "Отслеживание в реальном времени"]
+      results: ["100% прозрачность достигнута", "60% снижение мошенничества", "Отслеживание в реальном времени"],
+      teamSize: "14 разработчиков",
+      budget: "$320,000",
+      challenges: ["Масштабируемость блокчейна", "Регуляторное соответствие", "Сложность интеграции"],
+      solutions: ["Масштабирование второго уровня", "Автоматизация смарт-контрактов", "API-первая архитектура"],
+      testimonials: ["Прозрачность изменила нашу отрасль", "Обнаружение мошенничества теперь автоматизировано", "Наши партнеры полностью доверяют системе"]
     }
   ],
   az: [
@@ -152,12 +212,18 @@ export const portfolioData = {
       description: "Müasir alış-veriş təcrübəsi və inventar idarəetməsi ilə.",
       fullDescription: "Moda pərakəndə satıcısı üçün qurulmuş tam e-commerce həlli, təkmilləşdirilmiş məhsul filtri, arzu siyahısı funksionallığı, təhlükəsiz ödəniş emalı və hərtərəfli admin paneli.",
       category: "Veb İnkişaf",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      image: "/project1.jpg",
+      images: ["/project1.jpg", "/project1.1.jpg", "/project1.2.jpg"],
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
       color: "cyber-blue",
       duration: "4 ay",
       client: "Fashion Forward Co.",
-      results: ["300% online satış artımı", "50% səbət tərk etmə azalması", "99.9% işləmə vaxtı"]
+      results: ["300% online satış artımı", "50% səbət tərk etmə azalması", "99.9% işləmə vaxtı"],
+      teamSize: "8 developer",
+      budget: "$150,000",
+      challenges: ["Mürəkkəb inventar idarəetməsi", "Yüksək təhlükəsizlik tələbləri", "Ölçəkləndirmə narahatlıqları"],
+      solutions: ["Mikroservis arxitekturası", "Real vaxt sinxronizasiya sistemi", "Bulud əsaslı yerləşdirmə"],
+      testimonials: ["Platforma biznes əməliyyatlarımızı tamamilə dəyişdi", "Müştərilərimiz problemsiz təcrübəni sevirlər", "Admin paneli inanılmaz dərəcədə intuitivdir"]
     },
     {
       id: 2,
@@ -165,12 +231,18 @@ export const portfolioData = {
       description: "İntellektual məlumat vizuallaşdırması və proqnoz analitika platforması.",
       fullDescription: "Milyonlarla məlumat nöqtəsini real vaxtda emal edən korporativ analitika paneli.",
       category: "AI və Analitika",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      image: "/project2.jpg",
+      images: ["/project2.jpg", "/project2.1.jpg", "/project2.2.jpg"],
       technologies: ["Python", "TensorFlow", "React", "PostgreSQL"],
       color: "cyber-green",
       duration: "6 ay",
       client: "DataCorp Inc.",
-      results: ["40% daha sürətli qərar qəbulu", "Real vaxtda məlumat emalı", "AI-dəstəkli içgörülər"]
+      results: ["40% daha sürətli qərar qəbulu", "Real vaxtda məlumat emalı", "AI-dəstəkli içgörülər"],
+      teamSize: "12 developer",
+      budget: "$250,000",
+      challenges: ["Böyük məlumat emalı", "Real vaxt analitikası", "AI model dəqiqliyi"],
+      solutions: ["Paylanmış hesablama", "Axın emalı", "Davamlı öyrənmə modelləri"],
+      testimonials: ["İçgörülər biznes strategiyamızı inqilab etdi", "Real vaxt məlumatları bizə rəqabət üstünlüyü verir", "AI proqnozları inanılmaz dərəcədə dəqiqdir"]
     },
     {
       id: 3,
@@ -178,12 +250,18 @@ export const portfolioData = {
       description: "Müasir istifadəçilər üçün təhlükəsiz və intuitiv mobil bank təcrübəsi.",
       fullDescription: "Biometrik autentifikasiya, real vaxtda əməliyyat monitorinqi, investisiya portfeli idarəetməsi və AI-dəstəkli dolandırıcılıq aşkarlanması ilə tam mobil bank tətbiqi.",
       category: "Mobil İnkişaf",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+      image: "/project3.jpg",
+      images: ["/project3.jpg", "/project3.1.jpg", "/project3.2.jpg"],
       technologies: ["React Native", "Node.js", "PostgreSQL", "Redis", "AWS"],
       color: "cyber-purple",
       duration: "8 ay",
       client: "DigitalBank Pro",
-      results: ["2M+ aktiv istifadəçi", "99.99% təhlükəsizlik reytinqi", "40% daha sürətli əməliyyatlar"]
+      results: ["2M+ aktiv istifadəçi", "99.99% təhlükəsizlik reytinqi", "40% daha sürətli əməliyyatlar"],
+      teamSize: "15 developer",
+      budget: "$400,000",
+      challenges: ["Təhlükəsizlik uyğunluğu", "Kross-platform uyğunluq", "Real vaxt emalı"],
+      solutions: ["Bank səviyyəli şifrələmə", "Vahid kod bazası", "Hadisə əsaslı arxitektura"],
+      testimonials: ["Müştərilərimiz tətbiqin təhlükəsizlik xüsusiyyətlərini sevirlər", "Kross-platform yanaşma bizə milyonlarla qənaət etdi", "Real vaxt yeniləmələri istifadəçiləri saxlayır"]
     },
     {
       id: 4,
@@ -191,25 +269,37 @@ export const portfolioData = {
       description: "İntellektual cihaz idarəetməsi ilə bağlı ev avtomatlaşdırma sistemi.",
       fullDescription: "Ağıllı ev cihazlarını vahid interfeys vasitəsilə birləşdirən və idarə edən IoT platforması. Səs idarəetməsi, avtomatik planlaşdırma, enerji optimallaşdırması daxildir.",
       category: "IoT və Avadanlıq",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
+      image: "/project4.jpg",
+      images: ["/project4.jpg", "/project4.1.jpg", "/project4.2.jpg"],
       technologies: ["Python", "React", "MQTT", "TensorFlow", "Raspberry Pi"],
       color: "cyber-orange",
       duration: "5 ay",
       client: "SmartHome Solutions",
-      results: ["30% enerji qənaəti", "5000+ bağlı cihaz", "95% istifadəçi məmnuniyyəti"]
+      results: ["30% enerji qənaəti", "5000+ bağlı cihaz", "95% istifadəçi məmnuniyyəti"],
+      teamSize: "10 developer",
+      budget: "$180,000",
+      challenges: ["Cihaz uyğunluğu", "Şəbəkə təhlükəsizliyi", "İstifadəçi təcrübəsi"],
+      solutions: ["Universal protokol dəstəyi", "Son-dan-sona şifrələmə", "İntuitiv mobil tətbiq"],
+      testimonials: ["Ağıllı ev sistemimiz inanılmaz dərəcədə etibarlıdır", "Enerji qənaəti diqqət çəkicidir", "Quraşdırma təəccüblü dərəcədə sadə idi"]
     },
     {
       id: 5,
       title: "Blokçeyn Təchizat Zənciri",
-      description: "Blokçeyn texnologiyasından istifadə edərək təchizat zəncirinin şəffaf və təhlükəsiz izlənilməsi.",
+      description: "Blokçeyn texnologiyasından istifadə edərək təchizat zəncirinin şəffaf və təhlükəsiz izlənilməsini.",
       fullDescription: "İstehsalçıdan istehlakçıya qədər malların real vaxtda izlənilməsini təmin edən blokçeyn əsaslı təchizat zənciri idarəetmə sistemi.",
       category: "Blokçeyn",
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
+      image: "/project5.jpg",
+      images: ["/project5.jpg", "/project5.1.jpg", "/project5.2.jpg"],
       technologies: ["Ethereum", "Solidity", "React", "Node.js", "IPFS"],
       color: "cyber-cyan",
       duration: "7 ay",
       client: "Global Logistics Corp",
-      results: ["100% şəffaflıq əldə edildi", "60% dolandırıcılıq azalması", "Real vaxtda izləmə"]
+      results: ["100% şəffaflıq əldə edildi", "60% dolandırıcılıq azalması", "Real vaxtda izləmə"],
+      teamSize: "14 developer",
+      budget: "$320,000",
+      challenges: ["Blokçeyn ölçəkləndirməsi", "Tənzimləyici uyğunluq", "İnteqrasiya mürəkkəbliyi"],
+      solutions: ["İkinci səviyyə ölçəkləndirmə", "Ağıllı müqavilə avtomatlaşdırması", "API-ilk arxitektura"],
+      testimonials: ["Şəffaflıq sənayimizi dəyişdi", "Dolandırıcılıq aşkarlanması indi avtomatlaşdırılıb", "Tərəfdaşlarımız sisteme tamamilə güvənirlər"]
     }
   ]
 };
@@ -220,6 +310,7 @@ export const translations = {
     brand: { name: "CodeButterfly", tagline: "Crafting Digital Excellence" },
     hero: {
       title: "CodeButterfly",
+      evolution: "EVOLUTION",
       subtitle: "We craft digital experiences that push boundaries and create lasting impact. From concept to execution, we transform ideas into innovative solutions that drive growth and engagement.",
       cta: "Get Started",
       primaryCTA: "Get Started",
@@ -353,6 +444,7 @@ export const translations = {
     brand: { name: "CodeButterfly", tagline: "Создаем Цифровое Превосходство" },
     hero: {
       title: "CodeButterfly",
+      evolution: "ЭВОЛЮЦИЯ",
       subtitle: "Мы создаем цифровые впечатления, которые преодолевают границы и создают долгосрочное влияние. От концепции до исполнения мы превращаем идеи в инновационные решения, которые стимулируют рост и вовлеченность.",
       cta: "Начать",
       primaryCTA: "Начать",
@@ -486,6 +578,7 @@ export const translations = {
     brand: { name: "CodeButterfly", tagline: "Rəqəmsal Mükəmməllik Yaradırıq" },
     hero: {
       title: "CodeButterfly",
+      evolution: "EVOLUSİYA",
       subtitle: "Biz sərhədləri aşan və uzunmüddətli təsir yaradan rəqəmsal təcrübələr yaradırıq. Konsepsiyadan icra etməyə qədər ideyaları artım və təşəbbüskarlığı stimullaşdıran innovativ həllərə çeviririk.",
       cta: "Başla",
       primaryCTA: "Başla",

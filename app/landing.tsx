@@ -38,7 +38,7 @@ export default function Landing({ language = 'en' }: LandingProps) {
         </section>
         
         {/* Portfolio Section - 3D Carousel */}
-        <section id="portfolio">
+        <section id="portfolio" className="py-16">
           <PortfolioCarousel3D language={language} />
         </section>
         

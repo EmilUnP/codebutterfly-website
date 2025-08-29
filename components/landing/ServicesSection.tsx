@@ -1,7 +1,6 @@
 import React from 'react';
 import ServiceCard3D from './ServiceCard3D';
-import { Code, Palette, Globe, Zap, Target, TrendingUp, ExternalLink } from 'lucide-react';
-import Link from 'next/link';
+import { Code, Palette, Target, TrendingUp } from 'lucide-react';
 import { type Language, useTranslations } from '@/lib/static-i18n';
 
 
@@ -89,18 +88,7 @@ export default function ServicesSection({ language = 'en' }: ServicesSectionProp
           </div>
         </div>
 
-        {/* View Our Work CTA */}
-        <div className="text-center mt-16">
-          <p className="text-white/70 text-lg mb-6">
-            {t.services.cta}
-          </p>
-          <Link href="/projects">
-            <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu">
-              <span>{t.services.viewPortfolio}</span>
-              <ExternalLink className="w-5 h-5 ml-2" />
-            </button>
-          </Link>
-        </div>
+
       </div>
     </section>
   );

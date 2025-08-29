@@ -11,17 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { type Language, useTranslations } from '@/lib/static-i18n';
 import { useIsMobile } from '../hooks/use-mobile';
-
-export interface PortfolioCarouselItem {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  technologies: string[];
-  imageUrl: string;
-  link: string;
-  color: string;
-}
+import { PortfolioService, type PortfolioCarouselItem } from '@/lib/portfolio-service';
 
 interface PortfolioCarousel3DProps {
   language?: Language;
@@ -46,59 +36,8 @@ const PortfolioCarousel3D = ({
   const isMobile = useIsMobile();
   const minSwipeDistance = 50;
 
-  // Curated portfolio items for the carousel
-  const portfolioItems: PortfolioCarouselItem[] = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      category: 'Web Development',
-      description: 'Modern shopping experience with seamless checkout and inventory management. Built with cutting-edge technologies for optimal performance.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      imageUrl: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      link: '/projects/1',
-      color: 'cyber-blue'
-    },
-    {
-      id: 2,
-      title: 'Brand Identity Design',
-      category: 'Branding',
-      description: 'Complete brand refresh for a sustainable fashion startup. Created a cohesive visual identity that resonates with modern consumers.',
-      technologies: ['Illustrator', 'Figma', 'After Effects'],
-      imageUrl: 'https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&h=400&fit=crop',
-      link: '/projects/2',
-      color: 'cyber-pink'
-    },
-    {
-      id: 3,
-      title: 'Social Media Campaign',
-      category: 'Social Media',
-      description: 'Instagram campaign that increased engagement by 300% in 3 months. Strategic content creation and audience targeting.',
-      technologies: ['Adobe Suite', 'Analytics', 'Content Strategy'],
-      imageUrl: 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&h=400&fit=crop',
-      link: '/projects/3',
-      color: 'cyber-purple'
-    },
-    {
-      id: 4,
-      title: 'Mobile App UI/UX',
-      category: 'UI/UX Design',
-      description: 'Intuitive fitness app design focused on user motivation and progress tracking. User-centered design approach.',
-      technologies: ['Figma', 'Principle', 'React Native'],
-      imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
-      link: '/projects/4',
-      color: 'cyber-green'
-    },
-    {
-      id: 5,
-      title: 'Corporate Website',
-      category: 'Web Development',
-      description: 'Professional website for a consulting firm with integrated CRM system. Modern design with powerful backend functionality.',
-      technologies: ['Next.js', 'TypeScript', 'Tailwind', 'CMS'],
-      imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop',
-      link: '/projects/5',
-      color: 'cyber-blue'
-    }
-  ];
+  // Get portfolio items from centralized service
+  const portfolioItems: PortfolioCarouselItem[] = PortfolioService.getCarouselItems(language);
 
   useEffect(() => {
     if (autoRotate && isInView && !isHovering) {
@@ -162,7 +101,7 @@ const PortfolioCarousel3D = ({
   };
 
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker">
+    <section className="relative py-16 overflow-hidden bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-5" />
       <div className="absolute inset-0 bg-gradient-to-br from-cyber-purple/5 via-transparent to-cyber-pink/5" />
@@ -193,7 +132,7 @@ const PortfolioCarousel3D = ({
         </div>
 
         {/* 3D Carousel Container */}
-        <div className="relative overflow-hidden h-[600px] mb-16" 
+        <div className="relative overflow-hidden h-[600px] mb-8" 
              onMouseEnter={() => setIsHovering(true)}
              onMouseLeave={() => setIsHovering(false)}
              onTouchStart={onTouchStart}
@@ -319,7 +258,7 @@ const PortfolioCarousel3D = ({
 
         {/* Enhanced CTA */}
         <div className="text-center">
-          <Link href="/projects">
+          <Link href={language === 'en' ? "/en/projects" : `/${language}/projects`}>
             <button className="inline-flex items-center px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-110 hover:-translate-y-1 transition-all duration-500 transform-gpu border border-cyber-blue/50">
               <span>{t.portfolio.viewFull}</span>
               <ExternalLink className="w-5 h-5 ml-2" />

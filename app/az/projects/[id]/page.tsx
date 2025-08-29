@@ -1,4 +1,4 @@
-import { getPortfolioData, getPortfolioItem } from '@/lib/static-i18n'
+import { PortfolioService } from '@/lib/portfolio-service'
 import Link from 'next/link'
 import { ArrowLeft, ExternalLink, Github, Sparkles, Target, Users, TrendingUp } from 'lucide-react'
 import UnifiedNavbar from '@/components/ui/UnifiedNavbar'
@@ -9,15 +9,15 @@ interface Props {
 
 // Generate static params for all portfolio items
 export async function generateStaticParams() {
-  const portfolioData = getPortfolioData('az')
-  return portfolioData.map((item) => ({
+  const portfolioData = PortfolioService.getPortfolioItems('az')
+  return portfolioData.map((item: any) => ({
     id: item.id.toString(),
   }))
 }
 
 export default function AzerbaijaniPortfolioDetail({ params }: Props) {
-  const portfolioData = getPortfolioData('az')
-  const portfolioItem = getPortfolioItem('az', parseInt(params.id))
+  const portfolioData = PortfolioService.getPortfolioItems('az')
+  const portfolioItem = PortfolioService.getPortfolioItem('az', parseInt(params.id))
   
   if (!portfolioItem) {
     return (
@@ -53,21 +53,39 @@ export default function AzerbaijaniPortfolioDetail({ params }: Props) {
         {/* Project Header */}
         <div className="max-w-7xl mx-auto mb-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Project Image */}
-            <div className="relative group">
-              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl">
-                <img
-                  src={portfolioItem.image}
-                  alt={portfolioItem.title}
-                  className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4">
-                  <div className={`px-4 py-2 rounded-full text-sm font-bold bg-${portfolioItem.color}/20 text-${portfolioItem.color} border border-${portfolioItem.color}/30 backdrop-blur-sm`}>
-                    {portfolioItem.category}
+            {/* Project Image Gallery */}
+            <div className="space-y-4">
+              {/* Main Image */}
+              <div className="relative group">
+                <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl">
+                  <img
+                    src={portfolioItem.images[0]}
+                    alt={portfolioItem.title}
+                    className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  
+                  {/* Category Badge */}
+                  <div className="absolute top-4 left-4">
+                    <div className={`px-4 py-2 rounded-full text-sm font-bold bg-${portfolioItem.color}/20 text-${portfolioItem.color} border border-${portfolioItem.color}/30 backdrop-blur-sm`}>
+                      {portfolioItem.category}
+                    </div>
                   </div>
                 </div>
+              </div>
+              
+              {/* Additional Images Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {portfolioItem.images.slice(1).map((image, index) => (
+                  <div key={index} className="relative group">
+                    <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl">
+                      <img
+                        src={image}
+                        alt={`${portfolioItem.title} - Görünüş ${index + 2}`}
+                        className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -114,6 +132,33 @@ export default function AzerbaijaniPortfolioDetail({ params }: Props) {
                   ))}
                 </div>
               </div>
+
+              {/* Challenges & Solutions */}
+              <div className="space-y-6">
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-white">Çətinliklər</h3>
+                  <div className="space-y-2">
+                    {portfolioItem.challenges.map((challenge: string, index: number) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-cyber-red rounded-full mt-2 flex-shrink-0" />
+                        <p className="text-white/80 text-sm">{challenge}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="space-y-3">
+                  <h3 className="text-lg font-semibold text-white">Həll Edilən Problemlər</h3>
+                  <div className="space-y-2">
+                    {portfolioItem.solutions.map((solution: string, index: number) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-cyber-green rounded-full mt-2 flex-shrink-0" />
+                        <p className="text-white/80 text-sm">{solution}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -150,7 +195,7 @@ export default function AzerbaijaniPortfolioDetail({ params }: Props) {
                   className="group block bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-cyber-blue/50 transition-all duration-300 hover:bg-white/10"
                 >
                   <img
-                    src={item.image}
+                    src={item.images[0]}
                     alt={item.title}
                     className="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300"
                   />

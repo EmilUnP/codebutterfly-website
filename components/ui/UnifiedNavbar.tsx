@@ -196,47 +196,25 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
       )}
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className={`flex items-center justify-between ${variant === 'landing' && isLandingPage ? 'h-24' : 'py-4'}`}>
-          {/* Enhanced Logo with Clean 3D Effects */}
+        <div className="flex items-center h-20 py-4">
+          {/* Clean Logo without Button Effects */}
           <div className="flex items-center space-x-4 animate-fade-in-up">
             <Link href={currentLanguage === 'en' ? "/" : `/${currentLanguage}`}>
               <div className="relative group">
-                <div className="w-14 h-14 bg-cyber-gradient rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 group-hover:-translate-y-1 transition-all duration-500 perspective-3d">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 100 100"
-                    className="animate-pulse-slow"
-                  >
-                    <path d="M50 30 Q30 10 20 25 Q25 40 50 35" fill="white" fillOpacity="0.9" />
-                    <path d="M50 30 Q70 10 80 25 Q75 40 50 35" fill="white" fillOpacity="0.7" />
-                    <path d="M50 35 Q30 45 25 60 Q35 70 50 65" fill="white" fillOpacity="0.8" />
-                    <path d="M50 35 Q70 45 75 60 Q65 70 50 65" fill="white" fillOpacity="0.6" />
-                    <line x1="50" y1="25" x2="50" y2="75" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                  </svg>
-                  
-                  {/* Enhanced 3D Glow Effect */}
-                  <div className="absolute inset-0 w-14 h-14 bg-cyber-gradient rounded-3xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-                </div>
+                                                 <img
+                  src="/main logo.png"
+                  alt="CodeButterfly Logo"
+                  className="w-36 h-36 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 group-hover:-translate-y-1 transition-all duration-500"
+                />
+                
+                {/* Subtle Hover Glow Effect */}
+                <div className="absolute inset-0 w-36 h-36 bg-cyber-blue/20 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 -z-10" />
               </div>
             </Link>
-            
-            <div className="hidden sm:block">
-              <Link href={currentLanguage === 'en' ? "/" : `/${currentLanguage}`}>
-                <div className="relative group">
-                  <h1 className="playfair text-3xl font-black gradient-text cursor-pointer transform group-hover:scale-105 group-hover:translate-x-2 transition-all duration-500">
-                    {t.brand.name}
-                  </h1>
-                  
-                  {/* Enhanced Glow Effect */}
-                  <div className="absolute inset-0 gradient-text blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-                </div>
-              </Link>
-            </div>
           </div>
 
-          {/* Enhanced Desktop Navigation with Clean Effects */}
-          <div className="hidden md:flex items-center space-x-10">
+          {/* Enhanced Desktop Navigation with Clean Effects - Moved to Right */}
+          <div className="hidden md:flex items-center space-x-8 ml-auto">
             {navItems.map((item, index) => {
               return (
                 <div
@@ -264,8 +242,8 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
             })}
           </div>
 
-          {/* Language Switcher - Desktop */}
-          <div className="hidden md:flex">
+          {/* Language Switcher - Desktop - Positioned after Navigation */}
+          <div className="hidden md:flex ml-8">
             <LanguageSwitcher />
           </div>
 

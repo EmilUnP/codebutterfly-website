@@ -548,6 +548,76 @@
   50% {
     box-shadow: 0 0 40px rgba(79, 172, 254, 0.6);
   }
+}
+
+/* Enhanced EVOLUTION Text Animations */
+@keyframes evolution-letter-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(90deg) scale(0.5);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-10px) rotateX(45deg) scale(1.1);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) rotateX(0deg) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes evolution-scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes evolution-pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes evolution-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(270deg);
+  }
+}
+
+@keyframes evolution-glow-pulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
 } 
 
 /* Enhanced Portfolio Card Utilities */
@@ -583,4 +653,164 @@
 .tech-tag:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced EVOLUTION Text Styles */
+.evolution-container {
+  position: relative;
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evolution-container:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.evolution-letter {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center bottom;
+}
+
+.evolution-letter:hover {
+  transform: translateY(-8px) scale(1.2) rotateY(15deg);
+  color: #4FACFE;
+  text-shadow: 0 0 15px rgba(79, 172, 254, 0.8);
+}
+
+.evolution-glow {
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evolution-container:hover .evolution-glow {
+  opacity: 0.3;
+}
+
+.evolution-particle-1 {
+  animation: evolution-float 4s ease-in-out infinite;
+}
+
+.evolution-particle-2 {
+  animation: evolution-float 4s ease-in-out infinite reverse;
+}
+
+.evolution-particle-3 {
+  animation: evolution-float 5s ease-in-out infinite;
+}
+
+.evolution-shape-1 {
+  animation: evolution-pulse 3s ease-in-out infinite;
+}
+
+.evolution-shape-2 {
+  animation: evolution-pulse 3.5s ease-in-out infinite reverse;
+}
+
+/* Enhanced EVOLUTION Text Styles and Animations */
+.evolution-container {
+  position: relative;
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evolution-container:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.evolution-text {
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.evolution-text:hover {
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(79, 172, 254, 0.6),
+    0 0 60px rgba(255, 107, 157, 0.4);
+}
+
+.evolution-letter {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center bottom;
+}
+
+.evolution-letter:hover {
+  transform: translateY(-8px) scale(1.2) rotateY(15deg);
+  color: #4FACFE;
+  text-shadow: 
+    0 0 15px rgba(79, 172, 254, 0.8),
+    0 0 30px rgba(79, 172, 254, 0.6);
+}
+
+.evolution-glow {
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evolution-container:hover .evolution-glow {
+  opacity: 0.3;
+  animation: evolution-glow-pulse 2s ease-in-out infinite;
+}
+
+.evolution-glow-blue {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evolution-container:hover .evolution-glow-blue {
+  opacity: 0.2;
+  animation: evolution-glow-pulse 2.5s ease-in-out infinite;
+}
+
+.evolution-glow-pink {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.evolution-container:hover .evolution-glow-pink {
+  opacity: 0.2;
+  animation: evolution-glow-pulse 3s ease-in-out infinite;
+}
+
+.evolution-particle-1 {
+  animation: evolution-float 4s ease-in-out infinite;
+}
+
+.evolution-particle-2 {
+  animation: evolution-float 4s ease-in-out infinite reverse;
+}
+
+.evolution-particle-3 {
+  animation: evolution-float 5s ease-in-out infinite;
+}
+
+.evolution-shape-1 {
+  animation: evolution-pulse 3s ease-in-out infinite;
+}
+
+.evolution-shape-2 {
+  animation: evolution-pulse 3.5s ease-in-out infinite reverse;
+}
+
+.evolution-energy-field {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.evolution-container:hover .evolution-energy-field {
+  opacity: 1;
+  animation: evolution-glow-pulse 4s ease-in-out infinite;
+}
+
+.evolution-scan-line {
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.evolution-container:hover .evolution-scan-line {
+  opacity: 1;
+}
+
+.evolution-scan-line > div {
+  animation: evolution-scan 2s linear infinite;
 } 
