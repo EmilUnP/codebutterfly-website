@@ -225,6 +225,32 @@
   .progress-fill {
     animation: progress-fill 1s ease-out forwards;
   }
+
+  /* Enhanced Opacity Utilities */
+  .opacity-2 {
+    opacity: 0.02;
+  }
+  
+  .opacity-3 {
+    opacity: 0.03;
+  }
+  
+  .opacity-5 {
+    opacity: 0.05;
+  }
+  
+  .opacity-15 {
+    opacity: 0.15;
+  }
+
+  /* Enhanced Spacing */
+  .w-45 {
+    width: 11.25rem;
+  }
+  
+  .h-45 {
+    height: 11.25rem;
+  }
 }
 
 @layer utilities {
@@ -255,6 +281,11 @@
   
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Loading spinner animation */
+  .animate-spin {
+    animation: spin 1s linear infinite;
   }
 
   /* Enhanced Shadows */
@@ -655,57 +686,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Enhanced EVOLUTION Text Styles */
-.evolution-container {
-  position: relative;
-  display: inline-block;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.evolution-container:hover {
-  transform: scale(1.05) translateY(-5px);
-}
-
-.evolution-letter {
-  display: inline-block;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: center bottom;
-}
-
-.evolution-letter:hover {
-  transform: translateY(-8px) scale(1.2) rotateY(15deg);
-  color: #4FACFE;
-  text-shadow: 0 0 15px rgba(79, 172, 254, 0.8);
-}
-
-.evolution-glow {
-  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.evolution-container:hover .evolution-glow {
-  opacity: 0.3;
-}
-
-.evolution-particle-1 {
-  animation: evolution-float 4s ease-in-out infinite;
-}
-
-.evolution-particle-2 {
-  animation: evolution-float 4s ease-in-out infinite reverse;
-}
-
-.evolution-particle-3 {
-  animation: evolution-float 5s ease-in-out infinite;
-}
-
-.evolution-shape-1 {
-  animation: evolution-pulse 3s ease-in-out infinite;
-}
-
-.evolution-shape-2 {
-  animation: evolution-pulse 3.5s ease-in-out infinite reverse;
-}
-
 /* Enhanced EVOLUTION Text Styles and Animations */
 .evolution-container {
   position: relative;
@@ -734,6 +714,7 @@
   display: inline-block;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center bottom;
+  animation: evolution-letter-reveal 0.8s ease-out forwards;
 }
 
 .evolution-letter:hover {
@@ -813,4 +794,4 @@
 
 .evolution-scan-line > div {
   animation: evolution-scan 2s linear infinite;
-} 
+}

@@ -116,7 +116,6 @@ export default function EnglishPortfolioDetail({ params }: Props) {
                     <p className="font-semibold text-white">{portfolioItem.client}</p>
                   </div>
                 </div>
-
               </div>
 
               {/* Technologies */}
@@ -184,10 +183,13 @@ export default function EnglishPortfolioDetail({ params }: Props) {
 
 
 
-        {/* Navigation to Other Projects */}
+        {/* Enhanced Navigation to Other Projects */}
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-2xl font-bold text-white mb-6">Other Projects</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+            <div className="w-2 h-2 bg-cyber-blue rounded-full"></div>
+            Explore Other Projects
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioData
               .filter(item => item.id !== portfolioItem.id)
               .slice(0, 3)
@@ -195,25 +197,40 @@ export default function EnglishPortfolioDetail({ params }: Props) {
                 <Link
                   key={item.id}
                   href={`/en/projects/${item.id}`}
-                  className="group block bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-cyber-blue/50 transition-all duration-300 hover:bg-white/10"
+                  className="group block bg-gradient-to-br from-white/5 via-white/3 to-transparent backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-cyber-blue/50 transition-all duration-500 hover:bg-white/10 transform hover:scale-105 shadow-xl hover:shadow-2xl"
                 >
-                  <img
-                    src={item.images[0]}
-                    alt={item.title}
-                    className="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <h4 className="text-lg font-semibold text-white mb-2">{item.title}</h4>
-                  <p className="text-white/70 text-sm">{item.description}</p>
+                  <div className="relative overflow-hidden rounded-xl mb-6">
+                    <img
+                      src={item.images[0]}
+                      alt={item.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {/* Subtle Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-cyber-blue transition-colors duration-300">{item.title}</h4>
+                  <p className="text-white/70 text-sm leading-relaxed">{item.description}</p>
+                  
+                  {/* Hover Indicator */}
+                  <div className="mt-4 flex items-center gap-2 text-cyber-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-sm font-medium">View Project</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </div>
                 </Link>
               ))}
           </div>
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-cyber-dark/50 border-t border-white/10 py-8">
+      {/* Enhanced Footer */}
+      <footer className="bg-gradient-to-r from-cyber-dark/80 via-cyber-darker to-cyber-dark/80 border-t border-white/10 py-12 mt-20">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-white/60">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-2 h-2 bg-cyber-blue rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-cyber-pink rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            <div className="w-2 h-2 bg-cyber-purple rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          </div>
+          <p className="text-white/60 text-lg">
             © 2024 CodeButterfly. All rights reserved.
           </p>
         </div>

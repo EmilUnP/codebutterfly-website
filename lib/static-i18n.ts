@@ -436,7 +436,7 @@ export const translations = {
       description: "We are a future-focused digital agency creating innovative web solutions, beautiful designs, and strategic digital marketing campaigns that deliver real business results.",
       quickLinks: "Quick Links",
       contactInfo: "Contact Information",
-      copyright: "© 2024 CodeButterfly. All rights reserved.",
+      copyright: "© 2025 CodeButterfly. All rights reserved.",
       crafted: "Crafted with ❤️ in San Francisco"
     }
   },
@@ -570,7 +570,7 @@ export const translations = {
       description: "Мы агентство, ориентированное на будущее, создающее инновационные веб-решения, красивые дизайны и стратегические кампании цифрового маркетинга, которые приносят реальные бизнес-результаты.",
       quickLinks: "Быстрые Ссылки",
       contactInfo: "Контактная Информация",
-      copyright: "© 2024 CodeButterfly. Все права защищены.",
+      copyright: "© 2025 CodeButterfly. Все права защищены.",
       crafted: "Создано с ❤️ в Сан-Франциско"
     }
   },
@@ -704,7 +704,7 @@ export const translations = {
       description: "Biz gələcəyə yönəlmiş rəqəmsal agentliyik, real biznes nəticələri gətirən innovativ veb həllər, gözəl dizaynlar və strategiya rəqəmsal marketinq kampaniyaları yaradırıq.",
       quickLinks: "Sürətli Linklər",
       contactInfo: "Əlaqə Məlumatları",
-      copyright: "© 2024 CodeButterfly. Bütün hüquqlar qorunur.",
+      copyright: "© 2025 CodeButterfly. Bütün hüquqlar qorunur.",
       crafted: "San-Fransiskoda ❤️ ilə yaradılıb"
     }
   }

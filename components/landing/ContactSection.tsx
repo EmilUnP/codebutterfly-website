@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
-import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Clock, Send, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react';
 import { type Language, useTranslations } from '@/lib/static-i18n';
+
 
 interface ContactSectionProps {
   language?: Language;
@@ -10,6 +11,52 @@ interface ContactSectionProps {
 
 export default function ContactSection({ language = 'en' }: ContactSectionProps) {
   const t = useTranslations(language);
+  
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Handle input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+      
+    } catch (error) {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
     {
@@ -65,8 +112,8 @@ export default function ContactSection({ language = 'en' }: ContactSectionProps)
           <div className="group">
             <div className="relative p-8 rounded-3xl bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl hover:scale-105 hover:-translate-y-2 transition-all duration-700 transform-gpu">
               {/* Enhanced Background Pattern */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-30 rounded-3xl" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.1),transparent_50%)] opacity-40 rounded-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-30 rounded-3xl pointer-events-none" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(255,255,255,0.1),transparent_50%)] opacity-40 rounded-3xl pointer-events-none" />
               
               {/* Form Header */}
               <div className="relative mb-8 text-center">
@@ -88,49 +135,90 @@ export default function ContactSection({ language = 'en' }: ContactSectionProps)
                 <p className="text-white/70 text-sm">We'll get back to you within 24 hours</p>
               </div>
 
-              {/* Enhanced Form Fields */}
-              <form className="space-y-6">
+              {/* Contact Form */}
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-50">
+
+                
+                {/* Name and Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="group">
+                  <div>
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
                       placeholder={t.contact.form.name}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
+                      className="w-full px-4 py-3 bg-black/50 border-2 border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-cyber-blue focus:bg-black/70 transition-all duration-300 relative z-10"
                     />
                   </div>
-                  <div className="group">
+                  <div>
                     <input
-                        type="email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       placeholder={t.contact.form.email}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
+                      className="w-full px-4 py-3 bg-black/50 border-2 border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-cyber-blue focus:bg-black/70 transition-all duration-300 relative z-10"
                     />
                   </div>
-                  </div>
-                  
-                <div className="group">
+                </div>
+                
+                {/* Subject */}
+                <div>
                   <input
                     type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     placeholder={t.contact.form.subject}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm"
+                    className="w-full px-4 py-3 bg-black/50 border-2 border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-cyber-blue focus:bg-black/70 transition-all duration-300 relative z-10"
                   />
                 </div>
                 
-                <div className="group">
+                {/* Message */}
+                <div>
                   <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     rows={5}
                     placeholder={t.contact.form.message}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:border-cyber-blue/50 focus:bg-white/10 transition-all duration-500 backdrop-blur-sm resize-none"
+                    className="w-full px-4 py-3 bg-black/50 border-2 border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:border-cyber-blue focus:bg-black/70 transition-all duration-300 resize-none relative z-10"
                   />
                 </div>
                 
-                {/* Enhanced Submit Button */}
+                {/* Submit Button */}
                 <button
-                      type="submit"
-                  className="w-full px-8 py-4 bg-cyber-gradient text-white font-bold rounded-2xl shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-500 transform-gpu flex items-center justify-center gap-3 group"
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-4 bg-cyber-gradient text-white font-bold rounded-xl shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
                 >
-                  <span>{t.contact.form.send}</span>
-                  <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>{t.contact.form.send}</span>
+                      <Send className="w-5 h-5" />
+                    </>
+                  )}
                 </button>
+
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center gap-3 text-green-400 relative z-10">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Message sent successfully! We'll get back to you soon.</span>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center gap-3 text-red-400 relative z-10">
+                    <span>Please fill in all fields before submitting.</span>
+                  </div>
+                )}
                 </form>
 
               {/* Enhanced Hover Effect */}

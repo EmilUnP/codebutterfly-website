@@ -2,17 +2,14 @@ import React from 'react';
 import { 
   Mail, 
   Phone, 
-  MapPin, 
-  Instagram, 
-  Twitter, 
-  Linkedin, 
-  Facebook,
+  MapPin,
   Sparkles,
   Heart
 } from "lucide-react";
 import Link from "next/link";
 
 import { type Language, useTranslations } from '@/lib/static-i18n';
+import SocialMediaCard from '@/components/ui/SocialMediaCard';
 
 interface FooterProps {
   language?: Language;
@@ -119,16 +116,9 @@ export default function Footer({ language = 'en' }: FooterProps) {
         {/* Enhanced Social Links & Copyright */}
         <div className="border-t border-cyber-blue/20 pt-12">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            <div className="flex space-x-4">
-              {[Instagram, Twitter, Linkedin, Facebook].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="w-12 h-12 holographic-3d rounded-full flex items-center justify-center text-cyber-blue hover:text-white hover:scale-110 hover:-translate-y-1 transition-all duration-300 group"
-                >
-                  <Icon className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
-                </a>
-              ))}
+            {/* Social Media Card */}
+            <div className="flex justify-center md:justify-start">
+              <SocialMediaCard />
             </div>
                          <div className="text-center md:text-right">
                                                    <p className="text-gray-400 text-sm mb-2">
