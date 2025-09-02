@@ -5,6 +5,7 @@ import HeroSection3D from '@/components/landing/HeroSection3D';
 import ServicesSection from '@/components/landing/ServicesSection';
 import AboutSection from '@/components/landing/AboutSection';
 import PortfolioCarousel3D from '@/components/landing/PortfolioCarousel3D';
+import TeamSection from '@/components/landing/TeamSection';
 import ContactSection from '@/components/landing/ContactSection';
 import ButterflyAnimation from '@/components/landing/ButterflyAnimation';
 
@@ -40,6 +41,11 @@ export default function Landing({ language = 'en' }: LandingProps) {
         {/* Portfolio Section - 3D Carousel */}
         <section id="portfolio" className="py-16">
           <PortfolioCarousel3D language={language} />
+        </section>
+        
+        {/* Team Section - Enhanced Spacing */}
+        <section id="team" className="py-16 bg-cyber-dark/30">
+          <TeamSection language={language} />
         </section>
         
         {/* Contact Section - Enhanced Spacing */}

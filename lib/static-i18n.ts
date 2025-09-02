@@ -403,6 +403,10 @@ export const translations = {
         features: ["Logo Design", "Visual Identity", "Brand Guidelines", "Marketing Materials"]
       }
     },
+    team: {
+      title: "Meet Our Team",
+      subtitle: "The brilliant minds behind CodeButterfly, dedicated to transforming your digital dreams into reality."
+    },
     contact: {
       title: "Get In Touch",
       subtitle: "Ready to start your digital transformation journey? Let's discuss your project.",
@@ -537,6 +541,10 @@ export const translations = {
         features: ["Дизайн Логотипа", "Визуальная Идентичность", "Руководство по Бренду", "Маркетинговые Материалы"]
       }
     },
+    team: {
+      title: "Наша Команда",
+      subtitle: "Блестящие умы за CodeButterfly, посвященные превращению ваших цифровых мечт в реальность."
+    },
     contact: {
       title: "Свяжитесь с Нами",
       subtitle: "Готовы начать свой путь цифровой трансформации? Давайте обсудим ваш проект.",
@@ -670,6 +678,10 @@ export const translations = {
         description: "Unikal brend kimliyinizi quran yaradıcı dizayn həlləri",
         features: ["Logo Dizaynı", "Vizual Kimlik", "Brend Təlimatları", "Marketinq Materialları"]
       }
+    },
+    team: {
+      title: "Komanda",
+      subtitle: "CodeButterfly-in baxılmaz əlmləri, sizin rəqəmsal əyləncələrinizi həmin əlmlərə çevirməyə həsr olunmuşdur."
     },
     contact: {
       title: "Bizimlə Əlaqə",
