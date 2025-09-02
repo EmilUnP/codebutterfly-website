@@ -39,7 +39,8 @@ export function testAllPageMetadata() {
           warnings.push('Description might be too short for optimal SEO');
         }
         
-        if (!metadata.openGraph?.images || metadata.openGraph.images.length === 0) {
+        const images = metadata.openGraph?.images;
+        if (!images || (Array.isArray(images) && images.length === 0)) {
           warnings.push('No Open Graph images found');
         }
 
