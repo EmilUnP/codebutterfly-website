@@ -236,7 +236,8 @@ export function validateSEOMetadata(metadata: Metadata): string[] {
     errors.push('Open Graph description is missing');
   }
   
-  if (!metadata.openGraph?.images || metadata.openGraph.images.length === 0) {
+  const images = metadata.openGraph?.images;
+  if (!images || (Array.isArray(images) && images.length === 0)) {
     errors.push('Open Graph image is missing');
   }
   
