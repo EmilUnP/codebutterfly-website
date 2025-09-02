@@ -29,11 +29,13 @@ export function testAllPageMetadata() {
         const warnings: string[] = [];
         
         // Check for common issues
-        if (metadata.title && metadata.title.length < 30) {
+        const titleString = typeof metadata.title === 'string' ? metadata.title : String(metadata.title || '');
+        if (titleString && titleString.length < 30) {
           warnings.push('Title might be too short for optimal SEO');
         }
         
-        if (metadata.description && metadata.description.length < 120) {
+        const descriptionString = typeof metadata.description === 'string' ? metadata.description : String(metadata.description || '');
+        if (descriptionString && descriptionString.length < 120) {
           warnings.push('Description might be too short for optimal SEO');
         }
         
