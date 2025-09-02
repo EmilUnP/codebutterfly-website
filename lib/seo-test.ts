@@ -273,5 +273,5 @@ export function runSEOValidationTests() {
 // Export for use in development
 if (typeof window === 'undefined') {
   // Only run in Node.js environment
-  global.runSEOValidationTests = runSEOValidationTests;
+  (global as any).runSEOValidationTests = runSEOValidationTests;
 }
