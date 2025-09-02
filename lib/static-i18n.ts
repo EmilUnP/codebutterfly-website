@@ -441,7 +441,6 @@ export const translations = {
       quickLinks: "Quick Links",
       contactInfo: "Contact Information",
       copyright: "© 2025 CodeButterfly. All rights reserved.",
-      crafted: "Crafted with ❤️ in San Francisco"
     }
   },
   ru: {
@@ -579,7 +578,6 @@ export const translations = {
       quickLinks: "Быстрые Ссылки",
       contactInfo: "Контактная Информация",
       copyright: "© 2025 CodeButterfly. Все права защищены.",
-      crafted: "Создано с ❤️ в Сан-Франциско"
     }
   },
   az: {
@@ -717,7 +715,6 @@ export const translations = {
       quickLinks: "Sürətli Linklər",
       contactInfo: "Əlaqə Məlumatları",
       copyright: "© 2025 CodeButterfly. Bütün hüquqlar qorunur.",
-      crafted: "San-Fransiskoda ❤️ ilə yaradılıb"
     }
   }
 };

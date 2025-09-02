@@ -4,17 +4,16 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useTranslations } from '@/lib/static-i18n';
 import { type Language } from '@/lib/static-i18n';
-import { Sparkles, Linkedin, Instagram } from 'lucide-react';
+import { Linkedin, Instagram } from 'lucide-react';
 import Image from 'next/image';
-import Head from 'next/head';
+import SEOHead from '@/components/seo/SEOHead';
+import StructuredData from '@/components/seo/StructuredData';
 
 interface TeamMember {
   id: string;
   name: string;
   role: string;
   backgroundImage: string;
-  bio?: string;
-  expertise?: string[];
   social: {
     linkedin?: string;
     instagram?: string;
@@ -33,8 +32,6 @@ const teamMembers: TeamMember[] = [
     name: 'Gulnar Talibova',
     role: 'Founder & Designer',
     backgroundImage: '/Founder.jpg',
-    bio: 'Visionary founder and creative designer leading CodeButterfly with innovative design solutions and strategic vision.',
-    expertise: ['Strategic Design', 'Brand Development', 'Creative Direction', 'Team Leadership'],
     social: {
       linkedin: 'https://linkedin.com/in/',
       instagram: 'https://instagram.com/'
@@ -50,8 +47,6 @@ const teamMembers: TeamMember[] = [
     name: 'Artemis',
     role: 'UI/UX Designer',
     backgroundImage: '/designer.jpg',
-    bio: 'Passionate UI/UX designer creating exceptional user experiences with modern design principles and user-centered approach.',
-    expertise: ['User Interface Design', 'User Experience', 'Prototyping', 'Design Systems'],
     social: {
       linkedin: 'https://linkedin.com/in/',
       instagram: 'https://instagram.com/'
@@ -67,8 +62,6 @@ const teamMembers: TeamMember[] = [
     name: 'Artimur',
     role: 'Project Manager',
     backgroundImage: '/manager.jpg',
-    bio: 'Experienced project manager ensuring seamless project delivery and exceptional client satisfaction through strategic planning.',
-    expertise: ['Project Management', 'Agile Methodologies', 'Client Relations', 'Team Coordination'],
     social: {
       linkedin: 'https://linkedin.com/in/',
       instagram: 'https://instagram.com/'
@@ -84,8 +77,6 @@ const teamMembers: TeamMember[] = [
     name: 'Emil Talybov',
     role: 'CTO',
     backgroundImage: '/developer.jpg',
-    bio: 'Chief Technology Officer driving technical innovation and leading development teams to build scalable, high-performance solutions.',
-    expertise: ['Technical Leadership', 'Software Architecture', 'Team Management', 'Innovation'],
     social: {
       linkedin: 'https://linkedin.com/in/',
       instagram: 'https://instagram.com/'
@@ -229,44 +220,21 @@ const TeamSection: React.FC<TeamSectionProps> = ({ language }) => {
     </div>
   ), []);
 
-  // Generate JSON-LD structured data for SEO
-  const structuredData = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "CodeButterfly",
-    "description": "Professional web development and design services",
-    "url": "https://codebutterfly.com",
-    "employee": teamMembers.map(member => ({
-      "@type": "Person",
-      "name": member.name,
-      "jobTitle": member.role,
-      "description": member.bio,
-      "image": member.backgroundImage,
-      "sameAs": [
-        member.social.linkedin,
-        member.social.instagram
-      ].filter(Boolean)
-    }))
-  }), []);
+  // Memoized structured data for performance
+  const structuredData = useMemo(() => [
+    { type: 'organization' },
+    { type: 'team' }
+  ], []);
 
   return (
     <>
-      {/* SEO Meta Tags and Structured Data */}
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <meta name="description" content="Meet the talented CodeButterfly team - Gulnar Talibova (Founder), Artemis (UI/UX Designer), Artimur (Project Manager), and Emil Talybov (CTO). Professional web development experts." />
-        <meta name="keywords" content="CodeButterfly team, web developers, UI/UX designers, project managers, CTO, founder, professional team, web development experts" />
-        <meta property="og:title" content="Meet Our Team - CodeButterfly Professional Web Development Team" />
-        <meta property="og:description" content="Discover the talented professionals behind CodeButterfly - from founders to developers, our team delivers exceptional web solutions." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://codebutterfly.com/team" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="CodeButterfly Team - Professional Web Development Experts" />
-        <meta name="twitter:description" content="Meet our skilled team of web developers, designers, and project managers delivering cutting-edge digital solutions." />
-      </Head>
+      {/* Centralized SEO Management */}
+      <SEOHead page="team" language={language} />
+      
+      {/* Structured Data Components */}
+      {structuredData.map((data, index) => (
+        <StructuredData key={index} type={data.type as any} />
+      ))}
 
       {/* Custom CSS for scrollbar hiding */}
       <style jsx>{`
@@ -297,7 +265,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ language }) => {
       <div className="absolute bottom-40 right-32 w-32 h-32 opacity-15">
         <div className="w-full h-full geometric-shape-alt bg-gradient-to-br from-cyber-purple/15 to-cyber-green/15 floating-3d perspective-3d" style={{ animationDelay: '3s' }} />
       </div>
-      
+
       {/* Floating Background Elements */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-cyber-blue/6 to-cyber-pink/6 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-cyber-pink/6 to-cyber-purple/6 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
@@ -316,7 +284,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ language }) => {
             className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-white via-cyber-blue to-white bg-clip-text text-transparent"
             itemProp="name"
           >
-            {t.team.title}
+              {t.team.title}
           </h1>
           <p 
             className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
@@ -347,12 +315,12 @@ const TeamSection: React.FC<TeamSectionProps> = ({ language }) => {
       </div>
 
         {/* Enhanced Energy Waves - Consistent with other sections */}
-        <div className="absolute top-0 left-0 w-full h-1">
+      <div className="absolute top-0 left-0 w-full h-1">
           <div className="w-full h-full energy-wave bg-gradient-to-r from-transparent via-cyber-blue to-transparent" />
-        </div>
-        <div className="absolute bottom-0 left-0 w-full h-1">
+      </div>
+      <div className="absolute bottom-0 left-0 w-full h-1">
           <div className="w-full h-full energy-wave bg-gradient-to-r from-transparent via-cyber-pink to-transparent" style={{ animationDelay: '1.5s' }} />
-        </div>
+      </div>
       </section>
     </>
   );

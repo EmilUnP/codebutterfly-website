@@ -2,9 +2,7 @@ import React from 'react';
 import { 
   Mail, 
   Phone, 
-  MapPin,
-  Sparkles,
-  Heart
+  MapPin
 } from "lucide-react";
 import Link from "next/link";
 
@@ -19,34 +17,34 @@ export default function Footer({ language = 'en' }: FooterProps) {
   const t = useTranslations(language);
 
   return (
-    <footer className="relative py-16 overflow-hidden">
+    <footer className="relative py-8 overflow-hidden">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyber-darker via-cyber-dark to-cyber-darker" />
       <div className="absolute inset-0 grid-pattern opacity-3" />
       <div className="absolute inset-0 bg-gradient-to-br from-cyber-purple/5 via-transparent to-cyber-pink/5 opacity-3" />
       
       {/* Subtle Floating Elements */}
-      <div className="absolute top-20 left-20 w-2 h-2 bg-cyber-purple/30 rounded-full animate-float opacity-10" />
-      <div className="absolute bottom-20 right-20 w-1.5 h-1.5 bg-cyber-pink/30 rounded-full animate-float opacity-10" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-10 left-20 w-2 h-2 bg-cyber-purple/30 rounded-full animate-float opacity-10" />
+      <div className="absolute bottom-10 right-20 w-1.5 h-1.5 bg-cyber-pink/30 rounded-full animate-float opacity-10" style={{ animationDelay: '2s' }} />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Enhanced Brand */}
           <div className="md:col-span-2">
-            <div className="mb-8 animate-fade-in-up">
-              <div className="flex items-center justify-start mb-6">
+            <div className="mb-4 animate-fade-in-up">
+              <div className="flex items-center justify-start mb-4">
                 <div className="relative group">
                                      <img
                      src="/main logo.png"
                      alt="CodeButterfly Logo"
-                     className="w-45 h-45 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                     className="w-32 h-32 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
                    />
                    
                    {/* Subtle Background Glow */}
-                   <div className="absolute inset-0 w-45 h-45 bg-cyber-blue/10 rounded-full -z-10 animate-pulse-slow blur-xl opacity-30" />
+                   <div className="absolute inset-0 w-32 h-32 bg-cyber-blue/10 rounded-full -z-10 animate-pulse-slow blur-xl opacity-30" />
                 </div>
               </div>
-                                <p className="text-gray-300 leading-relaxed max-w-md text-lg">
+                                <p className="text-gray-300 leading-relaxed max-w-md text-base">
                     {t.footer.description}
                   </p>
             </div>
@@ -54,8 +52,8 @@ export default function Footer({ language = 'en' }: FooterProps) {
 
           {/* Enhanced Quick Links */}
           <div>
-                              <h4 className="font-bold text-white mb-6 text-lg">{t.footer.quickLinks}</h4>
-                  <div className="space-y-3">
+                              <h4 className="font-bold text-white mb-4 text-base">{t.footer.quickLinks}</h4>
+                  <div className="space-y-2">
                     {[
                       { name: t.navbar.home, link: language === 'en' ? "/" : `/${language}` },
                       { name: t.navbar.portfolio, link: language === 'en' ? "/en/projects" : `/${language}/projects` },
@@ -80,8 +78,8 @@ export default function Footer({ language = 'en' }: FooterProps) {
 
           {/* Enhanced Contact Info */}
           <div>
-                              <h4 className="font-bold text-white mb-6 text-lg">{t.footer.contactInfo}</h4>
-            <div className="space-y-4">
+                              <h4 className="font-bold text-white mb-4 text-base">{t.footer.contactInfo}</h4>
+            <div className="space-y-3">
               <div className="flex items-center space-x-3 group">
                 <div className="w-10 h-10 bg-cyber-blue/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Mail className="w-5 h-5 text-cyber-blue" />
@@ -114,8 +112,8 @@ export default function Footer({ language = 'en' }: FooterProps) {
         </div>
 
         {/* Enhanced Social Links & Copyright */}
-        <div className="border-t border-cyber-blue/20 pt-12">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+        <div className="border-t border-cyber-blue/20 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Social Media Card */}
             <div className="flex justify-center md:justify-start">
               <SocialMediaCard />
@@ -123,9 +121,6 @@ export default function Footer({ language = 'en' }: FooterProps) {
                          <div className="text-center md:text-right">
                                                    <p className="text-gray-400 text-sm mb-2">
                     {t.footer.copyright}
-                  </p>
-                  <p className="text-gray-500 text-xs flex items-center justify-center md:justify-end">
-                    {t.footer.crafted}
                   </p>
              </div>
           </div>

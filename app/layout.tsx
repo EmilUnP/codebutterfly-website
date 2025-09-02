@@ -1,13 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { generatePageMetadata } from '@/lib/seo-config'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'CodeButterfly - Digital Design Studio',
-  description: 'We craft meaningful digital experiences that transform brands and captivate audiences through innovative design and cutting-edge technology.',
-}
+// Generate metadata for the home page
+export const metadata: Metadata = generatePageMetadata('home', 'en')
 
 export default function RootLayout({
   children,

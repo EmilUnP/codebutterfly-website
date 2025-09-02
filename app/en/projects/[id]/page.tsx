@@ -1,6 +1,6 @@
 import { PortfolioService } from '@/lib/portfolio-service'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Github, Sparkles, Target, Users, TrendingUp } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Sparkles, Target, Users, TrendingUp } from 'lucide-react'
 import UnifiedNavbar from '@/components/ui/UnifiedNavbar'
 
 interface Props {

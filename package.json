@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:seo": "node scripts/test-seo.js",
+    "seo:validate": "npm run test:seo"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",

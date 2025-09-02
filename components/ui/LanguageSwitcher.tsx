@@ -50,21 +50,8 @@ export default function LanguageSwitcher() {
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 rounded-full overflow-hidden">
-                    <img
-                      src={`/flags/${language}.svg`}
-                      alt={languageNames[language]}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        // Fallback to text if flag image fails to load
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const parent = target.parentElement;
-                        if (parent) {
-                          parent.innerHTML = `<span class="text-xs font-bold text-white">${language.toUpperCase()}</span>`;
-                        }
-                      }}
-                    />
+                  <div className="w-6 h-6 rounded-full bg-cyber-blue/20 flex items-center justify-center">
+                    <span className="text-xs font-bold text-cyber-blue">{language.toUpperCase()}</span>
                   </div>
                   <span className="text-sm font-medium">{languageNames[language]}</span>
                 </div>
