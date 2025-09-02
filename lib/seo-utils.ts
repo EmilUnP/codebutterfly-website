@@ -218,11 +218,13 @@ export function generatePageStructuredData(page: string, language: Language = 'e
 export function validateSEOMetadata(metadata: Metadata): string[] {
   const errors: string[] = [];
   
-  if (!metadata.title || metadata.title.length < 30 || metadata.title.length > 60) {
+  const titleString = typeof metadata.title === 'string' ? metadata.title : String(metadata.title || '');
+  if (!titleString || titleString.length < 30 || titleString.length > 60) {
     errors.push('Title should be between 30-60 characters');
   }
   
-  if (!metadata.description || metadata.description.length < 120 || metadata.description.length > 160) {
+  const descriptionString = typeof metadata.description === 'string' ? metadata.description : String(metadata.description || '');
+  if (!descriptionString || descriptionString.length < 120 || descriptionString.length > 160) {
     errors.push('Description should be between 120-160 characters');
   }
   
