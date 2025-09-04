@@ -8,6 +8,7 @@ import UnifiedNavbar from '@/components/ui/UnifiedNavbar';
 import Footer from '@/components/landing/Footer';
 import { useTranslations, type Language } from '@/lib/static-i18n';
 import { PortfolioService, type PortfolioItem } from '@/lib/portfolio-service';
+import Image from 'next/image';
 
 interface PortfolioPageProps {
   language: Language;
@@ -172,10 +173,13 @@ export default function PortfolioPage({ language }: PortfolioPageProps) {
                 
                 {/* Project Image */}
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={index < 3}
                   />
                   
                   {/* Enhanced Hover Overlay */}

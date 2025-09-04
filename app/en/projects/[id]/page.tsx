@@ -1,6 +1,7 @@
 import { PortfolioService } from '@/lib/portfolio-service'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Sparkles, Target, Users, TrendingUp } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowLeft, ExternalLink, Target, Users } from 'lucide-react'
 import UnifiedNavbar from '@/components/ui/UnifiedNavbar'
 import Footer from '@/components/landing/Footer'
 import ProjectGallery from '@/components/ui/ProjectGallery'
@@ -137,23 +138,7 @@ export default function EnglishPortfolioDetail({ params }: Props) {
           </div>
         </div>
 
-        {/* Project Results */}
-        <div className="max-w-7xl mx-auto mb-16">
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              <Sparkles className="inline w-8 h-8 text-cyber-pink mr-3" />
-              Project Results
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {portfolioItem.results.map((result: string, index: number) => (
-                <div key={index} className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
-                  <TrendingUp className="w-8 h-8 text-cyber-green mx-auto mb-3" />
-                  <p className="text-white/90">{result}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        
 
 
 
@@ -173,11 +158,13 @@ export default function EnglishPortfolioDetail({ params }: Props) {
                   href={`/en/projects/${item.id}`}
                   className="group block bg-gradient-to-br from-white/5 via-white/3 to-transparent backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-cyber-blue/50 transition-all duration-500 hover:bg-white/10 transform hover:scale-105 shadow-xl hover:shadow-2xl"
                 >
-                  <div className="relative overflow-hidden rounded-xl mb-6">
-                    <img
+                  <div className="relative h-48 overflow-hidden rounded-xl mb-6">
+                    <Image
                       src={item.images[0]}
                       alt={item.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     {/* Subtle Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

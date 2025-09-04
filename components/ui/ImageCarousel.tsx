@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface ImageCarouselProps {
   images: string[];
@@ -44,11 +45,14 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
   return (
     <div className="relative">
       {/* Main Image Display */}
-      <div className="relative mb-6 rounded-2xl overflow-hidden bg-white/5">
-        <img
+      <div className="relative mb-6 rounded-2xl overflow-hidden bg-white/5 h-96">
+        <Image
           src={images[currentImage]}
           alt={`${title} - Image ${currentImage + 1}`}
-          className="w-full h-96 object-cover transition-all duration-500"
+          fill
+          className="object-cover transition-all duration-500"
+          sizes="(max-width: 768px) 100vw, 70vw"
+          priority
         />
         
         {/* Image Overlay */}
@@ -94,9 +98,11 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
                   : 'border-white/20 hover:border-white/40'
               }`}
             >
-              <img
+              <Image
                 src={image}
                 alt={`${title} - Thumbnail ${index + 1}`}
+                width={80}
+                height={80}
                 className="w-full h-full object-cover"
               />
               

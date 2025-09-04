@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { useTranslations, getLanguageFromPathname } from "@/lib/static-i18n";
+import Image from 'next/image';
 
 interface UnifiedNavbarProps {
   variant?: 'landing' | 'page' | 'auto';
@@ -201,10 +202,13 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
           <div className="flex items-center space-x-4 animate-fade-in-up">
             <Link href={currentLanguage === 'en' ? "/" : `/${currentLanguage}`}>
               <div className="relative group">
-                                                 <img
+                <Image
                   src="/main logo.png"
                   alt="CodeButterfly Logo"
+                  width={144}
+                  height={144}
                   className="w-36 h-36 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 group-hover:-translate-y-1 transition-all duration-500"
+                  priority
                 />
                 
                 {/* Subtle Hover Glow Effect */}

@@ -795,3 +795,11 @@
 .evolution-scan-line > div {
   animation: evolution-scan 2s linear infinite;
 }
+
+.hero-ring,
+.hero-ring::before,
+.hero-ring::after {
+  box-sizing: border-box;
+  border-color: #e5e7eb1c; /* keep existing border width from Tailwind */
+  border-style: solid;     /* ensure solid style without forcing width */
+}

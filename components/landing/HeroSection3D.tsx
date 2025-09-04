@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Zap, Rocket } from "lucide-react";
+import { Zap, Rocket } from "lucide-react";
 import Link from 'next/link';
 import { type Language, useTranslations } from '@/lib/static-i18n';
 import ScrollReveal from '@/components/ui/ScrollReveal';
@@ -27,9 +27,9 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
       
       {/* New 3D Holographic Rings */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        <div className="w-[800px] h-[800px] border border-cyber-blue/8 rounded-full floating-3d perspective-3d" />
-        <div className="w-[600px] h-[600px] border border-cyber-pink/8 rounded-full floating-3d absolute top-20 left-20 perspective-3d" style={{ animationDelay: '1s' }} />
-        <div className="w-[400px] h-[400px] border border-cyber-purple/8 rounded-full floating-3d absolute top-40 left-40 perspective-3d" style={{ animationDelay: '2s' }} />
+        <div className="hero-ring w-[800px] h-[800px] border border-cyber-blue/8 rounded-full floating-3d perspective-3d" />
+        <div className="hero-ring w-[600px] h-[600px] border border-cyber-pink/8 rounded-full floating-3d absolute top-20 left-20 perspective-3d" style={{ animationDelay: '1s' }} />
+        <div className="hero-ring w-[400px] h-[400px] border border-cyber-purple/8 rounded-full floating-3d absolute top-40 left-40 perspective-3d" style={{ animationDelay: '2s' }} />
       </div>
       
       {/* Enhanced Energy Field */}
@@ -111,7 +111,7 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
             align="center"
             variant="default"
             containerClassName="max-w-5xl mx-auto"
-            textClassName="text-gray-300 font-normal leading-relaxed text-lg md:text-xl max-w-4xl mx-auto"
+            textClassName="text-gray-300 font-thin leading-relaxed text-lg md:text-xl max-w-4xl mx-auto"
           >
             {t.hero.subtitle}
           </ScrollReveal>
@@ -125,139 +125,6 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
           </div>
         </div>
         
-
-        
-                 {/* Enhanced Stats Grid with Advanced 3D Effects */}
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto mb-20">
-           {/* First Card - Digital Transformations (Blue) */}
-           <div className="group">
-             <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">
-               {/* Enhanced Icon Container */}
-               <div className="relative mb-6">
-                 <div className="w-20 h-20 bg-gradient-to-br from-cyber-blue to-cyber-blue/50 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                   <Zap className="w-10 h-10 text-white" />
-                 </div>
-                 
-                 {/* Enhanced 3D Glow Effect */}
-                 <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-cyber-blue to-cyber-blue/50 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-               </div>
-               
-               {/* Enhanced Stats */}
-               <div className="text-6xl font-black text-cyber-blue mb-4 group-hover:scale-110 transition-transform duration-300">
-                 150+
-               </div>
-               
-               <div className="text-gray-300 text-center leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
-                 {t.hero.stats.transformations}
-               </div>
-               
-               {/* Enhanced 3D Progress Bar */}
-               <div className="mt-8">
-                 <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden">
-                   <div 
-                     className="h-3 bg-gradient-to-r from-cyber-blue to-cyber-blue/50 rounded-full transition-all duration-1000 ease-out"
-                     style={{ 
-                       width: '0%',
-                       animationDelay: '0s',
-                       animation: 'progress-fill 1s ease-out forwards'
-                     }}
-                   />
-                 </div>
-               </div>
-               
-               {/* Floating Elements */}
-               <div className="absolute -top-2 -right-2 w-4 h-4 opacity-40">
-                 <div className="w-full h-full geometric-shape bg-gradient-to-br from-cyber-blue to-cyber-blue/50 floating-3d" style={{ animationDelay: '0s' }} />
-               </div>
-             </div>
-           </div>
-
-           {/* Second Card - Happy Partners (Pink) */}
-           <div className="group">
-             <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">
-               {/* Enhanced Icon Container */}
-               <div className="relative mb-6">
-                 <div className="w-20 h-20 bg-gradient-to-br from-cyber-pink to-cyber-pink/50 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                   <Rocket className="w-10 h-10 text-white" />
-                 </div>
-                 
-                 {/* Enhanced 3D Glow Effect */}
-                 <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-cyber-pink to-cyber-pink/50 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-               </div>
-               
-               {/* Enhanced Stats */}
-               <div className="text-6xl font-black text-cyber-pink mb-4 group-hover:scale-110 transition-transform duration-300">
-                 75+
-               </div>
-               
-               <div className="text-gray-300 text-center leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
-                 {t.hero.stats.partners}
-               </div>
-               
-               {/* Enhanced 3D Progress Bar */}
-               <div className="mt-8">
-                 <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden">
-                   <div 
-                     className="h-3 bg-gradient-to-r from-cyber-pink to-cyber-pink/50 rounded-full transition-all duration-1000 ease-out"
-                     style={{ 
-                       width: '0%',
-                       animationDelay: '0.3s',
-                       animation: 'progress-fill 1s ease-out forwards'
-                     }}
-                   />
-                 </div>
-               </div>
-               
-               {/* Floating Elements */}
-               <div className="absolute -top-2 -right-2 w-4 h-4 opacity-40">
-                 <div className="w-full h-full geometric-shape bg-gradient-to-br from-cyber-pink to-cyber-pink/50 floating-3d" style={{ animationDelay: '0.3s' }} />
-               </div>
-             </div>
-           </div>
-
-           {/* Third Card - Years of Excellence (Purple) */}
-           <div className="group">
-             <div className="holographic-3d rounded-3xl p-8 h-full hover:scale-105 hover:-translate-y-3 hover:rotate-2 transition-all duration-700 transform-gpu perspective-3d">
-               {/* Enhanced Icon Container */}
-               <div className="relative mb-6">
-                 <div className="w-20 h-20 bg-gradient-to-br from-cyber-purple to-cyber-purple/50 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                   <Sparkles className="w-10 h-10 text-white" />
-                 </div>
-                 
-                 {/* Enhanced 3D Glow Effect */}
-                 <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-cyber-purple to-cyber-purple/50 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
-               </div>
-               
-               {/* Enhanced Stats */}
-               <div className="text-6xl font-black text-cyber-purple mb-4 group-hover:scale-110 transition-transform duration-300">
-                 8
-               </div>
-               
-               <div className="text-gray-300 text-center leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
-                 {t.hero.stats.years}
-               </div>
-               
-               {/* Enhanced 3D Progress Bar */}
-               <div className="mt-8">
-                 <div className="w-full bg-gray-700/30 rounded-full h-3 overflow-hidden">
-                   <div 
-                     className="h-3 bg-gradient-to-r from-cyber-purple to-cyber-purple/50 rounded-full transition-all duration-1000 ease-out"
-                     style={{ 
-                       width: '0%',
-                       animationDelay: '0.6s',
-                       animation: 'progress-fill 1s ease-out forwards'
-                     }}
-                   />
-                 </div>
-               </div>
-               
-               {/* Floating Elements */}
-               <div className="absolute -top-2 -right-2 w-4 h-4 opacity-40">
-                 <div className="w-full h-full geometric-shape bg-gradient-to-br from-cyber-purple to-cyber-purple/50 floating-3d" style={{ animationDelay: '0.6s' }} />
-               </div>
-             </div>
-           </div>
-         </div>
 
       </div>
       

@@ -14,22 +14,18 @@ export const portfolioData = {
   en: [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Modern shopping experience with seamless checkout and inventory management.",
-      fullDescription: "A complete e-commerce solution built for a fashion retailer, featuring advanced product filtering, wishlist functionality, secure payment processing, and comprehensive admin dashboard. The platform handles over 10,000 products with real-time inventory management.",
-      category: "Web Development",
+      title: "Website design",
+      description: "Modern intuitive website design crafted for otoconsult.com.",
+      fullDescription: "test.",
+      category: "Website design",
       image: "/project1.jpg",
       images: ["/project1.jpg", "/project1.1.jpg", "/project1.2.jpg"],
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      technologies: [],
       color: "cyber-blue",
-      duration: "4 months",
-      client: "Fashion Forward Co.",
-      results: ["300% increase in online sales", "50% reduction in cart abandonment", "99.9% uptime achieved"],
-      teamSize: "8 developers",
-      budget: "$150,000",
-      challenges: ["Complex inventory management", "High-security requirements", "Scalability concerns"],
-      solutions: ["Microservices architecture", "Real-time sync system", "Cloud-native deployment"],
-      testimonials: ["The platform transformed our business operations completely", "Our customers love the seamless experience", "The admin dashboard is incredibly intuitive"]
+      duration: "1 months",
+      client: "otoconsult.com",
+      challenges: [],
+      solutions: []
     },
     {
       id: 2,
@@ -43,12 +39,8 @@ export const portfolioData = {
       color: "cyber-green",
       duration: "6 months",
       client: "DataCorp Inc.",
-      results: ["40% faster decision making", "Real-time data processing", "AI-powered insights"],
-      teamSize: "12 developers",
-      budget: "$250,000",
       challenges: ["Big data processing", "Real-time analytics", "AI model accuracy"],
-      solutions: ["Distributed computing", "Stream processing", "Continuous learning models"],
-      testimonials: ["The insights have revolutionized our business strategy", "Real-time data gives us a competitive edge", "The AI predictions are incredibly accurate"]
+      solutions: ["Distributed computing", "Stream processing", "Continuous learning models"]
     },
     {
       id: 3,
@@ -62,12 +54,8 @@ export const portfolioData = {
       color: "cyber-purple",
       duration: "8 months",
       client: "DigitalBank Pro",
-      results: ["2M+ active users", "99.99% security rating", "40% faster transactions"],
-      teamSize: "15 developers",
-      budget: "$400,000",
       challenges: ["Security compliance", "Cross-platform compatibility", "Real-time processing"],
-      solutions: ["Bank-level encryption", "Unified codebase", "Event-driven architecture"],
-      testimonials: ["Our customers love the app's security features", "The cross-platform approach saved us millions", "Real-time updates keep users engaged"]
+      solutions: ["Bank-level encryption", "Unified codebase", "Event-driven architecture"]
     },
     {
       id: 4,
@@ -81,12 +69,8 @@ export const portfolioData = {
       color: "cyber-orange",
       duration: "5 months",
       client: "SmartHome Solutions",
-      results: ["30% energy savings", "5000+ devices connected", "95% user satisfaction"],
-      teamSize: "10 developers",
-      budget: "$180,000",
       challenges: ["Device compatibility", "Network security", "User experience"],
-      solutions: ["Universal protocol support", "End-to-end encryption", "Intuitive mobile app"],
-      testimonials: ["Our smart home system is incredibly reliable", "The energy savings are remarkable", "Setup was surprisingly simple"]
+      solutions: ["Universal protocol support", "End-to-end encryption", "Intuitive mobile app"]
     },
     {
       id: 5,
@@ -100,12 +84,8 @@ export const portfolioData = {
       color: "cyber-cyan",
       duration: "7 months",
       client: "Global Logistics Corp",
-      results: ["100% transparency achieved", "60% reduction in fraud", "Real-time tracking"],
-      teamSize: "14 developers",
-      budget: "$320,000",
       challenges: ["Blockchain scalability", "Regulatory compliance", "Integration complexity"],
-      solutions: ["Layer 2 scaling", "Smart contract automation", "API-first architecture"],
-      testimonials: ["The transparency has transformed our industry", "Fraud detection is now automated", "Our partners trust the system completely"]
+      solutions: ["Layer 2 scaling", "Smart contract automation", "API-first architecture"]
     }
   ],
   ru: [
@@ -121,12 +101,8 @@ export const portfolioData = {
       color: "cyber-blue",
       duration: "4 месяца",
       client: "Fashion Forward Co.",
-      results: ["300% увеличение онлайн-продаж", "50% снижение отказов от корзины", "99.9% время безотказной работы"],
-      teamSize: "8 разработчиков",
-      budget: "$150,000",
       challenges: ["Сложное управление запасами", "Высокие требования безопасности", "Проблемы масштабируемости"],
-      solutions: ["Микросервисная архитектура", "Система синхронизации в реальном времени", "Облачное развертывание"],
-      testimonials: ["Платформа полностью изменила наши бизнес-процессы", "Нашим клиентам нравится бесшовный опыт", "Админ-панель невероятно интуитивна"]
+      solutions: ["Микросервисная архитектура", "Система синхронизации в реальном времени", "Облачное развертывание"]
     },
     {
       id: 2,
@@ -140,12 +116,8 @@ export const portfolioData = {
       color: "cyber-green",
       duration: "6 месяцев",
       client: "DataCorp Inc.",
-      results: ["40% быстрее принятие решений", "Обработка данных в реальном времени", "AI-инсайты"],
-      teamSize: "12 разработчиков",
-      budget: "$250,000",
       challenges: ["Обработка больших данных", "Аналитика в реальном времени", "Точность AI-моделей"],
-      solutions: ["Распределенные вычисления", "Потоковая обработка", "Модели непрерывного обучения"],
-      testimonials: ["Инсайты революционизировали нашу бизнес-стратегию", "Данные в реальном времени дают нам конкурентное преимущество", "AI-прогнозы невероятно точны"]
+      solutions: ["Распределенные вычисления", "Потоковая обработка", "Модели непрерывного обучения"]
     },
     {
       id: 3,
@@ -159,12 +131,8 @@ export const portfolioData = {
       color: "cyber-purple",
       duration: "8 месяцев",
       client: "DigitalBank Pro",
-      results: ["2M+ активных пользователей", "99.99% рейтинг безопасности", "40% быстрее транзакции"],
-      teamSize: "15 разработчиков",
-      budget: "$400,000",
       challenges: ["Соответствие требованиям безопасности", "Кросс-платформенная совместимость", "Обработка в реальном времени"],
-      solutions: ["Шифрование банковского уровня", "Единая кодовая база", "Событийно-ориентированная архитектура"],
-      testimonials: ["Нашим клиентам нравятся функции безопасности приложения", "Кросс-платформенный подход сэкономил нам миллионы", "Обновления в реальном времени удерживают пользователей"]
+      solutions: ["Шифрование банковского уровня", "Единая кодовая база", "Событийно-ориентированная архитектура"]
     },
     {
       id: 4,
@@ -178,12 +146,8 @@ export const portfolioData = {
       color: "cyber-orange",
       duration: "5 месяцев",
       client: "SmartHome Solutions",
-      results: ["30% экономия энергии", "5000+ подключенных устройств", "95% удовлетворенность пользователей"],
-      teamSize: "10 разработчиков",
-      budget: "$180,000",
       challenges: ["Совместимость устройств", "Безопасность сети", "Пользовательский опыт"],
-      solutions: ["Поддержка универсальных протоколов", "Сквозное шифрование", "Интуитивное мобильное приложение"],
-      testimonials: ["Наша система умного дома невероятно надежна", "Экономия энергии замечательная", "Настройка была удивительно простой"]
+      solutions: ["Поддержка универсальных протоколов", "Сквозное шифрование", "Интуитивное мобильное приложение"]
     },
     {
       id: 5,
@@ -197,12 +161,8 @@ export const portfolioData = {
       color: "cyber-cyan",
       duration: "7 месяцев",
       client: "Global Logistics Corp",
-      results: ["100% прозрачность достигнута", "60% снижение мошенничества", "Отслеживание в реальном времени"],
-      teamSize: "14 разработчиков",
-      budget: "$320,000",
       challenges: ["Масштабируемость блокчейна", "Регуляторное соответствие", "Сложность интеграции"],
-      solutions: ["Масштабирование второго уровня", "Автоматизация смарт-контрактов", "API-первая архитектура"],
-      testimonials: ["Прозрачность изменила нашу отрасль", "Обнаружение мошенничества теперь автоматизировано", "Наши партнеры полностью доверяют системе"]
+      solutions: ["Масштабирование второго уровня", "Автоматизация смарт-контрактов", "API-первая архитектура"]
     }
   ],
   az: [
@@ -218,12 +178,8 @@ export const portfolioData = {
       color: "cyber-blue",
       duration: "4 ay",
       client: "Fashion Forward Co.",
-      results: ["300% online satış artımı", "50% səbət tərk etmə azalması", "99.9% işləmə vaxtı"],
-      teamSize: "8 developer",
-      budget: "$150,000",
       challenges: ["Mürəkkəb inventar idarəetməsi", "Yüksək təhlükəsizlik tələbləri", "Ölçəkləndirmə narahatlıqları"],
-      solutions: ["Mikroservis arxitekturası", "Real vaxt sinxronizasiya sistemi", "Bulud əsaslı yerləşdirmə"],
-      testimonials: ["Platforma biznes əməliyyatlarımızı tamamilə dəyişdi", "Müştərilərimiz problemsiz təcrübəni sevirlər", "Admin paneli inanılmaz dərəcədə intuitivdir"]
+      solutions: ["Mikroservis arxitekturası", "Real vaxt sinxronizasiya sistemi", "Bulud əsaslı yerləşdirmə"]
     },
     {
       id: 2,
@@ -237,12 +193,8 @@ export const portfolioData = {
       color: "cyber-green",
       duration: "6 ay",
       client: "DataCorp Inc.",
-      results: ["40% daha sürətli qərar qəbulu", "Real vaxtda məlumat emalı", "AI-dəstəkli içgörülər"],
-      teamSize: "12 developer",
-      budget: "$250,000",
       challenges: ["Böyük məlumat emalı", "Real vaxt analitikası", "AI model dəqiqliyi"],
-      solutions: ["Paylanmış hesablama", "Axın emalı", "Davamlı öyrənmə modelləri"],
-      testimonials: ["İçgörülər biznes strategiyamızı inqilab etdi", "Real vaxt məlumatları bizə rəqabət üstünlüyü verir", "AI proqnozları inanılmaz dərəcədə dəqiqdir"]
+      solutions: ["Paylanmış hesablama", "Axın emalı", "Davamlı öyrənmə modelləri"]
     },
     {
       id: 3,
@@ -256,12 +208,8 @@ export const portfolioData = {
       color: "cyber-purple",
       duration: "8 ay",
       client: "DigitalBank Pro",
-      results: ["2M+ aktiv istifadəçi", "99.99% təhlükəsizlik reytinqi", "40% daha sürətli əməliyyatlar"],
-      teamSize: "15 developer",
-      budget: "$400,000",
       challenges: ["Təhlükəsizlik uyğunluğu", "Kross-platform uyğunluq", "Real vaxt emalı"],
-      solutions: ["Bank səviyyəli şifrələmə", "Vahid kod bazası", "Hadisə əsaslı arxitektura"],
-      testimonials: ["Müştərilərimiz tətbiqin təhlükəsizlik xüsusiyyətlərini sevirlər", "Kross-platform yanaşma bizə milyonlarla qənaət etdi", "Real vaxt yeniləmələri istifadəçiləri saxlayır"]
+      solutions: ["Bank səviyyəli şifrələmə", "Vahid kod bazası", "Hadisə əsaslı arxitektura"]
     },
     {
       id: 4,
@@ -275,12 +223,8 @@ export const portfolioData = {
       color: "cyber-orange",
       duration: "5 ay",
       client: "SmartHome Solutions",
-      results: ["30% enerji qənaəti", "5000+ bağlı cihaz", "95% istifadəçi məmnuniyyəti"],
-      teamSize: "10 developer",
-      budget: "$180,000",
       challenges: ["Cihaz uyğunluğu", "Şəbəkə təhlükəsizliyi", "İstifadəçi təcrübəsi"],
-      solutions: ["Universal protokol dəstəyi", "Son-dan-sona şifrələmə", "İntuitiv mobil tətbiq"],
-      testimonials: ["Ağıllı ev sistemimiz inanılmaz dərəcədə etibarlıdır", "Enerji qənaəti diqqət çəkicidir", "Quraşdırma təəccüblü dərəcədə sadə idi"]
+      solutions: ["Universal protokol dəstəyi", "Son-dan-sona şifrələmə", "İntuitiv mobil tətbiq"]
     },
     {
       id: 5,
@@ -294,12 +238,8 @@ export const portfolioData = {
       color: "cyber-cyan",
       duration: "7 ay",
       client: "Global Logistics Corp",
-      results: ["100% şəffaflıq əldə edildi", "60% dolandırıcılıq azalması", "Real vaxtda izləmə"],
-      teamSize: "14 developer",
-      budget: "$320,000",
       challenges: ["Blokçeyn ölçəkləndirməsi", "Tənzimləyici uyğunluq", "İnteqrasiya mürəkkəbliyi"],
-      solutions: ["İkinci səviyyə ölçəkləndirmə", "Ağıllı müqavilə avtomatlaşdırması", "API-ilk arxitektura"],
-      testimonials: ["Şəffaflıq sənayimizi dəyişdi", "Dolandırıcılıq aşkarlanması indi avtomatlaşdırılıb", "Tərəfdaşlarımız sisteme tamamilə güvənirlər"]
+      solutions: ["İkinci səviyyə ölçəkləndirmə", "Ağıllı müqavilə avtomatlaşdırması", "API-ilk arxitektura"]
     }
   ]
 };
@@ -328,7 +268,7 @@ export const translations = {
       contact: "Contact"
     },
     portfolio: {
-      title: "Our Complete Portfolio",
+      title: "Our Portfolio",
       subtitle: "Explore our comprehensive collection of digital solutions and creative projects.",
       viewFull: "View Full Portfolio",
       backToPortfolio: "Back to Portfolio",
@@ -471,7 +411,7 @@ export const translations = {
       contact: "Контакты"
     },
     portfolio: {
-      title: "Наше Полное Портфолио",
+      title: "Наше Портфолио",
       subtitle: "Изучите нашу комплексную коллекцию цифровых решений и творческих проектов.",
       viewFull: "Посмотреть Все Портфолио",
       backToPortfolio: "Назад к Портфолио",
@@ -614,9 +554,9 @@ export const translations = {
       contact: "Əlaqə"
     },
     portfolio: {
-      title: "Tam Portfolio",
+      title: "Portfoliomuz",
       subtitle: "Rəqəmsal həllər və yaradıcı layihələrin hərtərəfli kolleksiyasını kəşf edin.",
-      viewFull: "Tam Portfolio",
+      viewFull: "Portfolio-ya Bax",
       backToPortfolio: "Portfolio-ya Qayıt",
       projectDetails: "Layihə Detalları",
       technologies: "İstifadə Edilən Texnologiyalar",

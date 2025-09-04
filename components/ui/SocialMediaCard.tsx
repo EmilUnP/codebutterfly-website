@@ -11,7 +11,7 @@ const SocialMediaCard: React.FC<SocialMediaCardProps> = ({ className = '', langu
   return (
     <div className={`relative group ${className}`}>
       {/* Card Container */}
-      <div className="relative flex items-center justify-center bg-gradient-to-r from-cyber-dark/80 to-cyber-darker/80 backdrop-blur-sm border border-cyber-blue/20 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-14 w-64 rounded-xl group-hover:scale-105">
+      <div className="relative flex items-center justify-center bg-gradient-to-r from-cyber-dark/80 to-cyber-darker/80 backdrop-blur-sm border border-cyber-blue/20 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-14 w-full max-w-xs sm:max-w-sm md:w-64 rounded-xl group-hover:scale-105">
         
         {/* Background Overlay Elements */}
         <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/10 via-cyber-purple/10 to-cyber-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

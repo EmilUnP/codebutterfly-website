@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 
 interface ProjectGalleryProps {
   images: string[];
@@ -97,12 +98,14 @@ export default function ProjectGallery({ images, title = "", badgeText, badgeCol
             className="group w-full text-left"
             aria-label="Open image viewer"
           >
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl">
-              <img
-                ref={imageRef}
+            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl h-64 sm:h-80 md:h-96">
+              <Image
                 src={mainImage}
-                alt={title}
-                className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                alt={title || 'Project image'}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 80vw, 50vw"
+                priority
               />
 
               {/* Category Badge (optional) */}
@@ -134,11 +137,13 @@ export default function ProjectGallery({ images, title = "", badgeText, badgeCol
                 className="relative group"
                 aria-label="Open image viewer"
               >
-                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl">
-                  <img
+                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl h-28 sm:h-32">
+                  <Image
                     src={image}
-                    alt={`${title} - View ${index + 2}`}
-                    className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
+                    alt={`${title || 'Project image'} - View ${index + 2}`}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -162,11 +167,14 @@ export default function ProjectGallery({ images, title = "", badgeText, badgeCol
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center px-4">
-            <img
+            <Image
               src={images[currentIndex]}
-              alt={`${title} - ${currentIndex + 1}`}
-              className={`max-h-[85vh] max-w-[90vw] object-contain transition-transform duration-300 ${isZoomed ? 'scale-110' : 'scale-100'}`}
+              alt={`${title || 'Project image'} - ${currentIndex + 1}`}
+              fill
+              className={`object-contain transition-transform duration-300 ${isZoomed ? 'scale-110' : 'scale-100'}`}
+              sizes="100vw"
               onDoubleClick={() => setIsZoomed((z) => !z)}
+              priority
             />
           </div>
 
@@ -215,7 +223,7 @@ export default function ProjectGallery({ images, title = "", badgeText, badgeCol
                   onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); setIsZoomed(false); }}
                   className={`h-12 w-16 rounded-lg overflow-hidden border ${idx === currentIndex ? 'border-cyber-blue' : 'border-white/20'} hover:border-cyber-blue transition-colors`}
                 >
-                  <img src={src} alt={`${title} thumb ${idx + 1}`} className="h-full w-full object-cover" />
+                  <Image src={src} alt={`${title || 'Project image'} thumb ${idx + 1}`} width={64} height={48} className="h-full w-full object-cover" />
                 </button>
               ))}
             </div>

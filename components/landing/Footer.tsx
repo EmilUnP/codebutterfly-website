@@ -5,6 +5,7 @@ import {
   MapPin
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { type Language, useTranslations } from '@/lib/static-i18n';
 import SocialMediaCard from '@/components/ui/SocialMediaCard';
@@ -34,11 +35,14 @@ export default function Footer({ language = 'en' }: FooterProps) {
             <div className="mb-4 animate-fade-in-up">
               <div className="flex items-center justify-start mb-4">
                 <div className="relative group">
-                                     <img
-                     src="/main logo.png"
-                     alt="CodeButterfly Logo"
-                     className="w-32 h-32 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-                   />
+                  <Image
+                    src="/main logo.png"
+                    alt="CodeButterfly Logo"
+                    width={128}
+                    height={128}
+                    className="w-32 h-32 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                    priority
+                  />
                    
                    {/* Subtle Background Glow */}
                    <div className="absolute inset-0 w-32 h-32 bg-cyber-blue/10 rounded-full -z-10 animate-pulse-slow blur-xl opacity-30" />

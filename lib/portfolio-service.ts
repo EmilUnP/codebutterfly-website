@@ -12,7 +12,6 @@ export interface PortfolioItem {
   color: string;
   duration: string;
   client: string;
-  results: string[];
   challenges: string[];
   solutions: string[];
 }
