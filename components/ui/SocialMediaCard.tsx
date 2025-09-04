@@ -1,10 +1,13 @@
 import React from 'react';
+import { type Language, useTranslations } from '@/lib/static-i18n';
 
 interface SocialMediaCardProps {
   className?: string;
+  language?: Language;
 }
 
-const SocialMediaCard: React.FC<SocialMediaCardProps> = ({ className = '' }) => {
+const SocialMediaCard: React.FC<SocialMediaCardProps> = ({ className = '', language = 'en' }) => {
+  const t = useTranslations(language);
   return (
     <div className={`relative group ${className}`}>
       {/* Card Container */}
@@ -19,7 +22,7 @@ const SocialMediaCard: React.FC<SocialMediaCardProps> = ({ className = '' }) => 
         
         {/* Social Text Label */}
         <span className="absolute inset-0 flex items-center justify-center text-white font-mono text-lg font-bold tracking-wider opacity-100 group-hover:opacity-0 transition-opacity duration-300 z-10">
-          Social
+          {t.footer.labels.social}
         </span>
         
         {/* Social Media Icons */}

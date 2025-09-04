@@ -85,7 +85,7 @@ export default function Footer({ language = 'en' }: FooterProps) {
                   <Mail className="w-5 h-5 text-cyber-blue" />
                 </div>
                 <div>
-                                    <div className="text-cyber-blue font-mono text-xs tracking-wider mb-1">EMAIL</div>
+                  <div className="text-cyber-blue font-mono text-xs tracking-wider mb-1">{t.footer.labels.email}</div>
                   <div className="text-gray-300 text-sm">{t.contact.contactInfo.email.details}</div>
                 </div>
               </div>
@@ -94,7 +94,7 @@ export default function Footer({ language = 'en' }: FooterProps) {
                   <Phone className="w-5 h-5 text-cyber-pink" />
                 </div>
                 <div>
-                                    <div className="text-cyber-pink font-mono text-xs tracking-wider mb-1">PHONE</div>
+                  <div className="text-cyber-pink font-mono text-xs tracking-wider mb-1">{t.footer.labels.phone}</div>
                   <div className="text-gray-300 text-sm">{t.contact.contactInfo.phone.details}</div>
                 </div>
               </div>
@@ -103,7 +103,7 @@ export default function Footer({ language = 'en' }: FooterProps) {
                   <MapPin className="w-5 h-5 text-cyber-purple" />
                 </div>
                 <div>
-                  <div className="text-cyber-purple font-mono text-xs tracking-wider mb-1">LOCATION</div>
+                  <div className="text-cyber-purple font-mono text-xs tracking-wider mb-1">{t.footer.labels.location}</div>
                   <div className="text-gray-300 text-sm">{t.contact.contactInfo.location.details}</div>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function Footer({ language = 'en' }: FooterProps) {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Social Media Card */}
             <div className="flex justify-center md:justify-start">
-              <SocialMediaCard />
+              <SocialMediaCard language={language} />
             </div>
                          <div className="text-center md:text-right">
                                                    <p className="text-gray-400 text-sm mb-2">

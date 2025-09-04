@@ -2,6 +2,8 @@ import { PortfolioService } from '@/lib/portfolio-service'
 import Link from 'next/link'
 import { ArrowLeft, ExternalLink, Sparkles, Target, Users, TrendingUp } from 'lucide-react'
 import UnifiedNavbar from '@/components/ui/UnifiedNavbar'
+import Footer from '@/components/landing/Footer'
+import ProjectGallery from '@/components/ui/ProjectGallery'
 
 interface Props {
   params: { id: string }
@@ -54,40 +56,12 @@ export default function EnglishPortfolioDetail({ params }: Props) {
         <div className="max-w-7xl mx-auto mb-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Project Image Gallery */}
-            <div className="space-y-4">
-              {/* Main Image */}
-              <div className="relative group">
-                <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl">
-                  <img
-                    src={portfolioItem.images[0]}
-                    alt={portfolioItem.title}
-                    className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <div className={`px-4 py-2 rounded-full text-sm font-bold bg-${portfolioItem.color}/20 text-${portfolioItem.color} border border-${portfolioItem.color}/30 backdrop-blur-sm`}>
-                      {portfolioItem.category}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Additional Images Grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {portfolioItem.images.slice(1).map((image, index) => (
-                  <div key={index} className="relative group">
-                    <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 via-white/3 to-transparent border border-white/10 backdrop-blur-xl">
-                      <img
-                        src={image}
-                        alt={`${portfolioItem.title} - View ${index + 2}`}
-                        className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ProjectGallery
+              images={portfolioItem.images}
+              title={portfolioItem.title}
+              badgeText={portfolioItem.category}
+              badgeColor={portfolioItem.color}
+            />
 
             {/* Project Info */}
             <div className="space-y-6">
@@ -222,19 +196,8 @@ export default function EnglishPortfolioDetail({ params }: Props) {
         </div>
       </div>
 
-      {/* Enhanced Footer */}
-      <footer className="bg-gradient-to-r from-cyber-dark/80 via-cyber-darker to-cyber-dark/80 border-t border-white/10 py-12 mt-20">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-2 h-2 bg-cyber-blue rounded-full animate-pulse"></div>
-            <div className="w-2 h-2 bg-cyber-pink rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-            <div className="w-2 h-2 bg-cyber-purple rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          </div>
-          <p className="text-white/60 text-lg">
-            © 2024 CodeButterfly. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer language="en" />
     </div>
   )
 }
