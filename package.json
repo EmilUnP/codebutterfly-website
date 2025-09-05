@@ -1,7 +1,7 @@
 {
   "name": "codebutterfly-website",
   "homepage": "https://purescan.info",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
