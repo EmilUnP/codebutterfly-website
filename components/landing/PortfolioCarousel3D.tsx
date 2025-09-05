@@ -117,7 +117,7 @@ const PortfolioCarousel3D = ({
             {/* Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-cyber-purple/20 via-transparent to-cyber-pink/20 blur-3xl opacity-30" />
             
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-purple to-white bg-clip-text text-transparent relative z-10">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-purple to-white bg-clip-text text-transparent relative z-10">
               {t.portfolio.title}
             </h2>
 
@@ -132,7 +132,7 @@ const PortfolioCarousel3D = ({
         </div>
 
         {/* 3D Carousel Container */}
-        <div className="relative overflow-hidden h-[600px] mb-8" 
+        <div className="relative overflow-hidden h-[420px] sm:h-[500px] md:h-[600px] mb-8" 
              onMouseEnter={() => setIsHovering(true)}
              onMouseLeave={() => setIsHovering(false)}
              onTouchStart={onTouchStart}

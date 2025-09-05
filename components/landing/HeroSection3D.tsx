@@ -27,9 +27,9 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
       
       {/* New 3D Holographic Rings */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-        <div className="hero-ring w-[800px] h-[800px] border border-cyber-blue/8 rounded-full floating-3d perspective-3d" />
-        <div className="hero-ring w-[600px] h-[600px] border border-cyber-pink/8 rounded-full floating-3d absolute top-20 left-20 perspective-3d" style={{ animationDelay: '1s' }} />
-        <div className="hero-ring w-[400px] h-[400px] border border-cyber-purple/8 rounded-full floating-3d absolute top-40 left-40 perspective-3d" style={{ animationDelay: '2s' }} />
+        <div className="hero-ring w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] border border-cyber-blue/8 rounded-full floating-3d perspective-3d" />
+        <div className="hero-ring w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px] border border-cyber-pink/8 rounded-full floating-3d absolute top-20 left-20 perspective-3d" style={{ animationDelay: '1s' }} />
+        <div className="hero-ring w-[180px] h-[180px] sm:w-[260px] sm:h-[260px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px] border border-cyber-purple/8 rounded-full floating-3d absolute top-40 left-40 perspective-3d" style={{ animationDelay: '2s' }} />
       </div>
       
       {/* Enhanced Energy Field */}
@@ -38,7 +38,7 @@ export default function HeroSection3D({ language = 'en' }: HeroSection3DProps) {
       {/* Main Content with Enhanced 3D Layout */}
       <div className="relative z-10 text-center max-w-7xl mx-auto px-6">
         {/* Enhanced Main Title with Advanced 3D Effects */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-16 leading-tight perspective-3d">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-10 md:mb-16 leading-tight perspective-3d">
           <div className="rotate-3d hover:rotate-3d mb-6 transform-gpu">
             <span className="gradient-text inline-block scan-line relative">
               {t.hero.title}

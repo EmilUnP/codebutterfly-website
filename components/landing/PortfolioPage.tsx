@@ -104,7 +104,7 @@ export default function PortfolioPage({ language }: PortfolioPageProps) {
             {/* Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-transparent to-cyber-pink/20 blur-3xl opacity-30" />
             
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-white via-cyber-blue to-white bg-clip-text text-transparent relative z-10">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 bg-gradient-to-r from-white via-cyber-blue to-white bg-clip-text text-transparent relative z-10">
               {t.portfolio.title}
             </h1>
             

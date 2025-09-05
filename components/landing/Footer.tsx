@@ -40,12 +40,12 @@ export default function Footer({ language = 'en' }: FooterProps) {
                     alt="CodeButterfly Logo"
                     width={128}
                     height={128}
-                    className="w-32 h-32 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
+                    className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
                     priority
                   />
                    
                    {/* Subtle Background Glow */}
-                   <div className="absolute inset-0 w-32 h-32 bg-cyber-blue/10 rounded-full -z-10 animate-pulse-slow blur-xl opacity-30" />
+                   <div className="absolute inset-0 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 bg-cyber-blue/10 rounded-full -z-10 animate-pulse-slow blur-xl opacity-30" />
                 </div>
               </div>
                                 <p className="text-gray-300 leading-relaxed max-w-md text-base">

@@ -99,7 +99,7 @@ export default function ContactSection({ language = 'en' }: ContactSectionProps)
       <div className="container mx-auto px-6 relative z-10">
         {/* Enhanced Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-6xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-amber to-white bg-clip-text text-transparent">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-white via-cyber-amber to-white bg-clip-text text-transparent">
             {t.contact.title}
           </h2>
           <p className="text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed">
