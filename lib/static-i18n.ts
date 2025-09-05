@@ -14,48 +14,48 @@ export const portfolioData = {
   en: [
     {
       id: 1,
-      title: "Website design",
-      description: "Modern intuitive website design crafted for otoconsult.com.",
-      fullDescription: "test.",
-      category: "Website design",
-      image: "/project1.jpg",
-      images: ["/project1.jpg", "/project1.1.jpg", "/project1.2.jpg"],
-      technologies: [],
+      title: "SafeSteps – GPS Location Tracking App Design",
+      description: "A minimalist and secure UI that allows users to track their own and their loved ones’ real-time locations.",
+      fullDescription: "SafeSteps is a modern and intuitive mobile app design focused on personal and travel safety. It features real-time map view, secure sharing settings, and instant notifications, providing an optimized user experience with emotional reassurance.",
+      category: "Mobile UI/UX Design",
+      image: "/safesteps3.jpg",
+      images: ["/safesteps3.jpg", "/safesteps1.jpg", "/safesteps2.jpg"],
+      technologies: ["Figma", "Adobe XD", "Interactive Prototype"],
       color: "cyber-blue",
-      duration: "1 months",
-      client: "otoconsult.com",
-      challenges: [],
-      solutions: []
+      duration: "3 months",
+      client: "Noname Project",
+      challenges: ["Visualization", "Simplicity", "Trust"],
+      solutions: ["Minimalism", "Clarity", "Reassurance"]
     },
     {
       id: 2,
-      title: "AI-Powered Analytics Dashboard",
-      description: "Intelligent data visualization and predictive analytics platform.",
-      fullDescription: "An enterprise-level analytics dashboard that processes millions of data points in real-time, providing AI-driven insights and predictive modeling for business intelligence.",
-      category: "AI & Analytics",
-      image: "/project2.jpg",
-      images: ["/project2.jpg", "/project2.1.jpg", "/project2.2.jpg"],
-      technologies: ["Python", "TensorFlow", "React", "PostgreSQL"],
+      title: "otoconsult.com – Website UI/UX Design",
+      description: "Professional and clean UI/UX design for the automotive sector; creating trust and action-oriented web experience for otoconsult.com.",
+      fullDescription: "The otoconsult.com website design project is crafted for automotive consulting services, providing an information-focused and intuitive web platform. Key design elements include aesthetic simplicity, comprehensive service appeal, and mobile-friendly responsiveness.",
+      category: "Web UI/UX Design",
+      image: "/otoconsult.jpg",
+      images: ["/otoconsult.jpg", "/otoconsult1.jpg", "/otoconsult2.jpg"],
+      technologies: ["Figma", "Web Prototyping", "Responsive Layout"],
       color: "cyber-green",
-      duration: "6 months",
-      client: "DataCorp Inc.",
-      challenges: ["Big data processing", "Real-time analytics", "AI model accuracy"],
-      solutions: ["Distributed computing", "Stream processing", "Continuous learning models"]
+      duration: "2 months",
+      client: "OtoConsult.com",
+      challenges: ["Appeal", "Clarity", "Consistency"],
+      solutions: ["Design", "Highlighting", "Responsiveness"]
     },
     {
-      id: 3,
-      title: "Mobile Banking App",
-      description: "Secure and intuitive mobile banking experience for modern users.",
-      fullDescription: "A comprehensive mobile banking application with biometric authentication, real-time transaction monitoring, investment portfolio management, and AI-powered fraud detection. Built with React Native for cross-platform compatibility.",
-      category: "Mobile Development",
-      image: "/project3.jpg",
-      images: ["/project3.jpg", "/project3.1.jpg", "/project3.2.jpg"],
-      technologies: ["React Native", "Node.js", "PostgreSQL", "Redis", "AWS"],
-      color: "cyber-purple",
-      duration: "8 months",
-      client: "DigitalBank Pro",
-      challenges: ["Security compliance", "Cross-platform compatibility", "Real-time processing"],
-      solutions: ["Bank-level encryption", "Unified codebase", "Event-driven architecture"]
+      "id": 3,
+      "title": "App Design for Learning a Foreign Language by Dueling",
+      "description": "An engaging and gamified mobile app design that enhances language learning through interactive dueling challenges.",
+      "fullDescription": "This project showcases a vibrant and interactive mobile application design aimed at making language learning more engaging. The app utilizes a dueling format where users can challenge each other, promoting competitive learning and social interaction. The design emphasizes a dynamic user interface with intuitive navigation and visually appealing elements, encouraging users to immerse themselves in the learning process.",
+      "category": "Mobile UI/UX Design",
+      "image": "/eganinja.jpg",
+      "images": ["/eganinja.jpg", "/eganinja1.jpg", "/eganinja2.jpg"],
+      "technologies": ["Figma", "Adobe XD", "Interactive Prototyping"],
+      "color": "cyber-blue",
+      "duration": "2 months",
+      "client": "Personal Project / UI/UX Designer Portfolio",
+      "challenges": ["Engagement", "Interactivity", "User Retention"],
+      "solutions": ["Gamification", "Social Integration", "Intuitive Design"]
     },
     {
       id: 4,
@@ -350,7 +350,7 @@ export const translations = {
     contact: {
       title: "Get In Touch",
       subtitle: "Ready to start your digital transformation journey? Let's discuss your project.",
-      form: { 
+      form: {
         name: "Your Name",
         email: "Your Email",
         subject: "Subject",
@@ -493,7 +493,7 @@ export const translations = {
     contact: {
       title: "Свяжитесь с Нами",
       subtitle: "Готовы начать свой путь цифровой трансформации? Давайте обсудим ваш проект.",
-      form: { 
+      form: {
         name: "Ваше Имя",
         email: "Ваш Email",
         subject: "Тема",
@@ -636,7 +636,7 @@ export const translations = {
     contact: {
       title: "Bizimlə Əlaqə",
       subtitle: "Rəqəmsal transformasiya səyahətinizi başlamağa hazırsınız? Layihənizi müzakirə edək.",
-      form: { 
+      form: {
         name: "Adınız",
         email: "Email Ünvanınız",
         subject: "Mövzu",
@@ -680,7 +680,7 @@ export const translations = {
 // Language detection and management
 export function getLanguageFromURL(): Language {
   if (typeof window === 'undefined') return defaultLanguage;
-  
+
   const pathname = window.location.pathname;
   const langMatch = pathname.match(/^\/(en|ru|az)/);
   return (langMatch?.[1] as Language) || defaultLanguage;
@@ -696,7 +696,7 @@ export function createLanguagePath(pathname: string, language: Language): string
   if (language === defaultLanguage) {
     return pathname.replace(/^\/(en|ru|az)/, '') || '/';
   }
-  
+
   const cleanPath = pathname.replace(/^\/(en|ru|az)/, '') || '/';
   return `/${language}${cleanPath}`;
 }
@@ -710,7 +710,7 @@ export function useTranslations(language: Language = defaultLanguage) {
 export function getText(language: Language, key: string): string {
   const keys = key.split('.');
   let value: any = translations[language] || translations[defaultLanguage];
-  
+
   for (const k of keys) {
     if (value && typeof value === 'object' && k in value) {
       value = value[k];
@@ -718,7 +718,7 @@ export function getText(language: Language, key: string): string {
       return key; // Fallback to key if translation not found
     }
   }
-  
+
   return typeof value === 'string' ? value : key;
 }
 

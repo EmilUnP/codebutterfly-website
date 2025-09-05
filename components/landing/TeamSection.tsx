@@ -31,7 +31,7 @@ const teamMembers: TeamMember[] = [
     id: '1',
     name: 'Gulnar Talibova',
     role: 'Founder & Designer',
-    backgroundImage: '/Founder.jpg',
+    backgroundImage: '/founder.jpg',
     social: {
       linkedin: 'https://linkedin.com/in/',
       instagram: 'https://instagram.com/'
@@ -74,17 +74,17 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: '4',
-    name: 'Emil Talybov',
-    role: 'CTO',
+    name: 'Emil Talibov',
+    role: 'Developer',
     backgroundImage: '/developer.jpg',
     social: {
       linkedin: 'https://linkedin.com/in/',
       instagram: 'https://instagram.com/'
     },
     seo: {
-      altText: 'Emil Talybov - CTO at CodeButterfly, professional headshot',
-      title: 'Emil Talybov - Chief Technology Officer | CodeButterfly Team',
-      description: 'Emil Talybov serves as CTO at CodeButterfly, driving technical innovation and leading development teams to create scalable, high-performance solutions.'
+      altText: 'Emil Talibov - Developer at CodeButterfly, professional headshot',
+      title: 'Emil Talibov - Developer | CodeButterfly Team',
+      description: 'Emil Talibov serves as developer at CodeButterfly, driving technical innovation and leading development teams to create scalable, high-performance solutions.'
     }
   }
 ];
