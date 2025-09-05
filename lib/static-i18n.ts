@@ -66,7 +66,7 @@ export const portfolioData = {
       image: "/project4.jpg",
       images: ["/project4.jpg", "/project4.1.jpg", "/project4.2.jpg"],
       technologies: ["Python", "React", "MQTT", "TensorFlow", "Raspberry Pi"],
-      color: "cyber-orange",
+      color: "cyber-purple",
       duration: "5 months",
       client: "SmartHome Solutions",
       challenges: ["Device compatibility", "Network security", "User experience"],
@@ -81,12 +81,28 @@ export const portfolioData = {
       image: "/project5.jpg",
       images: ["/project5.jpg", "/project5.1.jpg", "/project5.2.jpg"],
       technologies: ["Ethereum", "Solidity", "React", "Node.js", "IPFS"],
-      color: "cyber-cyan",
+      color: "cyber-red",
+      duration: "7 months",
+      client: "Global Logistics Corp",
+      challenges: ["Blockchain scalability", "Regulatory compliance", "Integration complexity"],
+      solutions: ["Layer 2 scaling", "Smart contract automation", "API-first architecture"]
+    },
+    {
+      id: 6,
+      title: "Blockchain Supply Chain",
+      description: "Transparent and secure supply chain tracking using blockchain technology.",
+      fullDescription: "A blockchain-based supply chain management system that provides end-to-end visibility, automated compliance checking, and real-time tracking of goods from manufacturer to consumer.",
+      category: "Blockchain",
+      image: "/project5.jpg",
+      images: ["/project5.jpg", "/project5.1.jpg", "/project5.2.jpg"],
+      technologies: ["Ethereum", "Solidity", "React", "Node.js", "IPFS"],
+      color: "cyber-pink",
       duration: "7 months",
       client: "Global Logistics Corp",
       challenges: ["Blockchain scalability", "Regulatory compliance", "Integration complexity"],
       solutions: ["Layer 2 scaling", "Smart contract automation", "API-first architecture"]
     }
+    
   ],
   ru: [
     {
