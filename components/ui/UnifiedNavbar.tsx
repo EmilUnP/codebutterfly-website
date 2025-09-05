@@ -197,7 +197,7 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
       )}
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex items-center h-20 py-4">
+        <div className="flex items-center h-16 md:h-20 py-2 md:py-4">
           {/* Clean Logo without Button Effects */}
           <div className="flex items-center space-x-4 animate-fade-in-up">
             <Link href={currentLanguage === 'en' ? "/" : `/${currentLanguage}`}>
@@ -207,12 +207,12 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
                   alt="CodeButterfly Logo"
                   width={144}
                   height={144}
-                  className="w-36 h-36 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 group-hover:-translate-y-1 transition-all duration-500"
+                  className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 object-contain animate-pulse-slow transform group-hover:scale-110 group-hover:rotate-3 group-hover:-translate-y-1 transition-all duration-500"
                   priority
                 />
                 
                 {/* Subtle Hover Glow Effect */}
-                <div className="absolute inset-0 w-36 h-36 bg-cyber-blue/20 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 -z-10" />
+                <div className="absolute inset-0 w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 bg-cyber-blue/20 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 -z-10" />
               </div>
             </Link>
           </div>
@@ -251,8 +251,8 @@ export default function UnifiedNavbar({ variant = 'auto', className = '' }: Unif
             <LanguageSwitcher />
           </div>
 
-          {/* Enhanced Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Enhanced Mobile Menu Button - aligned to the right on mobile */}
+          <div className="md:hidden ml-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="relative group w-12 h-12 bg-cyber-blue/20 rounded-2xl flex items-center justify-center backdrop-blur-xl border border-cyber-blue/30 hover:bg-cyber-blue/30 transition-all duration-300 hover:scale-110"
